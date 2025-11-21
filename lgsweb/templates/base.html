@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}LGS Hazırlık{% endblock %}</title>
+    {% block extra_head %}{% endblock %}
+</head>
+<body>
+    <div class="navbar" style="display: flex; align-items: center; justify-content: space-between; padding: 0 32px;">
+        <a href="/" class="nav-logo" style="text-align: left;">LGS Hazırlık <span style="font-size:0.8em; font-weight:normal;">(anasayfa)</span></a>
+        <span class="nav-links" style="display: flex; gap: 8px;">
+            <a href="/turkce/" class="nav-link">Türkçe</a>
+            <a href="/matematik/" class="nav-link">Matematik</a>
+            <a href="/fen/" class="nav-link">Fen Bilimleri</a>
+            <a href="/inkilap/" class="nav-link">İnkılap Tarihi</a>
+            <a href="/din/" class="nav-link">Din Kültürü</a>
+            <a href="/ingilizce/" class="nav-link">İngilizce</a>
+        </span>
+    </div>
+    <div class="content">
+        {% block content %}{% endblock %}
+    </div>
+    <div class="footer">
+        &copy; 2025 LGS Hazırlık | Tüm hakları saklıdır.
+    </div>
+</body>
+

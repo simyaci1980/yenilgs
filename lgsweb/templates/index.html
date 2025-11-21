@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+
+{% block title %}LGS Hazırlık - Ana Sayfa{% endblock %}
+
+{% block extra_head %}
+    <link rel="stylesheet" href="/static/dersler.css">
+{% endblock %}
+
+{% block content %}
+<div style="display: flex; justify-content: center; align-items: stretch; gap: 24px; max-width: 1400px; margin: 0 auto;">
+    <div class="side-fun" style="display: flex; flex-direction: column; justify-content: center; align-items: flex-end; min-width: 60px; max-width: 80px;">
+        <div style="font-size: 2.5em;">🎮</div>
+        <div style="font-family: 'Comic Neue', cursive; color: #2d5be3; font-size: 1.1em; text-align: right; margin-top: 12px;">Oyun gibi öğren!</div>
+        <div style="font-size: 2.2em; margin-top: 18px;">🚀</div>
+        <div style="font-family: 'Comic Neue', cursive; color: #1565c0; font-size: 1em; text-align: right; margin-top: 8px;">Hedefin: Başarı!</div>
+    </div>
+    <div class="main-container" style="flex: 1;">
+        <h1 class="main-title">LGS Hazırlık</h1>
+        <ul class="ders-list">
+            <li class="ders-item"><a class="ders-btn" href="/turkce/">
+                <span class="unit-title">TÜRKÇE</span>
+                <span class="unit-fun">Kelimelerin Gücünü Keşfet!</span>
+            </a></li>
+            <li class="ders-item"><a class="ders-btn" href="/matematik/">
+                <span class="unit-title">MATEMATİK</span>
+                <span class="unit-fun">Zeka Oyunlarıyla Matematik!</span>
+            </a></li>
+            <li class="ders-item"><a class="ders-btn" href="/fen/">
+                <span class="unit-title">FEN BİLİMLERİ</span>
+                <span class="unit-fun">Deneylerle Bilimi Yaşa!</span>
+            </a></li>
+            <li class="ders-item"><a class="ders-btn" href="/inkilap/">
+                <span class="unit-title">İNKILAP TARİHİ</span>
+                <span class="unit-fun">Tarihin Gizemli Yolculuğu!</span>
+            </a></li>
+            <li class="ders-item"><a class="ders-btn" href="/din/">
+                <span class="unit-title">DİN KÜLTÜRÜ</span>
+                <span class="unit-fun">Değerlerle Hayatı Anla!</span>
+            </a></li>
+            <li class="ders-item"><a class="ders-btn" href="/ingilizce/">
+                <span class="unit-title">İNGİLİZCE</span>
+                <span class="unit-fun">Dünyaya Açılan Kapı!</span>
+            </a></li>
+        </ul>
+    </div>
+    <div class="side-fun" style="display: flex; flex-direction: column; justify-content: center; align-items: flex-start; min-width: 60px; max-width: 80px;">
+        <div style="font-size: 2.5em;">🧩</div>
+        <div style="font-family: 'Comic Neue', cursive; color: #2d5be3; font-size: 1.1em; text-align: left; margin-top: 12px;">Her ünite bir parça!</div>
+        <div style="font-size: 2.2em; margin-top: 18px;">🏆</div>
+        <div style="font-family: 'Comic Neue', cursive; color: #1565c0; font-size: 1em; text-align: left; margin-top: 8px;">Birlikte kazan!</div>
+    </div>
+</div>
+{% endblock %}
