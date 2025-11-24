@@ -29,4 +29,9 @@ urlpatterns = [
     path('ingilizce/', views.ingilizce, name='ingilizce'),
     path('din/', views.din, name='din'),
     path('oyunlar/', views.oyunlar, name='oyunlar'),
+    path('matematik-unite-1/', views.matematik_unite_1, name='matematik_unite_1'),
+    path('matematik-unite-2/', views.matematik_unite_2, name='matematik_unite_2'),
+    path('veri-analizi/', views.veri_analizi, name='veri_analizi'),
+    path('karekok/', views.karekok, name='karekok'),
+    path('carpanlar-katlar/', views.carpanlar_katlar, name='carpanlar_katlar'),
 ]

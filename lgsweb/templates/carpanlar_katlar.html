@@ -1,0 +1,409 @@
+{% extends "base.html" %}
+
+{% block title %}Çarpanlar ve Katlar{% endblock %}
+
+{% block extra_head %}
+    <link rel="stylesheet" href="/static/dersler.css">
+{% endblock %}
+
+{% block content %}
+<div class="oyun-container">
+    <div class="oyun-baslik">Çarpanlar ve Katlar</div>
+    <div class="oyun-aciklama">Matematikte çarpanlar, asal sayılar, EBOB ve EKOK konularını eğlenceli etkinliklerle öğren!</div>
+    <hr>
+    <div style="display: flex; justify-content: center; align-items: stretch; gap: 24px; max-width: 1400px; margin: 0 auto;">
+        <div class="side-fun" style="display: flex; flex-direction: column; justify-content: center; align-items: flex-end; min-width: 60px; max-width: 80px;">
+            <div style="font-size: 2.5em;">🧩</div>
+            <div style="font-family: 'Comic Neue', cursive; color: #2d5be3; font-size: 1.1em; text-align: right; margin-top: 12px;">Çarpan Avcısı!</div>
+            <div style="font-size: 2.2em; margin-top: 18px;">🚀</div>
+            <div style="font-family: 'Comic Neue', cursive; color: #1565c0; font-size: 1em; text-align: right; margin-top: 8px;">Matematikle Yüksel!</div>
+        </div>
+        <div class="main-container" style="flex: 1;">
+            <h1 class="main-title">8. Sınıf Matematik - Çarpanlar ve Katlar</h1>
+            <ul class="ders-list">
+                <li class="ders-item"><a class="ders-btn" href="#" onclick="showModal()"><span class="unit-title">Pozitif Tam Sayıların Çarpanları</span><span class="unit-fun">Her sayının gizli bölenleri!</span></a></li>
+                <li class="ders-item"><a class="ders-btn" href="#" onclick="showModalAsal()"><span class="unit-title">Asal Sayılar</span><span class="unit-fun">Sadece kendine ve 1'e bölünenler!</span></a></li>
+                <li class="ders-item"><a class="ders-btn" href="#" onclick="showModalAsalCarpan()"><span class="unit-title">Asal Çarpanlara Ayırma</span><span class="unit-fun">Sayının temel taşları!</span></a></li>
+                                <div id="modalAsalCarpan" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.35); z-index:2000; align-items:center; justify-content:center;">
+                                                                    <div style="background:#fff; border-radius:16px; max-width:600px; min-width:320px; margin:auto; padding:40px 32px; box-shadow:0 2px 24px #333; position:relative; max-height:80vh; overflow-y:auto;">
+                                        <h3 style="color:#2d5be3; margin-top:0;">Asal Çarpanlara Ayırma</h3>
+                                        <div style="margin-bottom:16px; font-size:1.15em; color:#222;">
+                                            <b>Tanım:</b> Bir sayıyı asal çarpanlarına ayırmak, o sayıyı asal sayıların çarpımı şeklinde yazmaktır.<br>
+                                            <b>Çarpan Ağacı Yöntemi:</b><br>
+                                            <span style="display:inline-block; background:#e3ecfc; border-radius:8px; padding:8px 12px; margin:6px 0;">
+                                                <b>60</b><br>
+                                                ├─ 2 × 30<br>
+                                                │&nbsp;&nbsp;&nbsp;&nbsp;└─ 2 × 15<br>
+                                                │&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└─ 3 × 5<br>
+                                                <b>60 = 2 × 2 × 3 × 5</b>
+                                            </span><br>
+                                            <b>Bölme Yöntemi:</b><br>
+                                            <span style="display:inline-block; background:#e3ecfc; border-radius:8px; padding:8px 12px; margin:6px 0;">
+                                                60 ÷ 2 = 30<br>
+                                                30 ÷ 2 = 15<br>
+                                                15 ÷ 3 = 5<br>
+                                                5 ÷ 5 = 1<br>
+                                                <b>60 = 2 × 2 × 3 × 5</b>
+                                            </span><br>
+                                            <b>Not:</b> Asal çarpanlara ayırma, sayıların bölünebilme ve çarpan analizinde kullanılır.<br>
+                                            <div style="margin-top:14px; background:#fffde7; border-radius:8px; padding:12px 16px; color:#1976d2; font-size:1.08em; box-shadow:0 2px 8px #ffe082;">
+                                                <b>Asal çarpanlara ayırma neden önemli?</b><br>
+                                                - EBOB ve EKOK gibi konularda, iki sayının ortak asal çarpanlarını bulmak için kullanılır.<br>
+                                                - Bir sayının bölünebilme kurallarını anlamak için gereklidir.<br>
+                                                - Kesirleri sadeleştirmek, çarpanlara ayırmak ve sayıların özelliklerini analiz etmek için çok işe yarar.<br>
+                                                - Asal çarpanlar, matematikte “temel taşlar” gibidir. Bir sayının yapısını anlamak için asal çarpanlarına ayırmak çok faydalıdır.<br>
+                                                <span style="color:#d84315; font-weight:bold;">Kısacası, asal çarpanlara ayırma hem sorularda hem de günlük matematikte işimizi kolaylaştırır!</span>
+                                            </div>
+                                        </div>
+                                        <div style="margin-bottom:16px; font-size:1.08em; color:#1565c0;">
+                                            <b>Örnek Soru:</b> 60 sayısını asal çarpanlarına ayırınız.<br>
+                                            <button onclick="showAnswerAsalCarpan()" style="margin-top:8px; background:#2d5be3; color:#fff; border:none; border-radius:6px; padding:6px 18px; cursor:pointer;">Cevabı Göster</button>
+                                            <div id="modalAnswerAsalCarpan" style="margin-top:12px; font-size:1.08em; color:#222; background:#e3ecfc; border-radius:8px; padding:10px 16px; display:none;"></div>
+                                            <div style="margin-top:18px; font-size:1.08em; color:#1976d2; background:#e3f2fd; border-radius:10px; padding:16px 18px; box-shadow:0 2px 8px #90caf9; max-height:260px; overflow-y:auto;">
+                                                <b>Asal Çarpanlara Ayırma Oyunu!</b><br>
+                                                Aşağıya bir sayı gir, "Başla"ya tıkla ve asal çarpanlara ayırmayı adım adım kendin dene.<br>
+                                                <div style="margin-top:10px;">
+                                                    <input id="primeFactorInput" type="number" min="2" max="9999" value="60" style="width:80px; padding:4px 8px; font-size:1em; border-radius:6px; border:1px solid #90caf9;">
+                                                        <button onclick="startPrimeFactorGame()" style="background:#2d5be3; color:#fff; border:none; border-radius:6px; padding:6px 18px; font-weight:bold; cursor:pointer;">Başla</button>
+                                                </div>
+                                                <div id="primeFactorSteps" style="margin-top:14px; font-size:1.08em; color:#222; background:#e3ecfc; border-radius:8px; padding:10px 16px;"></div>
+                                                <div id="primeFactorResult" style="margin-top:10px; font-size:1.12em; color:#1565c0;"></div>
+                                            </div>
+                                        </div>
+                                        <button onclick="closeModalAsalCarpan()" style="position:absolute; top:8px; right:12px; background:#2d5be3; color:#fff; border:none; border-radius:6px; padding:4px 12px; cursor:pointer;">Kapat</button>
+                                    </div>
+                                </div>
+                <div id="modalC" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.35); z-index:2000; align-items:center; justify-content:center;">
+    <div style="background:#fff; border-radius:16px; max-width:600px; min-width:320px; margin:auto; padding:40px 32px; box-shadow:0 2px 24px #333; position:relative; max-height:80vh; overflow-y:auto;">
+        <h3 style="color:#2d5be3; margin-top:0;">Pozitif Tam Sayıların Çarpanları</h3>
+        <div style="margin-bottom:16px; font-size:1.15em; color:#222;">
+            Bir pozitif tam sayının çarpanları, o sayıyı tam bölen pozitif sayılardır.<br>
+            <b>Kolay Yöntem:</b> Bir sayının çarpanlarını bulmak için, bölen ve bölüm çiftlerini eşleştirerek ilerleyebilirsin. Bölen ile bölüm birbirine yaklaştığında veya geçtiğinde işlem biter.<br>
+            <span style="display:inline-block; background:#e3ecfc; border-radius:8px; padding:8px 12px; margin:6px 0;">
+                <b>12 için:</b><br>
+                1 × 12<br>
+                2 × 6<br>
+                <span style="background:#ffe082; border-radius:6px; padding:2px 8px; font-weight:bold; color:#d84315;">3 × 4</span><br>
+                (4 × 3 tekrar olur, bu yüzden durulur)<br>
+                <b>Çarpanlar: 1, 2, 3, 4, 6, 12</b><br><br>
+                <b>18 için:</b><br>
+                1 × 18<br>
+                2 × 9<br>
+                <span style="background:#ffe082; border-radius:6px; padding:2px 8px; font-weight:bold; color:#d84315;">3 × 6</span><br>
+                (4 × 4.5 tam sayı değil, durulur)<br>
+                <b>Çarpanlar: 1, 2, 3, 6, 9, 18</b><br><br>
+                <b>20 için:</b><br>
+                1 × 20<br>
+                2 × 10<br>
+                <span style="background:#ffe082; border-radius:6px; padding:2px 8px; font-weight:bold; color:#d84315;">4 × 5</span><br>
+                (5 × 4 tekrar olur, bu yüzden durulur)<br>
+                <b>Çarpanlar: 1, 2, 4, 5, 10, 20</b>
+            </span>
+        </div>
+        <div style="margin-bottom:16px; font-size:1.08em; color:#1565c0;">
+            <b>Örnek Soru:</b> 24 sayısının çarpanlarını bulun.<br>
+            <button onclick="showAnswer()" style="margin-top:8px; background:#2d5be3; color:#fff; border:none; border-radius:6px; padding:6px 18px; cursor:pointer;">Cevabı Göster</button>
+            <div id="modalAnswer" style="margin-top:12px; font-size:1.08em; color:#222; background:#e3ecfc; border-radius:8px; padding:10px 16px; display:none;"></div>
+        </div>
+        <div style="margin-top:18px; font-size:1.08em; color:#1976d2; background:#fffde7; border-radius:10px; padding:16px 18px; box-shadow:0 2px 8px #ffe082;">
+            <b>Diyelim ki elinde bir kutu var ve içine tam olarak kaç tane oyuncak sığabileceğini bulmak istiyorsun.</b> İşte çarpanlar da tam böyle! Bir sayıyı, başka hangi sayılarla tam bölünebildiğini bulmak aslında bir “bölme oyunu” gibi.<br><br>
+            <b>Mesela 12 sayısı için:</b><br>
+            1 kutuya 12 oyuncak koyabilirsin (1 × 12)<br>
+            2 kutuya 6’şar oyuncak koyabilirsin (2 × 6)<br>
+            <span style="background:#ffe082; border-radius:6px; padding:2px 8px; font-weight:bold; color:#d84315;">3 kutuya 4’er oyuncak koyabilirsin (3 × 4)</span><br>
+            Sonra bakıyorsun, 3’ten sonra 4 geliyor ve artık kutu sayısı ile oyuncak sayısı birbirine yaklaşıyor. İşte burada duruyorsun!<br>
+            <b>Yani 12’nin çarpanları: 1, 2, 3, 4, 6, 12</b><br><br>
+            Bunu bir hazine avı gibi düşün: Her bölme denemesinde yeni bir çarpan buluyorsun! Hangi sayılarla tam bölünebildiğini bulmak, sayının gizli anahtarlarını keşfetmek gibi.<br>
+            <span style="font-size:1.2em; color:#d84315;">Kısacası, çarpan bulmak bir matematik oyunu! Kutuları ve oyuncakları eşleştir, bakalım hangi sayılar tam bölünebiliyor? Eğlenceli ve kolay!</span>
+        </div>
+        <button onclick="closeModal()" style="position:absolute; top:8px; right:12px; background:#2d5be3; color:#fff; border:none; border-radius:6px; padding:4px 12px; cursor:pointer;">Kapat</button>
+    </div>
+</div>
+                <div id="modalAsal" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.35); z-index:2000; align-items:center; justify-content:center;">
+                    <div style="background:#fff; border-radius:16px; max-width:600px; min-width:320px; margin:auto; padding:40px 32px; box-shadow:0 2px 24px #333; position:relative;">
+                        <h3 style="color:#2d5be3; margin-top:0;">Asal Sayılar</h3>
+                        <div style="margin-bottom:16px; font-size:1.15em; color:#222;">
+                            <b>Tanım:</b> Asal sayılar, yalnızca kendisine ve 1'e tam bölünebilen, 1'den büyük doğal sayılardır.<br>
+                            <b>Örnek Asal Sayılar:</b> <span style="color:#1565c0;">2, 3, 5, 7, 11, 13, 17, 19, 23, 29...</span><br>
+                            <b>Not:</b> 2 en küçük ve tek çift asal sayıdır.<br>
+                            <b>Asal olmayan örnek:</b> 9 (çünkü 1, 3 ve 9'a bölünür)
+                        </div>
+                        <div style="margin-bottom:16px; font-size:1.08em; color:#1565c0;">
+                            <b>Örnek Soru:</b> 17 asal sayı mıdır?<br>
+                            <button onclick="showAnswerAsal()" style="margin-top:8px; background:#2d5be3; color:#fff; border:none; border-radius:6px; padding:6px 18px; cursor:pointer;">Cevabı Göster</button>
+                            <div id="modalAnswerAsal" style="margin-top:12px; font-size:1.08em; color:#222; background:#e3ecfc; border-radius:8px; padding:10px 16px; display:none;"></div>
+                        </div>
+                        <div style="margin-top:18px; font-size:1.08em; color:#1976d2; background:#e3f2fd; border-radius:10px; padding:16px 18px; box-shadow:0 2px 8px #90caf9;">
+    <b>Asal Sayı Avı!</b><br>
+    1'den 100'e kadar olan sayılardan asal olanları bulmak için aşağıdaki kutucuklara tıklayabilirsin.<br>
+    <div id="primeGame" style="display:flex; flex-wrap:wrap; gap:6px; margin-top:12px; max-width:420px;">
+        <!-- JS ile kutucuklar eklenecek -->
+    </div>
+    <div id="primeGameInfo" style="margin-top:10px; font-size:1em; color:#1565c0;"></div>
+</div>
+<script>
+function isPrime(n) {
+    if (n < 2) return false;
+    for (let i = 2; i <= Math.sqrt(n); i++) {
+        if (n % i === 0) return false;
+    }
+    return true;
+}
+function setupPrimeGame() {
+    var container = document.getElementById('primeGame');
+    var info = document.getElementById('primeGameInfo');
+    for (let i = 1; i <= 100; i++) {
+        let btn = document.createElement('button');
+        btn.innerText = i;
+        btn.style.margin = '0';
+        btn.style.width = '32px';
+        btn.style.height = '32px';
+        btn.style.borderRadius = '7px';
+        btn.style.border = '1px solid #90caf9';
+        btn.style.background = '#fff';
+        btn.style.cursor = 'pointer';
+        btn.style.fontWeight = 'bold';
+        btn.onclick = function() {
+            if (isPrime(i)) {
+                btn.style.background = '#a5d6a7';
+                info.innerText = i + ' asal sayı!';
+            } else {
+                btn.style.background = '#ef9a9a';
+                info.innerText = i + ' asal sayı değil!';
+            }
+        container.appendChild(btn);
+        // ...existing code...
+    }
+}
+window.addEventListener('DOMContentLoaded', setupPrimeGame);
+</script>
+                        <button onclick="closeModalAsal()" style="position:absolute; top:8px; right:12px; background:#2d5be3; color:#fff; border:none; border-radius:6px; padding:4px 12px; cursor:pointer;">Kapat</button>
+                    </div>
+                </div>
+<script>
+function startPrimeFactorGame() {
+    var n = parseInt(document.getElementById('primeFactorInput').value);
+    var stepsDiv = document.getElementById('primeFactorSteps');
+    var resultDiv = document.getElementById('primeFactorResult');
+    if (isNaN(n) || n < 2) {
+        stepsDiv.innerHTML = '<span style="color:#d84315;">Lütfen 2 veya daha büyük bir sayı girin.</span>';
+        resultDiv.innerHTML = '';
+        return;
+    }
+    var steps = '';
+    var factors = [];
+    var original = n;
+    var divisor = 2;
+    while (n > 1) {
+        if (n % divisor === 0) {
+            steps += n + ' ÷ ' + divisor + ' = ' + (n/divisor) + '<br>';
+            factors.push(divisor);
+            n = n / divisor;
+        } else {
+            divisor++;
+        }
+    }
+    stepsDiv.innerHTML = steps;
+    resultDiv.innerHTML = '<b>' + original + ' = ' + factors.join(' × ') + '</b>';
+}
+</script>
+                <li class="ders-item"><a class="ders-btn" href="#" onclick="showModalEbob()"><span class="unit-title">EBOB (En Büyük Ortak Bölen)</span><span class="unit-fun">En büyük ortak bölene ulaş!</span></a></li>
+<div id="modalEbob" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.35); z-index:2000; align-items:center; justify-content:center;">
+    <div style="background:#fff; border-radius:16px; max-width:600px; min-width:320px; margin:auto; padding:40px 32px; box-shadow:0 2px 24px #333; position:relative;">
+        <h3 style="color:#2d5be3; margin-top:0;">EBOB (En Büyük Ortak Bölen)</h3>
+        <div style="margin-bottom:16px; font-size:1.15em; color:#222;">
+            <b>Tanım:</b> İki veya daha fazla sayının ortak bölenlerinin en büyüğüne EBOB denir.<br>
+            <b>Yöntem 1 - Ortak Bölenler:</b> Sayıların bölenleri bulunur, ortak olanların en büyüğü seçilir.<br>
+            <span style="display:inline-block; background:#e3ecfc; border-radius:8px; padding:8px 12px; margin:6px 0;">
+                12'nin bölenleri: 1, 2, 3, 4, 6, 12<br>
+                18'in bölenleri: 1, 2, 3, 6, 9, 18<br>
+                Ortak bölenler: 1, 2, 3, 6<br>
+                <b>EBOB(12, 18) = 6</b>
+            </span><br>
+            <b>Yöntem 2 - Asal Çarpanlara Ayırma:</b> Her sayıyı asal çarpanlarına ayır, ortak asal çarpanların çarpımı EBOB'u verir.<br>
+            <span style="display:inline-block; background:#e3ecfc; border-radius:8px; padding:8px 12px; margin:6px 0;">
+                12 = 2 × 2 × 3<br>
+                18 = 2 × 3 × 3<br>
+                Ortak asal çarpanlar: 2 ve 3<br>
+                <b>EBOB(12, 18) = 2 × 3 = 6</b>
+            </span>
+        </div>
+        <div style="margin-bottom:16px; font-size:1.08em; color:#1565c0;">
+            <b>Örnek Soru:</b> 48 ve 60'ın EBOB'unu asal çarpanlara ayırarak bulunuz.<br>
+            <div style="margin-top:10px; background:#e3ecfc; border-radius:10px; padding:12px 18px; color:#222; box-shadow:0 2px 8px #90caf9; max-width:420px;">
+                <div style="max-height:220px; overflow-y:auto;">
+                    <b>48'in asal çarpanlara ayrılması:</b><br>
+                    <span style="display:inline-block; background:#fffde7; border-radius:8px; padding:6px 12px; margin:4px 0;">
+                        48 ÷ 2 = 24<br>
+                        24 ÷ 2 = 12<br>
+                        12 ÷ 2 = 6<br>
+                        6 ÷ 2 = 3<br>
+                        3 ÷ 3 = 1<br>
+                        <b>48 = 2 × 2 × 2 × 2 × 3</b>
+                    </span><br>
+                    <b>60'ın asal çarpanlara ayrılması:</b><br>
+                    <span style="display:inline-block; background:#fffde7; border-radius:8px; padding:6px 12px; margin:4px 0;">
+                        60 ÷ 2 = 30<br>
+                        30 ÷ 2 = 15<br>
+                        15 ÷ 3 = 5<br>
+                        5 ÷ 5 = 1<br>
+                        <b>60 = 2 × 2 × 3 × 5</b>
+                    </span><br>
+                    <b>Ortak asal çarpanlar:</b> <span style="color:#1976d2; font-weight:bold;">2, 2, 3</span><br>
+                    <b>EBOB(48, 60) = 2 × 2 × 3 = <span style="color:#d84315;">12</span></b>
+                    <div style="margin-top:10px; background:#e3f2fd; border-radius:8px; padding:8px 12px; color:#1565c0; font-size:1.08em; max-height:120px; overflow-y:auto;">
+                        <b>Çözüm Adımları:</b><br>
+                        <span style="display:inline-block; background:#fff; border-radius:6px; padding:4px 10px; margin:2px 0; border:1px solid #90caf9;">1. Her iki sayıyı asal çarpanlarına ayır.</span><br>
+                        <span style="display:inline-block; background:#fff; border-radius:6px; padding:4px 10px; margin:2px 0; border:1px solid #90caf9;">2. Ortak asal çarpanları bul: 2, 2, 3</span><br>
+                        <span style="display:inline-block; background:#fff; border-radius:6px; padding:4px 10px; margin:2px 0; border:1px solid #90caf9;">3. Ortak asal çarpanları çarp: 2 × 2 × 3 = 12</span><br>
+                        <span style="display:inline-block; background:#fffde7; border-radius:6px; padding:4px 10px; margin:2px 0; border:1px solid #ffe082; color:#d84315; font-weight:bold;">Cevap: EBOB(48, 60) = 12</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button onclick="closeModalEbob()" style="position:absolute; top:8px; right:12px; background:#2d5be3; color:#fff; border:none; border-radius:6px; padding:4px 12px; cursor:pointer;">Kapat</button>
+    </div>
+</div>
+                <li class="ders-item"><a class="ders-btn" href="#" onclick="showModalEkok()"><span class="unit-title">EKOK (En Küçük Ortak Kat)</span><span class="unit-fun">En küçük ortak katı bul!</span></a></li>
+<div id="modalEkok" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.35); z-index:2000; align-items:center; justify-content:center;">
+    <div style="background:#fff; border-radius:16px; max-width:600px; min-width:320px; margin:auto; padding:40px 32px; box-shadow:0 2px 24px #333; position:relative;">
+        <h3 style="color:#2d5be3; margin-top:0;">EKOK (En Küçük Ortak Kat)</h3>
+        <div style="margin-bottom:16px; font-size:1.15em; color:#222;">
+            <b>Tanım:</b> İki veya daha fazla sayının ortak katlarının en küçüğüne EKOK denir.<br>
+            <b>Yöntem 1 - Katlar Listesi:</b> Her sayının katları yazılır, ortak olanların en küçüğü seçilir.<br>
+            <span style="display:inline-block; background:#e3ecfc; border-radius:8px; padding:8px 12px; margin:6px 0;">
+                4'ün katları: 4, 8, 12, 16, 20, 24, ...<br>
+                6'nın katları: 6, 12, 18, 24, ...<br>
+                Ortak katlar: 12, 24, ...<br>
+                <b>EKOK(4, 6) = 12</b>
+            </span><br>
+            <b>Yöntem 2 - Asal Çarpanlara Ayırma:</b> Her sayıyı asal çarpanlarına ayır, tüm asal çarpanların en fazla tekrar edenlerini çarp.<br>
+            <span style="display:inline-block; background:#e3ecfc; border-radius:8px; padding:8px 12px; margin:6px 0;">
+                4 = 2 × 2<br>
+                6 = 2 × 3<br>
+                Tüm asal çarpanlar: 2 (en fazla 2 kez), 3 (1 kez)<br>
+                <b>EKOK(4, 6) = 2 × 2 × 3 = 12</b>
+            </span>
+        </div>
+        <div style="margin-bottom:16px; font-size:1.08em; color:#1565c0;">
+            <b>Örnek Soru:</b> 8 ve 12'nin EKOK'unu asal çarpanlara ayırarak bulunuz.<br>
+            <div style="margin-top:10px; background:#e3ecfc; border-radius:10px; padding:12px 18px; color:#222; box-shadow:0 2px 8px #90caf9; max-width:420px;">
+                <div style="max-height:220px; overflow-y:auto;">
+                    <b>8'in asal çarpanlara ayrılması:</b><br>
+                    <span style="display:inline-block; background:#fffde7; border-radius:8px; padding:6px 12px; margin:4px 0;">
+                        8 ÷ 2 = 4<br>
+                        4 ÷ 2 = 2<br>
+                        2 ÷ 2 = 1<br>
+                        <b>8 = 2 × 2 × 2</b>
+                    </span><br>
+                    <b>12'nin asal çarpanlara ayrılması:</b><br>
+                    <span style="display:inline-block; background:#fffde7; border-radius:8px; padding:6px 12px; margin:4px 0;">
+                        12 ÷ 2 = 6<br>
+                        6 ÷ 2 = 3<br>
+                        3 ÷ 3 = 1<br>
+                        <b>12 = 2 × 2 × 3</b>
+                    </span><br>
+                    <b>Tüm asal çarpanlar:</b> <span style="color:#1976d2; font-weight:bold;">2 (en fazla 3 kez), 3 (1 kez)</span><br>
+                    <b>EKOK(8, 12) = 2 × 2 × 2 × 3 = <span style="color:#d84315;">24</span></b>
+                    <div style="margin-top:10px; background:#e3f2fd; border-radius:8px; padding:8px 12px; color:#1565c0; font-size:1.08em; max-height:120px; overflow-y:auto;">
+                        <b>Çözüm Adımları:</b><br>
+                        <span style="display:inline-block; background:#fff; border-radius:6px; padding:4px 10px; margin:2px 0; border:1px solid #90caf9;">1. Her iki sayıyı asal çarpanlarına ayır.</span><br>
+                        <span style="display:inline-block; background:#fff; border-radius:6px; padding:4px 10px; margin:2px 0; border:1px solid #90caf9;">2. Tüm asal çarpanların en fazla tekrar edenlerini bul: 2 (3 kez), 3 (1 kez)</span><br>
+                        <span style="display:inline-block; background:#fff; border-radius:6px; padding:4px 10px; margin:2px 0; border:1px solid #90caf9;">3. Hepsini çarp: 2 × 2 × 2 × 3 = 24</span><br>
+                        <span style="display:inline-block; background:#fffde7; border-radius:6px; padding:4px 10px; margin:2px 0; border:1px solid #ffe082; color:#d84315; font-weight:bold;">Cevap: EKOK(8, 12) = 24</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button onclick="closeModalEkok()" style="position:absolute; top:8px; right:12px; background:#2d5be3; color:#fff; border:none; border-radius:6px; padding:4px 12px; cursor:pointer;">Kapat</button>
+    </div>
+</div>
+            </ul>
+            <div style="margin-top:32px;">
+                <!-- Etkinlikler ve Sorular bölümü ve altındaki örnekler kaldırıldı. -->
+            </div>
+        </div>
+        <div class="side-fun" style="display: flex; flex-direction: column; justify-content: center; align-items: flex-start; min-width: 60px; max-width: 80px;">
+            <div style="font-size: 2.5em;">🏆</div>
+            <div style="font-family: 'Comic Neue', cursive; color: #2d5be3; font-size: 1.1em; text-align: left; margin-top: 12px;">Matematik Şampiyonu!</div>
+            <div style="font-size: 2.2em; margin-top: 18px;">🎯</div>
+            <div style="font-family: 'Comic Neue', cursive; color: #1565c0; font-size: 1em; text-align: left; margin-top: 8px;">Hedefe Ulaş!</div>
+        </div>
+    </div>
+</div>
+<script>
+                function showModalAsalCarpan() {
+                    document.getElementById('modalAsalCarpan').style.display = 'flex';
+                    document.getElementById('modalAnswerAsalCarpan').style.display = 'none';
+                    document.getElementById('modalAnswerAsalCarpan').innerText = '';
+                }
+                function closeModalAsalCarpan() {
+                    document.getElementById('modalAsalCarpan').style.display = 'none';
+                }
+                function showAnswerAsalCarpan() {
+                    var answerDiv = document.getElementById('modalAnswerAsalCarpan');
+                    answerDiv.innerText = '60 = 2 × 2 × 3 × 5';
+                    answerDiv.style.display = 'block';
+                }
+                function showModal() {
+                    document.getElementById('modalC').style.display = 'flex';
+                    document.getElementById('modalAnswer').style.display = 'none';
+                    document.getElementById('modalAnswer').innerText = '';
+                }
+                function closeModal() {
+                    document.getElementById('modalC').style.display = 'none';
+                }
+                function showAnswer() {
+                    var answerDiv = document.getElementById('modalAnswer');
+                    answerDiv.innerHTML = "24'ün çarpanları: 1, 2, 3, <span style='background:#ffe082; border-radius:6px; padding:2px 8px; font-weight:bold; color:#d84315;'>4</span>, <span style='background:#ffe082; border-radius:6px; padding:2px 8px; font-weight:bold; color:#d84315;'>6</span>, 8, 12, 24";
+                    answerDiv.style.display = 'block';
+                }
+
+                function showModalAsal() {
+                    document.getElementById('modalAsal').style.display = 'flex';
+                    document.getElementById('modalAnswerAsal').style.display = 'none';
+                    document.getElementById('modalAnswerAsal').innerText = '';
+                }
+                function closeModalAsal() {
+                    document.getElementById('modalAsal').style.display = 'none';
+                }
+                function showAnswerAsal() {
+                    var answerDiv = document.getElementById('modalAnswerAsal');
+                    answerDiv.innerText = 'Evet, 17 asal bir sayıdır çünkü sadece 1 ve 17’ye tam bölünür.';
+                    answerDiv.style.display = 'block';
+                }
+function showModalEbob() {
+    document.getElementById('modalEbob').style.display = 'flex';
+    document.getElementById('modalAnswerEbob').style.display = 'none';
+    document.getElementById('modalAnswerEbob').innerText = '';
+}
+function closeModalEbob() {
+    document.getElementById('modalEbob').style.display = 'none';
+}
+function showAnswerEbob() {
+    var answerDiv = document.getElementById('modalAnswerEbob');
+    answerDiv.innerText = '24 ve 36: Ortak bölenler 1, 2, 3, 4, 6, 12. EBOB(24, 36) = 12';
+    answerDiv.style.display = 'block';
+}
+function showModalEkok() {
+    document.getElementById('modalEkok').style.display = 'flex';
+    document.getElementById('modalAnswerEkok').style.display = 'none';
+    document.getElementById('modalAnswerEkok').innerText = '';
+}
+function closeModalEkok() {
+    document.getElementById('modalEkok').style.display = 'none';
+}
+function showAnswerEkok() {
+    var answerDiv = document.getElementById('modalAnswerEkok');
+    answerDiv.innerText = '8 ve 12: Ortak katlar 24, 48, ... EKOK(8, 12) = 24';
+    answerDiv.style.display = 'block';
+}
+                </script>
+                
+            </ul>
+            <div style="margin-top:32px;">
+                <!-- Etkinlikler ve Sorular bölümü ve altındaki örnekler kaldırıldı. -->
+            </div>
+        </div>
+        
+{% endblock %}

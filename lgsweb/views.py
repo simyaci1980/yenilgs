@@ -23,3 +23,19 @@ def din(request):
 
 def oyunlar(request):
     return render(request, 'oyunlar.html')
+
+def carpanlar_katlar(request):
+    return render(request, 'carpanlar_katlar.html')
+
+def matematik_unite_1(request):
+    return render(request, 'matematik_unite_1.html')
+
+def matematik_unite_2(request):
+    return render(request, 'matematik_unite_2.html')
+
+def veri_analizi(request):
+    return render(request, 'veri_analizi.html')
+
+def karekok(request):
+    return render(request, 'karekok.html')
+

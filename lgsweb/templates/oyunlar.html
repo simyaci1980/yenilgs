@@ -41,7 +41,15 @@
       <!-- Mevsimlerin Oluşumu: Oyunlaştırılmış Soru -->
       <h2 style="color:#2d5be3; margin-top:40px;">Mevsimlerin Oluşumu: Oyun</h2>
       <div id="oyunSoru" style="font-size:1.2em; text-align:center; margin-bottom:12px;"></div>
-      <img src="/static/resimler/mevsimlerin_olusumu.jpg" id="oyunEarthImg" style="max-width: 700px; width: 100%; border-radius: 12px; display:block; margin:0 auto;">
+      <div style="position:relative; max-width:700px; width:100%; margin:0 auto;">
+        <img src="/static/resimler/mevsimlerin_olusumu.jpg" id="oyunEarthImg" style="width:100%; border-radius:12px; display:block; position:relative; z-index:1;">
+        <!-- Overlaylar tam görselin üzerinde -->
+        <!-- Yonca gibi overlayler -->
+        <div onclick="imageMapTikla('Kuzey-Batı', 175, 175)" style="position:absolute; left:35%; top:5%; width:30%; height:30%; background:rgba(255,0,255,0.25); border-radius:50%; cursor:pointer; display:flex; align-items:center; justify-content:center; font-weight:bold; color:#222; font-size:1em; z-index:2;">Pembe (Kuzey-Batı)</div>
+        <div onclick="imageMapTikla('Kuzey-Doğu', 175, 525)" style="position:absolute; left:55%; top:28%; width:30%; height:30%; background:rgba(255,255,0,0.25); border-radius:50%; cursor:pointer; display:flex; align-items:center; justify-content:center; font-weight:bold; color:#222; font-size:1em; z-index:2;">Sarı (Kuzey-Doğu)</div>
+        <div onclick="imageMapTikla('Güney-Batı', 525, 175)" style="position:absolute; left:3%; top:42%; width:30%; height:30%; background:rgba(0,255,0,0.25); border-radius:50%; cursor:pointer; display:flex; align-items:center; justify-content:center; font-weight:bold; color:#222; font-size:1em; z-index:2;">Yeşil (Güney-Batı)</div>
+        <div onclick="imageMapTikla('Güney-Doğu', 525, 525)" style="position:absolute; left:42%; top:55%; width:30%; height:30%; background:rgba(128,0,255,0.25); border-radius:50%; cursor:pointer; display:flex; align-items:center; justify-content:center; font-weight:bold; color:#222; font-size:1em; z-index:2;">Mor (Güney-Doğu)</div>
+      </div>
       <div id="oyunCevap" style="margin-top:12px; font-size:1.1em; color:#1565c0; text-align:center;"></div>
       <div id="oyunPuan" style="margin-top:12px; font-size:1.1em; color:#2d5be3; text-align:center;"></div>
       <button onclick="yeniSoru()" style="margin:16px auto; display:block;">Yeni Soru</button>
@@ -83,37 +91,35 @@
         document.getElementById('oyunCevap').innerText = "";
       }
 
-      document.getElementById('oyunEarthImg').onclick = function(e) {
-        var x = e.offsetX;
-        var y = e.offsetY;
-        var img = e.target;
+      function imageMapTikla(secilenBolge, yCoord, xCoord) {
+        var img = document.getElementById('oyunEarthImg');
         var h = img.height;
         var w = img.width;
-        var secilenYarimkure = (y < h/2) ? "Kuzey Yarımküre" : "Güney Yarımküre";
-        var secilenMevsim = "";
-        if (secilenYarimkure === "Kuzey Yarımküre") {
-          if (dogruMevsim === "İlkbahar" || dogruMevsim === "Yaz") secilenMevsim = dogruMevsim;
-          else secilenMevsim = mevsimler[(mevsimler.indexOf(dogruMevsim)+2)%4];
-        } else {
-          if (dogruMevsim === "Sonbahar" || dogruMevsim === "Kış") secilenMevsim = dogruMevsim;
-          else secilenMevsim = mevsimler[(mevsimler.indexOf(dogruMevsim)+2)%4];
-        }
-        if (secilenYarimkure === dogruYarimkure && secilenMevsim === dogruMevsim) {
+        var x = xCoord;
+        var y = yCoord;
+        // Oyun mantığı örnek: sadece bölge eşleşmesi
+        if (secilenBolge === dogruYarimkure) {
           puan++;
           topFirlat(x, y, 'green');
           document.getElementById('oyunCevap').innerText = "Vurdun! Doğru bölgeye topu attın.";
         } else {
           topFirlat(x, y, 'red');
-          document.getElementById('oyunCevap').innerText = "Iskaladın! Doğru cevap: " + dogruYarimkure + " - " + dogruMevsim;
+          document.getElementById('oyunCevap').innerText = "Iskaladın! Doğru cevap: " + dogruYarimkure;
           // Doğru bölgeyi göster
-          var dogruY = (dogruYarimkure === "Kuzey Yarımküre") ? h/4 : h*3/4;
-          var dogruX = w/2;
+          var dogruKoord = {
+            'Kuzey-Batı': [175, 175],
+            'Kuzey-Doğu': [175, 525],
+            'Güney-Batı': [525, 175],
+            'Güney-Doğu': [525, 525]
+          };
           setTimeout(function(){
+            var dogruX = dogruKoord[dogruYarimkure][1];
+            var dogruY = dogruKoord[dogruYarimkure][0];
             topFirlat(dogruX, dogruY, 'green');
           }, 700);
         }
         document.getElementById('oyunPuan').innerText = "Puan: " + puan;
-      };
+      }
       yeniSoru();
       </script>
       <!-- Yeni oyun/etkinlikler buraya eklenebilir -->

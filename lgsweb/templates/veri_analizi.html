@@ -1,0 +1,464 @@
+{% extends "base.html" %}
+{% block extra_head %}
+    <link rel="stylesheet" href="/static/dersler.css">
+{% endblock %}
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2"></script>
+<script>
+// Sütun grafik soruları için cevap kontrol fonksiyonları
+function checkOzgeCuma() {
+    var dogru = 30;
+    var cevap = document.getElementById('ozgeCuma').value;
+    var sonuc = (parseInt(cevap) === dogru) ? 'Doğru!' : 'Yanlış, doğru cevap: ' + dogru;
+    document.getElementById('ozgeCumaSonuc').innerText = sonuc;
+}
+function checkCizgiFark() {
+    var dogru = 15;
+    var cevap = document.getElementById('cizgiFark').value;
+    var sonuc = '';
+    if (cevap === '') {
+        sonuc = 'Lütfen bir cevap girin.';
+    } else if (parseInt(cevap) === dogru) {
+        sonuc = 'Doğru!';
+    } else {
+        sonuc = 'Yanlış, doğru cevap: ' + dogru;
+    }
+    document.getElementById('cizgiFarkSonuc').innerText = sonuc;
+}
+function checkCemToplam() {
+    var dogru = 75;
+    var cevap = document.getElementById('cemToplam').value;
+    var sonuc = (parseInt(cevap) === dogru) ? 'Doğru!' : 'Yanlış, doğru cevap: ' + dogru;
+    document.getElementById('cemToplamSonuc').innerText = sonuc;
+}
+function checkAzalanOgrenci() {
+    var dogru = 'cem';
+    var cevap = document.getElementById('azalanOgrenci').value.trim().toLowerCase();
+    var sonuc = (cevap === dogru) ? 'Doğru!' : 'Yanlış, doğru cevap: Cem';
+    document.getElementById('azalanOgrenciSonuc').innerText = sonuc;
+}
+// LGS tarzı grafik soruları için cevap kontrol fonksiyonları
+function checkQ1() {
+    var dogrular = [70, 66, 62, 62];
+    var ort = dogrular.reduce(function(a, b) { return a + b; }, 0) / dogrular.length;
+    var tamOrt = Math.round(ort);
+    var cevap = document.getElementById('q1').value;
+    var sonuc = (parseInt(cevap) === tamOrt) ? 'Doğru!' : 'Yanlış, doğru cevap: ' + tamOrt;
+    document.getElementById('a1').innerText = sonuc;
+}
+function checkQ2() {
+    var cevap = document.getElementById('q2').value.trim().toLowerCase();
+    var dogru = 'murat';
+    var sonuc = (cevap === dogru) ? 'Doğru!' : 'Yanlış, doğru cevap: Murat';
+    document.getElementById('a2').innerText = sonuc;
+}
+function checkQ3() {
+    var cevap = document.getElementById('q3').value.trim();
+    var dogru = '1. Deneme';
+    var sonuc = (cevap === dogru || cevap === '1') ? 'Doğru!' : 'Yanlış, doğru cevap: 1. Deneme';
+    document.getElementById('a3').innerText = sonuc;
+}
+function checkQ4() {
+    var fark = 80 - 70;
+    var cevap = document.getElementById('q4').value;
+    var sonuc = (parseInt(cevap) === fark) ? 'Doğru!' : 'Yanlış, doğru cevap: ' + fark;
+    document.getElementById('a4').innerText = sonuc;
+}
+// Çizgi grafik görseli
+if (document.getElementById('haftaCizgiGrafik')) {
+    var haftaCtx = document.getElementById('haftaCizgiGrafik').getContext('2d');
+    new Chart(haftaCtx, {
+        type: 'line',
+        data: {
+            labels: ['Pazartesi', 'Salı', 'Çarşamba', 'Perşembe', 'Cuma'],
+            datasets: [{
+                label: 'Okunan Sayfa',
+                data: [20, 25, 30, 35, 40],
+                borderColor: '#1976d2',
+                backgroundColor: 'rgba(25, 118, 210, 0.15)',
+                fill: true,
+                tension: 0.3,
+                pointRadius: 5,
+                pointBackgroundColor: '#1976d2',
+                pointBorderColor: '#1976d2',
+            }]
+        },
+        options: {
+            plugins: {
+                legend: { display: false },
+                datalabels: {
+                    anchor: 'end',
+                    align: 'top',
+                    color: '#222',
+                    font: { weight: 'bold', size: 13 },
+                    formatter: function(value) { return value; }
+                }
+            },
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    min: 0,
+                    max: 50,
+                    title: { display: true, text: 'Sayfa Sayısı' },
+                    ticks: { stepSize: 5 }
+                },
+                x: {
+                    title: { display: true, text: 'Günler' }
+                }
+            }
+        },
+        plugins: [window.ChartDataLabels]
+    });
+}
+// Sütun grafik görseli
+if (document.getElementById('denemeGrafik')) {
+    var ctx = document.getElementById('denemeGrafik').getContext('2d');
+    Chart.register(window.ChartDataLabels);
+    new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: ['1. Deneme', '2. Deneme', '3. Deneme', '4. Deneme'],
+            datasets: [
+                {
+                    label: 'Elif',
+                    data: [65, 70, 80, 75],
+                    backgroundColor: 'rgba(41, 128, 185, 0.7)'
+                },
+                {
+                    label: 'Murat',
+                    data: [70, 66, 62, 62],
+                    backgroundColor: 'rgba(39, 174, 96, 0.7)'
+                },
+                {
+                    label: 'İnci',
+                    data: [65, 65, 65, 65],
+                    backgroundColor: 'rgba(241, 196, 15, 0.7)'
+                }
+            ]
+        },
+        options: {
+            plugins: {
+                legend: { display: true },
+                tooltip: {
+                    enabled: true,
+                    callbacks: {
+                        label: function(context) {
+                            return context.dataset.label + ': ' + context.parsed.y + ' doğru';
+                        }
+                    }
+                },
+                datalabels: {
+                    anchor: 'end',
+                    align: 'top',
+                    color: '#222',
+                    font: { weight: 'bold', size: 13 },
+                    formatter: function(value) { return value; }
+                }
+            },
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    title: { display: true, text: 'Doğru Sayısı' },
+                    min: 55,
+                    max: 85,
+                    ticks: {
+                        stepSize: 5,
+                        callback: function(value) {
+                            return value;
+                        }
+                    }
+                },
+                x: {
+                    title: { display: true, text: 'Deneme Sınavı' }
+                }
+            }
+        },
+        plugins: [window.ChartDataLabels]
+    });
+}
+</script>
+{% block content %}
+<div class="container">
+    <h2> Veri Analizi</h2>
+    <div style="margin-bottom:18px; font-size:1.15em; color:#1565c0;">
+        <b>Veri Analizi Nedir?</b><br>
+        Farklı grafik türleriyle verileri görselleştirip yorumlamayı öğrenirsin. LGS'de sıkça çıkan grafik soruları için temel bilgiler ve örnekler aşağıda!
+    </div>
+    <div style="margin-bottom:18px; background:#e3ecfc; border-radius:10px; padding:16px 18px; box-shadow:0 2px 8px #90caf9;">
+            <b>Örnek: Çizgi Grafiği</b><br>
+            <img src="/static/resimler/cizgi_grafik.png" alt="Çizgi Grafik" style="max-width:320px; margin:12px 0; border-radius:8px; box-shadow:0 2px 8px #90caf9;">
+            <ul style="margin-top:10px;">
+                <li>
+                    <!-- Çizgi Grafiği ile ilgili etkileşimli soru kaldırıldı -->
+                </li>
+            </ul>
+        <b>Grafik Türleri:</b><br>
+        <ul>
+            <li><b>Çizgi Grafiği:</b> Verilerin zamana bağlı değişimini gösterir. Noktalar çizgilerle birleştirilir.</li>
+            <li><b>Sütun Grafiği:</b> Farklı grupları karşılaştırmak için kullanılır. Sütunlar eşit genişlikte ve aralıklı olmalı.</li>
+            <li><b>Daire Grafiği:</b> Bir bütünün parçalarını oran olarak gösterir. Daire dilimleriyle sunulur.</li>
+        </ul>
+    </div>
+    
+    <div style="margin-bottom:18px; background:#fffde7; border-radius:10px; padding:16px 18px; box-shadow:0 2px 8px #ffe082;">
+        <div style="margin-bottom:18px; background:#e1f5fe; border-radius:12px; padding:18px 20px; box-shadow:0 2px 8px #81d4fa;">
+            <b>Çizgi Grafiğiyle İlgili Etkileşimli Soru:</b><br>
+            <div style="display:flex; align-items:center; gap:24px; flex-wrap:wrap;">
+                <div style="background:#fff; border-radius:8px; box-shadow:0 2px 8px #90caf9; padding:12px;">
+                    <canvas id="haftaCizgiGrafik" width="260" height="160"></canvas>
+                    <table style="margin-top:10px; font-size:1em; color:#0277bd;">
+                        <tr><th>Gün</th><th>Sayfa</th></tr>
+                        <tr><td>Pazartesi</td><td>20</td></tr>
+                        <tr><td>Salı</td><td>25</td></tr>
+                        <tr><td>Çarşamba</td><td>30</td></tr>
+                        <tr><td>Perşembe</td><td>35</td></tr>
+                        <tr><td>Cuma</td><td>40</td></tr>
+                    </table>
+                </div>
+                <div style="flex:1; min-width:220px;">
+                    <div style="font-size:1.08em; color:#0277bd; margin-bottom:8px;">
+                        Bir öğrencinin bir hafta boyunca okuduğu sayfa sayısı çizgi grafikle gösterilmiştir.<br>
+                        <b>Salı günü okuduğu sayfa sayısı ile Cuma günü okuduğu sayfa sayısı arasındaki fark kaçtır?</b>
+                    </div>
+                    <input type="number" id="cizgiFark" style="width:80px;"> <button onclick="checkCizgiFark()">Cevabı Kontrol Et</button>
+                    <span id="cizgiFarkSonuc" style="margin-left:12px; font-weight:bold;"></span>
+                </div>
+            </div>
+        </div>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <b>LGS Tarzı Etkileşimli Soru:</b><br>
+        <span style="color:#1976d2; font-weight:bold;">Grafik: Üç Öğrencinin Deneme Sınavında Yaptıkları Doğru Sayıları</span><br>
+        <canvas id="denemeGrafik" width="340" height="220" style="margin:12px 0; background:#fff; border-radius:8px; box-shadow:0 2px 8px #90caf9;"></canvas>
+        <ul style="margin-top:10px;">
+            <li>
+                Murat’ın dört denemedeki ortalama doğru sayısı kaçtır?<br>
+                <input type="number" id="q1" style="width:80px;"> <button onclick="checkQ1()">Cevabı Kontrol Et</button>
+                <span id="a1"></span>
+            </li>
+            <li>
+                Hangi öğrencinin denemelerdeki başarısı düşüş eğilimindedir?<br>
+                <input type="text" id="q2" style="width:120px;"> <button onclick="checkQ2()">Cevabı Kontrol Et</button>
+                <span id="a2"></span>
+            </li>
+            
+            <li>
+                Elif’in en başarılı olduğu denemedeki doğru sayısı, Murat’ın en başarılı olduğu denemedeki doğru sayısından kaç fazladır?<br>
+                <input type="number" id="q4" style="width:80px;"> <button onclick="checkQ4()">Cevabı Kontrol Et</button>
+                <span id="a4"></span>
+            </li>
+        </ul>
+        <script>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2"></script>
+        <script>
+        // Sütun grafik soruları için cevap kontrol fonksiyonları
+        function checkOzgeCuma() {
+            var dogru = 30;
+            var cevap = document.getElementById('ozgeCuma').value;
+            var sonuc = (parseInt(cevap) === dogru) ? 'Doğru!' : 'Yanlış, doğru cevap: ' + dogru;
+            document.getElementById('ozgeCumaSonuc').innerText = sonuc;
+        }
+        function checkCizgiFark() {
+            var dogru = 15;
+            var cevap = document.getElementById('cizgiFark').value;
+            var sonuc = '';
+            if (cevap === '') {
+                sonuc = 'Lütfen bir cevap girin.';
+            } else if (parseInt(cevap) === dogru) {
+                sonuc = 'Doğru!';
+            } else {
+                sonuc = 'Yanlış, doğru cevap: ' + dogru;
+            }
+            document.getElementById('cizgiFarkSonuc').innerText = sonuc;
+        }
+        function checkCemToplam() {
+            var dogru = 75;
+            var cevap = document.getElementById('cemToplam').value;
+            var sonuc = (parseInt(cevap) === dogru) ? 'Doğru!' : 'Yanlış, doğru cevap: ' + dogru;
+            document.getElementById('cemToplamSonuc').innerText = sonuc;
+        }
+        function checkAzalanOgrenci() {
+            var dogru = 'cem';
+            var cevap = document.getElementById('azalanOgrenci').value.trim().toLowerCase();
+            var sonuc = (cevap === dogru) ? 'Doğru!' : 'Yanlış, doğru cevap: Cem';
+            document.getElementById('azalanOgrenciSonuc').innerText = sonuc;
+        }
+        // LGS tarzı grafik soruları için cevap kontrol fonksiyonları
+        function checkQ1() {
+            var dogrular = [70, 66, 62, 62];
+            var ort = dogrular.reduce((a, b) => a + b, 0) / dogrular.length;
+            var tamOrt = Math.round(ort);
+            var cevap = document.getElementById('q1').value;
+            var sonuc = (parseInt(cevap) === tamOrt) ? 'Doğru!' : 'Yanlış, doğru cevap: ' + tamOrt;
+            document.getElementById('a1').innerText = sonuc;
+        }
+        function checkQ2() {
+            var cevap = document.getElementById('q2').value.trim().toLowerCase();
+            var dogru = 'murat';
+            var sonuc = (cevap === dogru) ? 'Doğru!' : 'Yanlış, doğru cevap: Murat';
+            document.getElementById('a2').innerText = sonuc;
+        }
+        function checkQ3() {
+            var cevap = document.getElementById('q3').value.trim();
+            var dogru = '1. Deneme';
+            var sonuc = (cevap === dogru || cevap === '1') ? 'Doğru!' : 'Yanlış, doğru cevap: 1. Deneme';
+            document.getElementById('a3').innerText = sonuc;
+        }
+        function checkQ4() {
+            var fark = 80 - 70;
+            var cevap = document.getElementById('q4').value;
+            var sonuc = (parseInt(cevap) === fark) ? 'Doğru!' : 'Yanlış, doğru cevap: ' + fark;
+            document.getElementById('a4').innerText = sonuc;
+        }
+        // Çizgi grafik görseli
+        const haftaCtx = document.getElementById('haftaCizgiGrafik').getContext('2d');
+        new Chart(haftaCtx, {
+            type: 'line',
+            data: {
+                labels: ['Pazartesi', 'Salı', 'Çarşamba', 'Perşembe', 'Cuma'],
+                datasets: [{
+                    label: 'Okunan Sayfa',
+                    data: [20, 25, 30, 35, 40],
+                    borderColor: '#1976d2',
+                    backgroundColor: 'rgba(25, 118, 210, 0.15)',
+                    fill: true,
+                    tension: 0.3,
+                    pointRadius: 5,
+                    pointBackgroundColor: '#1976d2',
+                    pointBorderColor: '#1976d2',
+                }]
+            },
+            options: {
+                plugins: {
+                    legend: { display: false },
+                    datalabels: {
+                        anchor: 'end',
+                        align: 'top',
+                        color: '#222',
+                        font: { weight: 'bold', size: 13 },
+                        formatter: function(value) { return value; }
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        min: 0,
+                        max: 50,
+                        title: { display: true, text: 'Sayfa Sayısı' },
+                        ticks: { stepSize: 5 }
+                    },
+                    x: {
+                        title: { display: true, text: 'Günler' }
+                    }
+                }
+            },
+            plugins: [window.ChartDataLabels]
+        });
+        // Sütun grafik görseli
+        const ctx = document.getElementById('denemeGrafik').getContext('2d');
+        Chart.register(window.ChartDataLabels);
+        const denemeChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['1. Deneme', '2. Deneme', '3. Deneme', '4. Deneme'],
+                datasets: [
+                    {
+                        label: 'Elif',
+                        data: [65, 70, 80, 75],
+                        backgroundColor: 'rgba(41, 128, 185, 0.7)'
+                    },
+                    {
+                        label: 'Murat',
+                        data: [70, 66, 62, 62],
+                        backgroundColor: 'rgba(39, 174, 96, 0.7)'
+                    },
+                    {
+                        label: 'İnci',
+                        data: [65, 65, 65, 65],
+                        backgroundColor: 'rgba(241, 196, 15, 0.7)'
+                    }
+                ]
+            },
+            options: {
+                plugins: {
+                    legend: { display: true },
+                    tooltip: {
+                        enabled: true,
+                        callbacks: {
+                            label: function(context) {
+                                return context.dataset.label + ': ' + context.parsed.y + ' doğru';
+                            }
+                        }
+                    },
+                    datalabels: {
+                        anchor: 'end',
+                        align: 'top',
+                        color: '#222',
+                        font: { weight: 'bold', size: 13 },
+                        formatter: function(value) { return value; }
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        title: { display: true, text: 'Doğru Sayısı' },
+                        min: 55,
+                        max: 85,
+                        ticks: {
+                            stepSize: 5,
+                            callback: function(value) {
+                                return value;
+                            }
+                        }
+                    },
+                    x: {
+                        title: { display: true, text: 'Deneme Sınavı' }
+                    }
+                }
+            },
+            plugins: [window.ChartDataLabels]
+        });
+        </script>
+        <div style="margin-top:10px; background:#e3ecfc; border-radius:8px; padding:10px 16px; color:#1565c0; font-size:1.08em;">
+            Grafikteki sütunlara tıklayarak öğrenci ve deneme bilgilerini görebilirsin!
+        </div>
+    </div>
+    <div style="margin-bottom:18px; background:#e3ecfc; border-radius:10px; padding:16px 18px; box-shadow:0 2px 8px #90caf9;">
+        <b>Örnek: Sütun Grafiği</b><br>
+        <img src="/static/resimler/sutun_grafik.png" alt="Sütun Grafik" style="max-width:320px; margin:12px 0; border-radius:8px; box-shadow:0 2px 8px #90caf9;">
+        <ul style="margin-top:10px;">
+            <li>
+                Özge Cuma günü kaç sayfa kitap okumuştur?<br>
+                <input type="number" id="ozgeCuma" style="width:80px;"> <button onclick="checkOzgeCuma()">Cevabı Kontrol Et</button>
+                <span id="ozgeCumaSonuc"></span>
+            </li>
+            <li>
+                Cem üç gün boyunca kaç sayfa kitap okumuştur?<br>
+                <input type="number" id="cemToplam" style="width:80px;"> <button onclick="checkCemToplam()">Cevabı Kontrol Et</button>
+                <span id="cemToplamSonuc"></span>
+            </li>
+            <li>
+                Hangi öğrencinin her gün okuduğu sayfa sayısı azalmıştır?<br>
+                <input type="text" id="azalanOgrenci" style="width:120px;"> <button onclick="checkAzalanOgrenci()">Cevabı Kontrol Et</button>
+                <span id="azalanOgrenciSonuc"></span>
+            </li>
+        </ul>
+    </div>
+    <div style="margin-bottom:18px; background:#fffde7; border-radius:10px; padding:16px 18px; box-shadow:0 2px 8px #ffe082;">
+        <b>Örnek: Daire Grafiği</b><br>
+        <img src="/static/resimler/daire_grafik.png" alt="Daire Grafik" style="max-width:220px; margin:12px 0; border-radius:8px; box-shadow:0 2px 8px #90caf9;">
+        <ul style="margin-top:10px;">
+            <li>Bir bütündeki parçaların oranını bulmak için kullanılır.</li>
+            <li>Öğrencilerin sevdiği dersler, bilet satışları gibi dağılımlar daire grafiğiyle gösterilir.</li>
+        </ul>
+    </div>
+    <div style="margin-bottom:18px; background:#e3ecfc; border-radius:10px; padding:16px 18px; box-shadow:0 2px 8px #90caf9;">
+        <b>LGS Tarzı Soru:</b><br>
+        <span style="color:#1976d2; font-weight:bold;">Bir ayakkabı mağazasının yıllara göre satış grafiği</span><br>
+        <img src="/static/resimler/ayakkabi_grafik.png" alt="Ayakkabı Grafik" style="max-width:220px; margin:12px 0; border-radius:8px; box-shadow:0 2px 8px #90caf9;">
+        <ul style="margin-top:10px;">
+            <li>Grafikteki verilerle daire grafiği oluşturulursa 2019 yılına ait daire diliminin merkez açısı kaç derece olur?</li>
+        </ul>
+    </div>
+</div>
+{% endblock %}
