@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block extra_head %}
+    <link rel="stylesheet" href="/static/dersler.css">
+{% endblock %}
+{% block content %}
+<div class="main-container" style="max-width:900px; margin:32px auto;">
+    <h1 class="main-title">ÜSLÜ İFADELER FÖYLERİ</h1>
+    <ul class="ders-list">
+        <li class="ders-item">
+            <a class="ders-btn" href="/matematik/uslu_ifadeler/">
+                <span class="unit-title">Tam Sayıların Tam Sayı Kuvvetleri</span>
+                <span class="unit-fun">Üslü İfadelerle Güçlen!</span>
+            </a>
+        </li>
+        <li class="ders-item">
+            <a class="ders-btn" href="/matematik/uslu_islemler/">
+                <span class="unit-title">Üslü İfadelerde İşlemler</span>
+                <span class="unit-fun">Toplama, Çıkarma, Çarpma, Bölme</span>
+            </a>
+        </li>
+        <li class="ders-item">
+            <a class="ders-btn" href="/matematik/uslu_ondalik/">
+                <span class="unit-title">Ondalık Gösterim</span>
+                <span class="unit-fun">Üslü Sayıların Ondalık Hali</span>
+            </a>
+        </li>
+        <li class="ders-item">
+            <a class="ders-btn" href="/matematik/uslu_bilimsel/">
+                <span class="unit-title">Çok Büyük Sayılar ve Bilimsel Gösterim</span>
+                <span class="unit-fun">Bilimsel Notasyonla Dev Sayılar</span>
+            </a>
+        </li>
+    </ul>
+    <div class="highlight-box" style="background:#eafaf1; margin-top:24px;">
+        <b>Başlıklar:</b> Tam Sayıların Üslü Kuvvetleri &nbsp;|&nbsp; Üssün Üssü
+    </div>
+</div>
+{% endblock %}

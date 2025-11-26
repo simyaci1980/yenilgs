@@ -1,0 +1,447 @@
+{% extends "base.html" %}
+{% block extra_head %}
+    <link rel="stylesheet" href="/static/dersler.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2"></script>
+{% endblock %}
+{% block content %}
+<div class="container" style="max-width:1000px; margin:0 auto; font-weight:bold; font-size:1.15em;">
+    <!-- Tüm içerik ve etkileşimli sorular burada olacak -->
+    <!-- ... (mevcut HTML içeriği ve sorular, grafikler vs. olduğu gibi bırakılacak) ... -->
+    <div class="kutu mavi-kutu">
+            <b>Örnek: Çizgi Grafiği</b><br>
+            <img src="/static/resimler/cizgi_grafik.png" alt="Çizgi Grafik" style="max-width:320px; margin:12px 0; border-radius:8px; box-shadow:0 2px 8px #90caf9;">
+            <ul style="margin-top:10px;">
+                <li>
+                    <!-- Çizgi Grafiği ile ilgili etkileşimli soru kaldırıldı -->
+                </li>
+            </ul>
+        <b>Grafik Türleri:</b><br>
+        <ul>
+            <li><b>Çizgi Grafiği:</b> Verilerin zamana bağlı değişimini gösterir. Noktalar çizgilerle birleştirilir.</li>
+            <li><b>Sütun Grafiği:</b> Farklı grupları karşılaştırmak için kullanılır. Sütunlar eşit genişlikte ve aralıklı olmalı.</li>
+            <li><b>Daire Grafiği:</b> Bir bütünün parçalarını oran olarak gösterir. Daire dilimleriyle sunulur.</li>
+        </ul>
+    </div>
+    
+    <div style="margin-bottom:18px; background:#fffde7; border-radius:10px; padding:16px 18px; box-shadow:0 2px 8px #ffe082;">
+        <div style="margin-bottom:18px; background:#e1f5fe; border-radius:12px; padding:18px 20px; box-shadow:0 2px 8px #81d4fa;">
+            <b>Çizgi Grafiğiyle İlgili Etkileşimli Soru:</b><br>
+            <div style="display:flex; align-items:center; gap:24px; flex-wrap:wrap;">
+                <div style="background:#fff; border-radius:8px; box-shadow:0 2px 8px #90caf9; padding:12px;">
+                    <canvas id="haftaCizgiGrafik" width="260" height="160"></canvas>
+                    <table style="margin-top:10px; font-size:1em; color:#0277bd;">
+                        <tr><th>Gün</th><th>Sayfa</th></tr>
+                        <tr><td>Pazartesi</td><td>20</td></tr>
+                        <tr><td>Salı</td><td>25</td></tr>
+                        <tr><td>Çarşamba</td><td>30</td></tr>
+                        <tr><td>Perşembe</td><td>35</td></tr>
+                        <tr><td>Cuma</td><td>40</td></tr>
+                    </table>
+                </div>
+                <div style="flex:1; min-width:220px;">
+                    <div style="font-size:1.08em; color:#0277bd; margin-bottom:8px;">
+                        Bir öğrencinin bir hafta boyunca okuduğu sayfa sayısı çizgi grafikle gösterilmiştir.<br>
+                        <b>Salı günü okuduğu sayfa sayısı ile Cuma günü okuduğu sayfa sayısı arasındaki fark kaçtır?</b>
+                    </div>
+                    <input type="number" id="cizgiFark" style="width:80px;"> <button onclick="checkCizgiFark()">Cevabı Kontrol Et</button>
+                    <span id="cizgiFarkSonuc" style="margin-left:12px; font-weight:bold;"></span>
+                </div>
+            </div>
+        </div> <br><br><br> 
+        <b>LGS Tarzı Etkileşimli Soru:</b><br>
+        <span style="color:#1976d2; font-weight:bold;">Grafik: Üç Öğrencinin Deneme Sınavında Yaptıkları Doğru Sayıları</span><br>
+        <canvas id="denemeGrafik" width="340" height="220" style="margin:12px 0; background:#fff; border-radius:8px; box-shadow:0 2px 8px #90caf9;"></canvas>
+        <ul style="margin-top:10px;">
+            <li>
+                Murat’ın dört denemedeki ortalama doğru sayısı kaçtır?<br>
+                <input type="number" id="q1" style="width:80px;"> <button onclick="checkQ1()">Cevabı Kontrol Et</button>
+                <span id="a1"></span>
+            </li>
+            <li>
+                Hangi öğrencinin denemelerdeki başarısı düşüş eğilimindedir?<br>
+                <input type="text" id="q2" style="width:120px;"> <button onclick="checkQ2()">Cevabı Kontrol Et</button>
+                <span id="a2"></span>
+            </li>
+            <li>
+                Elif’in en başarılı olduğu denemedeki doğru sayısı, Murat’ın en başarılı olduğu denemedeki doğru sayısından kaç fazladır?<br>
+                <input type="number" id="q4" style="width:80px;"> <button onclick="checkQ4()">Cevabı Kontrol Et</button>
+                <span id="a4"></span>
+            </li>
+        </ul>
+        <div style="margin-top:10px; background:#e3ecfc; border-radius:8px; padding:10px 16px; color:#1565c0; font-size:1.08em;">
+            Grafikteki sütunlara tıklayarak öğrenci ve deneme bilgilerini görebilirsin!
+        </div>
+    </div>
+    <br><br><br>
+    
+    <div style="margin-bottom:18px; background:#fffde7; border-radius:10px; padding:16px 18px; box-shadow:0 2px 8px #ffe082;">
+        <b>Örnek: Daire (Pie) Grafiği</b><br>
+        <canvas id="favoriDersPie" width="220" height="220" style="margin:12px 0; background:#fff; border-radius:8px; box-shadow:0 2px 8px #90caf9;"></canvas>
+        
+        <div style="margin-top:14px; background:#e1f5fe; border-radius:8px; padding:10px 14px; color:#1565c0; font-size:1.08em;">
+            <b>Soru:</b> Yukarıdaki daire grafiğinde bir sınıftaki öğrencilerin en sevdiği dersler gösterilmiştir.<br>
+            <b>Grafiğe göre en çok sevilen ders hangisidir ve bu dersin oranı yüzde kaçtır?</b><br>
+            <input type="text" id="pieDers" style="width:120px;"> <input type="number" id="pieOran" style="width:80px;"> <button onclick="checkPieSoru()">Cevabı Kontrol Et</button>
+            <span id="pieSonuc" style="margin-left:12px; font-weight:bold;"></span>
+        </div>
+        <ul style="margin-top:10px;">
+            <li>Bir bütündeki parçaların oranını bulmak için kullanılır.</li>
+            <li>Öğrencilerin sevdiği dersler, bilet satışları gibi dağılımlar daire grafiğiyle gösterilir.</li>
+        </ul>
+    </div>
+    <div style="margin-bottom:18px; background:#e3ecfc; border-radius:10px; padding:16px 18px; box-shadow:0 2px 8px #90caf9;">
+        <b>LGS Tarzı Soru:</b><br>
+         <span style="color:#1976d2; font-weight:bold;">Tiyatro Salonundaki Koltukların Renk Dağılımı</span><br>
+         <div style="display:flex; gap:32px; flex-wrap:wrap; align-items:flex-start; margin:18px 0;">
+             <div style="text-align:center;">
+                 <canvas id="tiyatroDaireGrafik" width="220" height="220" style="background:#fff; border-radius:8px; box-shadow:0 2px 8px #90caf9;"></canvas>
+                 <div style="font-size:0.98em; color:#1976d2; margin-top:4px;">Daire Grafik: Toplam Koltuk Dağılımı</div>
+             </div>
+             <div style="text-align:center;">
+                 <canvas id="tiyatroSutunGrafik" width="220" height="220" style="background:#fff; border-radius:8px; box-shadow:0 2px 8px #90caf9;"></canvas>
+                 <div style="font-size:0.98em; color:#1976d2; margin-top:4px;">Sütun Grafik: Dolu Koltuk Dağılımı</div>
+             </div>
+         </div>
+         <ul style="margin-top:10px;">
+             <li>Bir tiyatro salonundaki toplam koltuk sayısının renklere göre dağılımı daire grafiğinde gösterilmiştir. Bu salona bir gösteriyi izlemek için gelen tüm seyirciler koltuklarına oturduktan sonra koltukların bir kısmı boş kalmıştır. Bu durumda dolu olan koltuk sayısının renklere göre dağılımı ise sütun grafiğinde gösterilmiştir.<br><br>
+             <b>Tiyatro salonundaki dolu olan sarı koltuk sayısı, boş olan kırmızı koltuk sayısının 6 katı olduğuna göre boş olan mavi koltuk sayısı kaçtır?</b></li>
+             <li>A) 20 &nbsp;&nbsp; B) 30 &nbsp;&nbsp; C) 50 &nbsp;&nbsp; D) 80</li>
+         </ul>
+        <button onclick="document.getElementById('tiyatroCevapDiv').style.display='block'" style="margin-top:10px; padding:7px 18px; background:#1976d2; color:#fff; border:none; border-radius:6px; font-weight:bold; cursor:pointer;">Cevabı Göster</button>
+        <div id="tiyatroCevapDiv" style="display:none; margin-top:12px; background:#e3ecfc; border-radius:8px; padding:12px 16px; color:#1976d2; font-size:1.08em; box-shadow:0 2px 8px #90caf9;">
+            <b>Çözüm ve Doğru Cevap:</b><br>
+            <div style="background:#e3f2fd; color:#1565c0; border-radius:6px; padding:7px 10px; margin-bottom:7px;">
+                <b>Koltukların Dağılımı Nasıl Hesaplanır?</b><br>
+                Daire grafiğinde her renk bir açıyla gösteriliyor. Toplam açı <b>360°</b>.<br>
+                Her bir renk için verilen derece, o renkteki koltukların oranını gösteriyor.<br>
+                <span style="color:#e53935; font-weight:bold;">Kırmızı: 90°</span>, <span style="color:#1976d2; font-weight:bold;">Mavi: 120°</span><br>
+                Toplam koltuk sayısını bilmiyoruz, ona “X” diyelim.<br>
+                <span style="color:#e53935;">Kırmızı koltuk sayısı: 90°/360° × X = X/4</span><br>
+                <span style="color:#1976d2;">Mavi koltuk sayısı: 120°/360° × X = X/3</span><br>
+                <span style="display:block; margin-top:7px; color:#1976d2; font-weight:bold;">Yani şöyle düşünebilirsin:</span>
+                <span style="color:#e53935;">Kırmızı koltuklar, toplam koltukların 4'e bölümüyle bulunur.</span><br>
+                <span style="color:#1976d2;">Mavi koltuklar ise, toplam koltukların 3'e bölümüyle bulunur.</span><br>
+                <span style="display:block; margin-top:7px; color:#388e3c;">Kısacası, dairedeki açı ne kadar büyükse, o renkte o kadar çok koltuk var demektir!</span>
+            </div>
+            <div style="background:#fffde7; color:#f57c00; border-radius:6px; padding:7px 10px; margin-bottom:7px;">
+                <b>Dolu ve Boş Koltuklar:</b><br>
+                <span style="color:#e53935;">Kırmızı dolu: 45</span>, <span style="color:#1976d2;">Mavi dolu: 50</span> (grafikte verilmiş)<br>
+                <span style="color:#e53935;">Kırmızı boş: (X/4) - 45</span><br>
+                <span style="color:#1976d2;">Mavi boş: (X/3) - 50</span>
+            </div>
+            <div style="background:#e8f5e9; color:#388e3c; border-radius:6px; padding:7px 10px; margin-bottom:7px;">
+                <b>Sorunun püf noktası:</b><br>
+                <span style="color:#fbc02d;">Sarı dolu koltuk sayısı (90), kırmızı boş koltuk sayısının 6 katı.</span><br>
+                Yani: <b>90 = 6 × [(X/4) - 45]</b>
+            </div>
+            <div style="background:#ffebee; color:#d32f2f; border-radius:6px; padding:7px 10px; margin-bottom:7px;">
+                <b>Denklemi çözüyoruz:</b><br>
+                (X/4) - 45 = 15 → X/4 = 60 → X = 240
+            </div>
+            <div style="background:#e1f5fe; color:#1976d2; border-radius:6px; padding:7px 10px; margin-bottom:7px;">
+                <b>Son adım:</b><br>
+                <span style="color:#1976d2;">Mavi toplam: 240/3 = 80</span><br>
+                <span style="color:#1976d2;">Mavi dolu: 50</span><br>
+                <span style="color:#1976d2;">Mavi boş: 80 - 50 = 30</span>
+            </div>
+            <span style="color:#388e3c; font-weight:bold;">Cevap: Boş olan mavi koltuk sayısı <b>30</b>’dur. (B şıkkı)</span><br>
+            <div style="margin-top:7px;">
+                <b>Şıklar:</b><br>
+                A) 20 &nbsp;&nbsp; B) 30 &nbsp;&nbsp; C) 50 &nbsp;&nbsp; D) 80
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+// Cevap kontrol fonksiyonları
+function checkOzgeCuma() {
+    var dogru = 30;
+    var cevap = document.getElementById('ozgeCuma').value;
+    var sonuc = (parseInt(cevap) === dogru) ? 'Doğru!' : 'Yanlış, doğru cevap: ' + dogru;
+    document.getElementById('ozgeCumaSonuc').innerText = sonuc;
+}
+function checkCizgiFark() {
+    var dogru = 15;
+    var cevap = document.getElementById('cizgiFark').value;
+    var sonuc = '';
+    if (cevap === '') {
+        sonuc = 'Lütfen bir cevap girin.';
+    } else if (parseInt(cevap) === dogru) {
+        sonuc = 'Doğru!';
+    } else {
+        sonuc = 'Yanlış, doğru cevap: ' + dogru;
+    }
+    document.getElementById('cizgiFarkSonuc').innerText = sonuc;
+}
+function checkCemToplam() {
+    var dogru = 75;
+    var cevap = document.getElementById('cemToplam').value;
+    var sonuc = (parseInt(cevap) === dogru) ? 'Doğru!' : 'Yanlış, doğru cevap: ' + dogru;
+    document.getElementById('cemToplamSonuc').innerText = sonuc;
+}
+function checkAzalanOgrenci() {
+    var dogru = 'cem';
+    var cevap = document.getElementById('azalanOgrenci').value.trim().toLowerCase();
+    var sonuc = (cevap === dogru) ? 'Doğru!' : 'Yanlış, doğru cevap: Cem';
+    document.getElementById('azalanOgrenciSonuc').innerText = sonuc;
+}
+function checkQ1() {
+    var dogrular = [70, 66, 62, 62];
+    var ort = dogrular.reduce(function(a, b) { return a + b; }, 0) / dogrular.length;
+    var tamOrt = Math.round(ort);
+    var cevap = document.getElementById('q1').value;
+    var sonuc = (parseInt(cevap) === tamOrt) ? 'Doğru!' : 'Yanlış, doğru cevap: ' + tamOrt;
+    document.getElementById('a1').innerText = sonuc;
+}
+function checkQ2() {
+    var cevap = document.getElementById('q2').value.trim().toLowerCase();
+    var dogru = 'murat';
+    var sonuc = (cevap === dogru) ? 'Doğru!' : 'Yanlış, doğru cevap: Murat';
+    document.getElementById('a2').innerText = sonuc;
+}
+function checkQ3() {
+    var cevap = document.getElementById('q3').value.trim();
+    var dogru = '1. Deneme';
+    var sonuc = (cevap === dogru || cevap === '1') ? 'Doğru!' : 'Yanlış, doğru cevap: 1. Deneme';
+    document.getElementById('a3').innerText = sonuc;
+}
+function checkQ4() {
+    var fark = 80 - 70;
+    var cevap = document.getElementById('q4').value;
+    var sonuc = (parseInt(cevap) === fark) ? 'Doğru!' : 'Yanlış, doğru cevap: ' + fark;
+    document.getElementById('a4').innerText = sonuc;
+}
+function checkPieSoru() {
+    var dogruDers = 'matematik';
+    var dogruOran = 40;
+    var ders = document.getElementById('pieDers').value.trim().toLowerCase();
+    var oran = parseInt(document.getElementById('pieOran').value);
+    var sonuc = '';
+    if (ders === '' || isNaN(oran)) {
+        sonuc = 'Lütfen her iki kutucuğu da doldurun.';
+    } else if (ders === dogruDers && oran === dogruOran) {
+        sonuc = 'Doğru!';
+    } else {
+        sonuc = 'Yanlış, doğru cevap: Matematik ve %40';
+    }
+    document.getElementById('pieSonuc').innerText = sonuc;
+}
+
+// Grafikler: DOM yüklendikten sonra
+document.addEventListener('DOMContentLoaded', function() {
+    // Çizgi grafik
+    if (document.getElementById('haftaCizgiGrafik')) {
+        var haftaCtx = document.getElementById('haftaCizgiGrafik').getContext('2d');
+        new Chart(haftaCtx, {
+            type: 'line',
+            data: {
+                labels: ['Pazartesi', 'Salı', 'Çarşamba', 'Perşembe', 'Cuma'],
+                datasets: [{
+                    label: 'Okunan Sayfa',
+                    data: [20, 25, 30, 35, 40],
+                    borderColor: '#1976d2',
+                    backgroundColor: 'rgba(25, 118, 210, 0.15)',
+                    fill: true,
+                    tension: 0.3,
+                    pointRadius: 5,
+                    pointBackgroundColor: '#1976d2',
+                    pointBorderColor: '#1976d2',
+                }]
+            },
+            options: {
+                plugins: {
+                    legend: { display: false },
+                    datalabels: {
+                        anchor: 'end',
+                        align: 'top',
+                        color: '#222',
+                        font: { weight: 'bold', size: 13 },
+                        formatter: function(value) { return value; }
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        min: 0,
+                        max: 50,
+                        title: { display: true, text: 'Sayfa Sayısı' },
+                        ticks: { stepSize: 5 }
+                    },
+                    x: {
+                        title: { display: true, text: 'Günler' }
+                    }
+                }
+            },
+            plugins: [window.ChartDataLabels]
+        });
+    }
+    // Tiyatro sorusu için daire grafik (datalabels: derece olarak)
+    if (document.getElementById('tiyatroDaireGrafik')) {
+        var tiyatroDaireCtx = document.getElementById('tiyatroDaireGrafik').getContext('2d');
+        new Chart(tiyatroDaireCtx, {
+            type: 'pie',
+            data: {
+                labels: ['Kırmızı', 'Mavi', 'Sarı'],
+                datasets: [{
+                    data: [90, 120, 150], // Kırmızı: 90°, Mavi: 120°, Sarı: 150°
+                    backgroundColor: ['#e53935', '#1976d2', '#fbc02d']
+                }]
+            },
+            options: {
+                plugins: {
+                    legend: { display: true, position: 'bottom' },
+                    datalabels: {
+                        color: '#222',
+                        font: { weight: 'bold', size: 13 },
+                        formatter: function(value, ctx) {
+                            // Dereceyi doğrudan göster
+                            return value + '°';
+                        }
+                    }
+                }
+            },
+            plugins: [window.ChartDataLabels]
+        });
+    }
+    // Tiyatro sorusu için sütun grafik
+    if (document.getElementById('tiyatroSutunGrafik')) {
+        var tiyatroSutunCtx = document.getElementById('tiyatroSutunGrafik').getContext('2d');
+        new Chart(tiyatroSutunCtx, {
+            type: 'bar',
+            data: {
+                labels: ['Kırmızı', 'Mavi', 'Sarı'],
+                datasets: [{
+                    label: 'Dolu Koltuk',
+                    data: [45, 50, 90], // Kırmızı: 45, Mavi: 50, Sarı: 90
+                    backgroundColor: ['#e53935', '#1976d2', '#fbc02d']
+                }]
+            },
+            options: {
+                plugins: {
+                    legend: { display: false },
+                    datalabels: {
+                        anchor: 'end',
+                        align: 'top',
+                        color: '#222',
+                        font: { weight: 'bold', size: 13 },
+                        formatter: function(value) { return value; }
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        min: 0,
+                        max: 100,
+                        title: { display: true, text: 'Koltuk Sayısı' },
+                        ticks: { stepSize: 10 }
+                    },
+                    x: {
+                        title: { display: true, text: 'Renk' }
+                    }
+                }
+            },
+            plugins: [window.ChartDataLabels]
+        });
+    }
+    // Sütun grafik
+    if (document.getElementById('denemeGrafik')) {
+        var ctx = document.getElementById('denemeGrafik').getContext('2d');
+        Chart.register(window.ChartDataLabels);
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['1. Deneme', '2. Deneme', '3. Deneme', '4. Deneme'],
+                datasets: [
+                    {
+                        label: 'Elif',
+                        data: [65, 70, 80, 75],
+                        backgroundColor: 'rgba(41, 128, 185, 0.7)'
+                    },
+                    {
+                        label: 'Murat',
+                        data: [70, 66, 62, 62],
+                        backgroundColor: 'rgba(39, 174, 96, 0.7)'
+                    },
+                    {
+                        label: 'İnci',
+                        data: [65, 65, 65, 65],
+                        backgroundColor: 'rgba(241, 196, 15, 0.7)'
+                    }
+                ]
+            },
+            options: {
+                plugins: {
+                    legend: { display: true },
+                    tooltip: {
+                        enabled: true,
+                        callbacks: {
+                            label: function(context) {
+                                return context.dataset.label + ': ' + context.parsed.y + ' doğru';
+                            }
+                        }
+                    },
+                    datalabels: {
+                        anchor: 'end',
+                        align: 'top',
+                        color: '#222',
+                        font: { weight: 'bold', size: 13 },
+                        formatter: function(value) { return value; }
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        title: { display: true, text: 'Doğru Sayısı' },
+                        min: 55,
+                        max: 85,
+                        ticks: {
+                            stepSize: 5,
+                            callback: function(value) {
+                                return value;
+                            }
+                        }
+                    },
+                    x: {
+                        title: { display: true, text: 'Deneme Sınavı' }
+                    }
+                }
+            },
+            plugins: [window.ChartDataLabels]
+        });
+    }
+    // Daire (Pie) grafik
+    if (document.getElementById('favoriDersPie')) {
+        var pieCtx = document.getElementById('favoriDersPie').getContext('2d');
+        new Chart(pieCtx, {
+            type: 'pie',
+            data: {
+                labels: ['Matematik', 'Fen', 'Türkçe', 'İngilizce', 'İnkılap'],
+                datasets: [{
+                    data: [12, 8, 6, 2, 2],
+                    backgroundColor: [
+                        '#1976d2', '#43a047', '#fbc02d', '#e53935', '#8e24aa'
+                    ]
+                }]
+            },
+            options: {
+                plugins: {
+                    legend: { display: true, position: 'bottom' },
+                    datalabels: {
+                        color: '#222',
+                        font: { weight: 'bold', size: 13 },
+                        formatter: function(value, ctx) {
+                            var toplam = ctx.chart.data.datasets[0].data.reduce(function(a, b) { return a + b; }, 0);
+                            var oran = Math.round(value / toplam * 100);
+                            return oran + '%';
+                        }
+                    }
+                }
+            },
+            plugins: [window.ChartDataLabels]
+        });
+    }
+});
+</script>
+</script>
+{% endblock %}

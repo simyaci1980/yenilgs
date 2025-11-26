@@ -1,0 +1,371 @@
+{% extends "base.html" %}
+{% block extra_head %}
+    <link rel="stylesheet" href="/static/dersler.css">
+{% endblock %}
+{% block content %}
+<div class="brochure-container">
+    <h1 class="main-title">ÜSLÜ İFADELER <span style="color:#f39c12;">&#9889;</span></h1>
+    <ul class="topic-list">
+        <li>Tam Sayıların Tam Sayı Kuvvetleri</li>
+        <li>Üssün Üssü</li>
+        
+    </ul>
+    <hr>
+    <section class="section">
+        <h2><span style="color:#e74c3c;">&#9733;</span> Tam Sayıların Tam Sayı Kuvvetleri</h2>
+        <div class="highlight-box">
+            <b style="color:#d35400;">Tanım:</b> <span style="color:#34495e;">a ve n birer tam sayı olmak üzere <b>a<sup>n</sup></b> = a . a . a ... a ifadesine <b style="color:#e67e22;">üslü ifade</b> denir.</span>
+        </div>
+        <ul class="key-list">
+            <li><b style="color:#2980b9;">a</b>: <span style="color:#16a085;">Taban</span></li>
+            <li><b style="color:#2980b9;">n</b>: <span style="color:#16a085;">Üs (kuvvet)</span></li>
+        </ul>
+        <div class="highlight-box" style="background:#eafaf1;">
+            <b style="color:#27ae60;">Örnek:</b> <span style="color:#34495e;">3<sup>4</sup> = 3 . 3 . 3 . 3 = <b style="color:#e74c3c;">81</b></span>
+        </div>
+        <div class="example-box">
+            <p><b style="color:#8e44ad;">Kural:</b> <span style="color:#34495e;">Taban pozitif ise <b style="color:#27ae60;">tüm kuvvetleri pozitif sayıdır</b>.</span></p>
+            <p><b style="color:#8e44ad;">Kural:</b> <span style="color:#34495e;">Taban negatif ise kuvvete bakılır:</span></p>
+            <ul>
+                <li><b style="color:#e74c3c;">Kuvvet tek</b> ise <span style="color:#e74c3c;">sonuç negatif</span></li>
+                <li><b style="color:#27ae60;">Kuvvet çift</b> ise <span style="color:#27ae60;">sonuç pozitif</span></li>
+            </ul>
+            <p><span style="color:#f39c12;">Parantez dışındaysa +, parantez içindeyse veya yoksa -</span></p>
+            <div class="grid-examples">
+                <div>2<sup>4</sup> = <span style="color:#27ae60;">16</span><br>
+                    <span style="font-size:0.98em; color:#888;">Pozitif taban, sonuç daima pozitif.</span>
+                </div>
+                <div>(-3)<sup>2</sup> = <span style="color:#27ae60;">9</span><br>
+                    <span style="font-size:0.98em; color:#888;">Parantez içindeki negatif sayının çift kuvveti pozitif olur.</span>
+                </div>
+                <div>(-5)<sup>3</sup> = <span style="color:#e74c3c;">-125</span><br>
+                    <span style="font-size:0.98em; color:#888;">Parantez içindeki negatif sayının tek kuvveti negatif olur.</span>
+                </div>
+                <div>-7<sup>2</sup> = <span style="color:#e74c3c;">-49</span><br>
+                    <span style="font-size:0.98em; color:#888;">Parantez yoksa, işaret dışarıda kalır ve sonuç negatif olur.</span>
+                </div>
+                <div>(-10)<sup>4</sup> = <span style="color:#27ae60;">10000</span><br>
+                    <span style="font-size:0.98em; color:#888;">Parantez içindeki negatif sayının çift kuvveti pozitif olur.</span>
+                </div>
+                <div>(-9)<sup>2</sup> = <span style="color:#27ae60;">81</span><br>
+                    <span style="font-size:0.98em; color:#888;">Parantez içindeki negatif sayının çift kuvveti pozitif olur.</span>
+                </div>
+            </div>
+            
+        </div>
+    </section>
+    <section class="section">
+        <h2><span style="color:#e74c3c;">&#9733;</span> Tam Sayıların Pozitif Kuvvetleri</h2>
+        <div class="highlight-box" style="background:#fffde7;">
+            <b style="color:#d35400;">Kural:</b> <span style="color:#34495e;">Taban pozitif ise <b style="color:#27ae60;">tüm kuvvetleri pozitif sayıdır</b>.</span>
+        </div>
+        <div class="highlight-box" style="background:#e1f5fe;">
+            <b style="color:#1565c0;">Kural:</b> <span style="color:#34495e;">Taban negatif ise kuvvete bakılır:</span>
+            <ul>
+                <li><b style="color:#e74c3c;">Kuvvet tek</b> ise <span style="color:#e74c3c;">sonuç negatif</span></li>
+                <li><b style="color:#27ae60;">Kuvvet çift</b> ise <span style="color:#27ae60;">sonuç pozitif</span></li>
+            </ul>
+        </div>
+        <div class="grid-examples">
+            <div>(-2)<sup>4</sup> = <span style="color:#27ae60;">16</span></div>
+            <div>(-10)<sup>2</sup> = <span style="color:#27ae60;">100</span></div>
+            <div>(-9)<sup>3</sup> = <span style="color:#e74c3c;">-729</span></div>
+        </div>
+    </section>
+    <section class="section">
+        <h2><span style="color:#e74c3c;">&#9733;</span> Tam Sayıların Negatif Kuvvetleri</h2>
+        <div class="highlight-box" style="background:#e3ecfc;">
+            <b style="color:#d35400;">Kural:</b> <span style="color:#34495e;">Bir tam sayının üssü negatifse, <b style="color:#e74c3c;">pozitife çevrilmelidir</b>. Bunun için <b style="color:#2980b9;">pay ve payda yer değiştirilir</b>.</span>
+        </div>
+        <div class="example-box">
+            <p><b style="color:#2980b9;">a ≠ 0</b> ve <b style="color:#2980b9;">n</b> bir tam sayı olmak üzere:</p>
+            <p><b style="color:#e67e22;">a<sup>-n</sup> = 1 / a<sup>n</sup></b></p>
+            <div class="grid-examples">
+                <div>4<sup>-2</sup> = <span style="color:#e74c3c;">1 / 16</span></div>
+                <div>(-6)<sup>-3</sup> = <span style="color:#e74c3c;">1 / (-216)</span></div>
+                <div>(-2)<sup>-6</sup> = <span style="color:#e74c3c;">1 / 64</span></div>
+            </div>
+        </div>
+    </section>
+    <section class="section">
+        <h2><span style="color:#f39c12;">&#9888;</span> Özel Durumlar</h2>
+        <ul class="key-list">
+            <li><b style="color:#e67e22;">1'in bütün tam sayı kuvvetleri 1'dir.</b></li>
+            <li><b style="color:#e74c3c;">-1'in tek kuvvetleri -1, çift kuvvetleri ise 1'dir.</b></li>
+            <li><b style="color:#2980b9;">Her sayının sıfırıncı kuvveti 1'e eşittir (sıfır hariç).</b></li>
+            <li><b style="color:#16a085;">Her tam sayının birinci kuvveti kendisine eşittir.</b></li>
+        </ul>
+    </section>
+    <section class="section">
+        <h2><span style="color:#f39c12;">&#128200;</span> Üssün Üssü</h2>
+        <div class="highlight-box" style="background:#fffbe6;">
+            <b style="color:#d35400;">Kural:</b> <span style="color:#34495e;">Bir sayının birden fazla üssü varsa, <b style="color:#e74c3c;">üsler çarpılır</b>:</span>
+            <p style="margin-top:8px;"><b style="color:#e67e22;">(a<sup>m</sup>)<sup>n</sup> = a<sup>m·n</sup></b></p>
+        </div>
+        <div class="grid-examples">
+            <div>(2<sup>3</sup>)<sup>2</sup> = <span style="color:#27ae60;">2<sup>6</sup> = 64</span></div>
+            <div>(5<sup>2</sup>)<sup>4</sup> = <span style="color:#27ae60;">5<sup>8</sup> = 390625</span></div>
+        </div>
+    </section>
+    <section class="section">
+        <h2><span style="color:#16a085;">&#9997;</span> Alıştırmalar</h2>
+        <p style="color:#2980b9; font-weight:bold;">Aşağıda yerine gelmesi gereken sayıları bulun:</p>
+        <ul class="exercise-list">
+            <li>
+                <b style="color:#e74c3c;">36 neyin karesidir?</b>
+                <input type="text" id="ex1" style="width:80px;"> <button onclick="checkEx1()">Kontrol Et</button>
+                <span id="ex1Sonuc" style="margin-left:12px; font-weight:bold;"></span>
+            </li>
+            <li>
+                <b style="color:#e67e22;">-1<sup>100</sup> = ?</b>
+                <input type="text" id="ex2" style="width:80px;"> <button onclick="checkEx2()">Kontrol Et</button>
+                <span id="ex2Sonuc" style="margin-left:12px; font-weight:bold;"></span>
+            </li>
+            <li>
+                <b style="color:#2980b9;">1<sup>216</sup> = ?</b>
+                <input type="text" id="ex3" style="width:80px;"> <button onclick="checkEx3()">Kontrol Et</button>
+                <span id="ex3Sonuc" style="margin-left:12px; font-weight:bold;"></span>
+            </li>
+            <li>
+                <b style="color:#16a085;">-1<sup>8</sup> = ?</b>
+                <input type="text" id="ex4" style="width:80px;"> <button onclick="checkEx4()">Kontrol Et</button>
+                <span id="ex4Sonuc" style="margin-left:12px; font-weight:bold;"></span>
+            </li>
+            <li>
+                <b style="color:#d35400;">x = -2 için x<sup>3</sup> = ?</b>
+                <input type="text" id="ex5" style="width:80px;"> <button onclick="checkEx5()">Kontrol Et</button>
+                <span id="ex5Sonuc" style="margin-left:12px; font-weight:bold;"></span>
+            </li>
+            <li>
+                <b style="color:#8e44ad;">Bir üslü ifade, paydadan paya alındığında kuvvetin işareti değiştirilir.</b><br>
+                <span style="color:#2980b9;">Örnek: 2<sup>-3</sup> = ?</span>
+                <input type="text" id="ex6" style="width:80px;"> <button onclick="checkEx6()">Kontrol Et</button>
+                <span id="ex6Sonuc" style="margin-left:12px; font-weight:bold;"></span>
+            </li>
+        </ul>
+    </section>
+    <section class="section">
+        <h2><span style="color:#f39c12;">&#128161;</span> Ek Bilgiler</h2>
+        <ul class="key-list">
+            <li style="display:flex; align-items:center; gap:16px;">
+                <span style="color:#e67e22; min-width:220px;">1'in tam sayı kuvvetleri 1'dir.</span>
+                <b>1<sup><input type="number" id="info1Us" style="width:40px; text-align:center; vertical-align:top;" placeholder="üs"></sup> = </b>
+                <span id="info1Sonuc" style="margin-left:12px; font-weight:bold;"></span>
+                <button onclick="checkInfo1()">Kontrol Et</button>
+            </li>
+            <li style="display:flex; align-items:center; gap:16px;">
+                <span style="color:#e74c3c; min-width:280px;">-1'in tek kuvvetleri -1, çift kuvvetleri ise 1'dir.</span>
+                <b>-1<sup><input type="number" id="info2Us" style="width:40px; text-align:center; vertical-align:top;" placeholder="üs"></sup> = </b>
+                <span id="info2Sonuc" style="margin-left:12px; font-weight:bold;"></span>
+                <button onclick="checkInfo2()">Kontrol Et</button>
+            </li>
+            <li style="display:flex; align-items:center; gap:16px;">
+                <span style="color:#2980b9; min-width:280px;">Her sayının sıfırıncı kuvveti 1'e eşittir (sıfır hariç).</span>
+                <b><span style="display:inline-block; vertical-align:bottom;"><input type="number" id="info3Taban" style="width:50px; text-align:center; vertical-align:bottom;" placeholder="taban"></span><sup>0</sup> = </b>
+                <span id="info3Sonuc" style="margin-left:12px; font-weight:bold;"></span>
+                <button onclick="checkInfo3()">Kontrol Et</button>
+            </li>
+            <li style="display:flex; align-items:center; gap:16px;">
+                <span style="color:#16a085; min-width:280px;">Her tam sayının birinci kuvveti kendisine eşittir.</span>
+                <b><span style="display:inline-block; vertical-align:bottom;"><input type="number" id="info4Taban" style="width:50px; text-align:center; vertical-align:bottom;" placeholder="taban"></span><sup>1</sup> = </b>
+                <span id="info4Sonuc" style="margin-left:12px; font-weight:bold;"></span>
+                <button onclick="checkInfo4()">Kontrol Et</button>
+            </li>
+        </ul>
+        <p style="color:#8e44ad; font-weight:bold;">Bir üslü ifade, paydadan paya alındığında kuvvetin işareti değiştirilir.<br>
+            
+            
+            <span id="info5Sonuc" style="margin-left:12px; font-weight:bold;"></span>
+        </p>
+        <nter; gap:12px; background:#f3f3fa; border-radius:8px; padding:14px 18px; min-width:180px; box-shadow:0 2px 8px #8e44ad22;">
+                    <div style="font-size:1.12em; color:#34495e; margin:8px 0 8px 0;">
+                        <b>İşlem Adımları:</b><br>
+                        5<sup>-2</sup> &rarr; 1 / 5<sup>2</sup> &rarr; 1 / 25
+                    </div>
+    </section>
+    
+</div>
+<style>
+/* Ekstra vurgulu kutu ve anahtar liste stilleri */
+.highlight-box {
+    background: #fffbe6;
+    border-left: 5px solid #f7ca18;
+    padding: 14px 18px;
+    margin: 14px 0 18px 0;
+    border-radius: 10px;
+    font-size: 1.08em;
+    box-shadow: 0 2px 8px #f7ca1833;
+}
+.key-list {
+    list-style: none;
+    padding: 0;
+    margin: 10px 0 18px 0;
+}
+.key-list li {
+    margin-bottom: 8px;
+    font-size: 1.08em;
+}
+.brochure-container {
+    background: #f9f9f9;
+    border-radius: 16px;
+    padding: 32px;
+    max-width: 900px;
+    margin: 32px auto;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    font-family: 'Segoe UI', Arial, sans-serif;
+}
+.main-title {
+    text-align: center;
+    color: #2c3e50;
+    font-size: 2.5em;
+    margin-bottom: 16px;
+}
+.topic-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: center;
+    list-style: none;
+    margin-bottom: 24px;
+    padding: 0;
+}
+.topic-list li {
+    background: #e1ecf4;
+    border-radius: 8px;
+    padding: 8px 16px;
+    font-weight: 500;
+    color: #34495e;
+}
+.section {
+    margin-bottom: 32px;
+}
+.section h2 {
+    color: #2980b9;
+    margin-bottom: 12px;
+}
+.example-box {
+    background: #fffbe6;
+    border-left: 4px solid #f7ca18;
+    padding: 16px;
+    margin: 16px 0;
+    border-radius: 8px;
+}
+.grid-examples {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 10px;
+    margin-top: 10px;
+}
+.grid-examples div {
+    background: #eafaf1;
+    border-radius: 6px;
+    padding: 8px;
+    text-align: center;
+    font-weight: 500;
+    color: #16a085;
+}
+.exercise-list {
+    margin-top: 10px;
+    padding-left: 20px;
+}
+.exercise-list li {
+    margin-bottom: 6px;
+}
+/* ...existing code... */
+</style>
+{% block extra_js %}
+<script>
+function checkEx1() {
+    var dogru = "6";
+    var cevap = document.getElementById('ex1').value.trim().toLowerCase();
+    var sonuc = (cevap === dogru) ? 'Doğru!' : 'Yanlış, doğru cevap: 6';
+    document.getElementById('ex1Sonuc').innerText = sonuc;
+}
+function checkEx2() {
+    var dogru = "1";
+    var cevap = document.getElementById('ex2').value.trim();
+    var sonuc = (cevap === dogru) ? 'Doğru!' : 'Yanlış, doğru cevap: 1';
+    document.getElementById('ex2Sonuc').innerText = sonuc;
+}
+function checkEx3() {
+    var dogru = "1";
+    var cevap = document.getElementById('ex3').value.trim();
+    var sonuc = (cevap === dogru) ? 'Doğru!' : 'Yanlış, doğru cevap: 1';
+    document.getElementById('ex3Sonuc').innerText = sonuc;
+}
+function checkEx4() {
+    var dogru = "1";
+    var cevap = document.getElementById('ex4').value.trim();
+    var sonuc = (cevap === dogru) ? 'Doğru!' : 'Yanlış, doğru cevap: 1';
+    document.getElementById('ex4Sonuc').innerText = sonuc;
+}
+function checkEx5() {
+    var dogru = "-8";
+    var cevap = document.getElementById('ex5').value.trim();
+    var sonuc = (cevap === dogru) ? 'Doğru!' : 'Yanlış, doğru cevap: -8';
+    document.getElementById('ex5Sonuc').innerText = sonuc;
+}
+function checkEx6() {
+    var dogru = "1/8";
+    var cevap = document.getElementById('ex6').value.trim().replace(' ', '');
+    var sonuc = (cevap === dogru || cevap === "0.125") ? 'Doğru!' : 'Yanlış, doğru cevap: 1/8 veya 0.125';
+    document.getElementById('ex6Sonuc').innerText = sonuc;
+}
+function checkInfo1() {
+    var us = document.getElementById('info1Us').value.trim();
+    if (us === "") {
+        document.getElementById('info1Sonuc').innerText = "Lütfen bir üs girin.";
+        return;
+    }
+    var sonuc = Math.pow(1, parseInt(us));
+    document.getElementById('info1Sonuc').innerText = sonuc;
+}
+function checkInfo2() {
+    var us = document.getElementById('info2Us').value.trim();
+    if (us === "") {
+        document.getElementById('info2Sonuc').innerText = "Lütfen bir üs girin.";
+        return;
+    }
+    var n = parseInt(us);
+    var sonuc = (n % 2 === 0) ? 1 : -1;
+    document.getElementById('info2Sonuc').innerText = sonuc;
+}
+function checkInfo3() {
+    var taban = document.getElementById('info3Taban').value.trim();
+    if (taban === "") {
+        document.getElementById('info3Sonuc').innerText = "Lütfen bir taban girin.";
+        return;
+    }
+    var t = parseFloat(taban);
+    var sonuc = (t === 0) ? "Tanımsız (sıfır hariç)" : 1;
+    document.getElementById('info3Sonuc').innerText = sonuc;
+}
+function checkInfo4() {
+    var taban = document.getElementById('info4Taban').value.trim();
+    if (taban === "") {
+        document.getElementById('info4Sonuc').innerText = "Lütfen bir taban girin.";
+        return;
+    }
+    var t = parseFloat(taban);
+    document.getElementById('info4Sonuc').innerText = t;
+}
+function checkInfo5() {
+    var taban = document.getElementById('info5Taban').value.trim();
+    var us = document.getElementById('info5Us').value.trim();
+    if (taban === "" || us === "") {
+        document.getElementById('info5Sonuc').innerText = "Lütfen taban ve üs girin.";
+        return;
+    }
+    var t = parseFloat(taban);
+    var n = parseInt(us);
+    if (t === 0) {
+        document.getElementById('info5Sonuc').innerText = "Tanımsız (taban sıfır olamaz)";
+        return;
+    }
+    var kesirli = `1/${Math.pow(t, n)}`;
+    var ondalik = 1 / Math.pow(t, n);
+    document.getElementById('info5Sonuc').innerText = `${kesirli} = ${ondalik}`;
+}
+</script>
+{% endblock %}
+{% endblock %}

@@ -98,7 +98,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Comic+Neue:wght@700&display=swap');
 
 .container {
-    max-width: 600px;
+    max-width: 1000px;
     margin: 40px auto;
     background: #fff;
     border-radius: 12px;
