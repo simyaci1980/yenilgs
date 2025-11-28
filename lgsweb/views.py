@@ -62,7 +62,16 @@ def karekok_tamkare(request):
 
 def karekok_akokb(request):
     return render(request, 'matematik/karekok_akokb.html')
-    
+
+def karekok_carpma_bolme(request):
+    return render(request, 'matematik/karekok_carpma_bolme.html')
+
+def karekok_toplama_cikarma(request):
+    return render(request, 'matematik/karekok_toplama_cikarma.html')
+
+def karekok_ondalik(request):
+    return render(request, 'matematik/karekok_ondalik.html')
+
 
 
 

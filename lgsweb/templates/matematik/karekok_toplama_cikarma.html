@@ -1,0 +1,554 @@
+{% extends "base.html" %}
+{% block extra_head %}
+    <link rel="stylesheet" href="/static/dersler.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+{% endblock %}
+{% block content %}
+<div class="container kareli-bg" style="max-width:1200px; margin:0 auto; font-size:1.25em;">
+    <h2 class="ozel-baslik">Karekök&shy;lü İfadelerde Toplama ve Çıkarma İşlemi</h2>
+
+    <div class="aciklama-kutu" style="margin-top:24px;">
+        <b>⚠️ Çok Önemli Kural:</b><br>
+        Kareköklü ifadelerde toplama ve çıkarma işlemi yapılırken <b>kök içleri aynı olmalıdır</b>.<br>
+        <b>•</b> Toplama ve çıkarma işlemi <b>katsayılar arasında</b> yapılır.<br>
+        <b>•</b> Ortak kök aynen yazılır.<br><br>
+        <span id="toplama-kural"></span>
+    </div>
+
+    <div class="aciklama-kutu" style="margin-top:24px; background:#fff8e1; border-left-color:#ffa000;">
+        <b>📌 Hatırlatma:</b><br>
+        Kök içindeki sayılar aynı olduğunda:<br>
+        • Katsayıları topla/çıkar<br>
+        • Ortak kökü aynen yaz<br>
+        Örnek: <span id="ornek-hatirlatma"></span>
+    </div>
+    
+    <div class="formul-kutu" style="margin-top:24px;">
+        <b>Örnekler:</b><br>
+        <span id="toplama-ornek-1"></span><br>
+        <span id="toplama-ornek-1-aciklama" style="font-size:0.95em; color:#666;"></span><br><br>
+        <span id="toplama-ornek-2"></span><br>
+        <span id="toplama-ornek-2-aciklama" style="font-size:0.95em; color:#666;"></span><br><br>
+        <span id="toplama-ornek-3"></span><br>
+        <span id="toplama-ornek-3-aciklama" style="font-size:0.95em; color:#666;"></span>
+        <hr style="margin:18px 0;">
+        <b>Aşağıdaki toplama işlemlerini yapınız:</b><br>
+        
+        <!-- 3√5 + 2√5 = 5√5 -->
+        <span style="display:inline-block; margin-bottom:28px; font-size:1.25em;">
+            <span style="display:inline-block; width:32px; text-align:center;">3</span>
+            <span style="font-size:1.5em; font-weight:bold; margin:0 6px;">√</span>
+            <span style="display:inline-block; width:32px; text-align:center;">5</span>
+            <span style="font-size:1.5em; font-weight:bold; margin:0 18px;">+</span>
+            <span style="display:inline-block; width:32px; text-align:center;">2</span>
+            <span style="font-size:1.5em; font-weight:bold; margin:0 6px;">√</span>
+            <span style="display:inline-block; width:32px; text-align:center;">5</span>
+        </span> <span style="font-size:1.5em; font-weight:bold;">=</span>
+        <input type="text" id="input-top-1-coef" style="width:40px; font-size:1.15em; margin-left:12px; text-align:center;" autocomplete="off">
+        <input type="text" id="input-top-1-root" maxlength="1" style="width:28px; font-size:1.15em; margin-left:6px; text-align:center; cursor:pointer;" placeholder="√" autocomplete="off" onclick="toggleRootSign(this)">
+        <input type="text" id="input-top-1" style="width:60px; font-size:1.15em; margin-left:6px; text-align:center;" autocomplete="off">
+        <button onclick="checkTop1()" style="margin-left:8px; font-size:1em; padding:2px 12px; border-radius:6px; background:#e8f5e9; color:#2e7d32; border:1px solid #81c784; cursor:pointer;">Kontrol</button>
+        <span id="result-top-1" style="margin-left:12px;"></span>
+        <br>
+
+        <!-- 7√3 - 4√3 = 3√3 -->
+        <span style="display:inline-block; margin-bottom:28px; font-size:1.25em;">
+            <span style="display:inline-block; width:32px; text-align:center;">7</span>
+            <span style="font-size:1.5em; font-weight:bold; margin:0 6px;">√</span>
+            <span style="display:inline-block; width:32px; text-align:center;">3</span>
+            <span style="font-size:1.5em; font-weight:bold; margin:0 18px;">−</span>
+            <span style="display:inline-block; width:32px; text-align:center;">4</span>
+            <span style="font-size:1.5em; font-weight:bold; margin:0 6px;">√</span>
+            <span style="display:inline-block; width:32px; text-align:center;">3</span>
+        </span> <span style="font-size:1.5em; font-weight:bold;">=</span>
+        <input type="text" id="input-top-2-coef" style="width:40px; font-size:1.15em; margin-left:12px; text-align:center;" autocomplete="off">
+        <input type="text" id="input-top-2-root" maxlength="1" style="width:28px; font-size:1.15em; margin-left:6px; text-align:center; cursor:pointer;" placeholder="√" autocomplete="off" onclick="toggleRootSign(this)">
+        <input type="text" id="input-top-2" style="width:60px; font-size:1.15em; margin-left:6px; text-align:center;" autocomplete="off">
+        <button onclick="checkTop2()" style="margin-left:8px; font-size:1em; padding:2px 12px; border-radius:6px; background:#e8f5e9; color:#2e7d32; border:1px solid #81c784; cursor:pointer;">Kontrol</button>
+        <span id="result-top-2" style="margin-left:12px;"></span>
+        <br>
+
+        <!-- -2√7 + 5√7 = 3√7 -->
+        <span style="display:inline-block; margin-bottom:28px; font-size:1.25em;">
+            <span style="display:inline-block; width:32px; text-align:center;">-2</span>
+            <span style="font-size:1.5em; font-weight:bold; margin:0 6px;">√</span>
+            <span style="display:inline-block; width:32px; text-align:center;">7</span>
+            <span style="font-size:1.5em; font-weight:bold; margin:0 18px;">+</span>
+            <span style="display:inline-block; width:32px; text-align:center;">5</span>
+            <span style="font-size:1.5em; font-weight:bold; margin:0 6px;">√</span>
+            <span style="display:inline-block; width:32px; text-align:center;">7</span>
+        </span> <span style="font-size:1.5em; font-weight:bold;">=</span>
+        <input type="text" id="input-top-3-coef" style="width:40px; font-size:1.15em; margin-left:12px; text-align:center;" autocomplete="off">
+        <input type="text" id="input-top-3-root" maxlength="1" style="width:28px; font-size:1.15em; margin-left:6px; text-align:center; cursor:pointer;" placeholder="√" autocomplete="off" onclick="toggleRootSign(this)">
+        <input type="text" id="input-top-3" style="width:60px; font-size:1.15em; margin-left:6px; text-align:center;" autocomplete="off">
+        <button onclick="checkTop3()" style="margin-left:8px; font-size:1em; padding:2px 12px; border-radius:6px; background:#e8f5e9; color:#2e7d32; border:1px solid #81c784; cursor:pointer;">Kontrol</button>
+        <span id="result-top-3" style="margin-left:12px;"></span>
+        <br>
+
+        <!-- 6√2 - 8√2 + 3√2 = 1√2 -->
+        <span style="display:inline-block; margin-bottom:28px; font-size:1.25em;">
+            <span style="display:inline-block; width:32px; text-align:center;">6</span>
+            <span style="font-size:1.5em; font-weight:bold; margin:0 6px;">√</span>
+            <span style="display:inline-block; width:32px; text-align:center;">2</span>
+            <span style="font-size:1.5em; font-weight:bold; margin:0 18px;">−</span>
+            <span style="display:inline-block; width:32px; text-align:center;">8</span>
+            <span style="font-size:1.5em; font-weight:bold; margin:0 6px;">√</span>
+            <span style="display:inline-block; width:32px; text-align:center;">2</span>
+            <span style="font-size:1.5em; font-weight:bold; margin:0 18px;">+</span>
+            <span style="display:inline-block; width:32px; text-align:center;">3</span>
+            <span style="font-size:1.5em; font-weight:bold; margin:0 6px;">√</span>
+            <span style="display:inline-block; width:32px; text-align:center;">2</span>
+        </span> <span style="font-size:1.5em; font-weight:bold;">=</span>
+        <input type="text" id="input-top-4-coef" style="width:40px; font-size:1.15em; margin-left:12px; text-align:center;" autocomplete="off">
+        <input type="text" id="input-top-4-root" maxlength="1" style="width:28px; font-size:1.15em; margin-left:6px; text-align:center; cursor:pointer;" placeholder="√" autocomplete="off" onclick="toggleRootSign(this)">
+        <input type="text" id="input-top-4" style="width:60px; font-size:1.15em; margin-left:6px; text-align:center;" autocomplete="off">
+        <button onclick="checkTop4()" style="margin-left:8px; font-size:1em; padding:2px 12px; border-radius:6px; background:#e8f5e9; color:#2e7d32; border:1px solid #81c784; cursor:pointer;">Kontrol</button>
+        <span id="result-top-4" style="margin-left:12px;"></span>
+        <br>
+
+        <!-- 2√2 + 3√2 = 5√2 -->
+        <span style="display:inline-block; margin-bottom:28px; font-size:1.25em;">
+            <span style="display:inline-block; width:32px; text-align:center;">2</span>
+            <span style="font-size:1.5em; font-weight:bold; margin:0 6px;">√</span>
+            <span style="display:inline-block; width:32px; text-align:center;">2</span>
+            <span style="font-size:1.5em; font-weight:bold; margin:0 18px;">+</span>
+            <span style="display:inline-block; width:32px; text-align:center;">3</span>
+            <span style="font-size:1.5em; font-weight:bold; margin:0 6px;">√</span>
+            <span style="display:inline-block; width:32px; text-align:center;">2</span>
+        </span> <span style="font-size:1.5em; font-weight:bold;">=</span>
+        <input type="text" id="input-top-5-coef" style="width:40px; font-size:1.15em; margin-left:12px; text-align:center;" autocomplete="off">
+        <input type="text" id="input-top-5-root" maxlength="1" style="width:28px; font-size:1.15em; margin-left:6px; text-align:center; cursor:pointer;" placeholder="√" autocomplete="off" onclick="toggleRootSign(this)">
+        <input type="text" id="input-top-5" style="width:60px; font-size:1.15em; margin-left:6px; text-align:center;" autocomplete="off">
+        <button onclick="checkTop5()" style="margin-left:8px; font-size:1em; padding:2px 12px; border-radius:6px; background:#e8f5e9; color:#2e7d32; border:1px solid #81c784; cursor:pointer;">Kontrol</button>
+        <span id="result-top-5" style="margin-left:12px;"></span>
+        <br>
+
+        <!-- 3√6 - 5√6 = -2√6 -->
+        <span style="display:inline-block; margin-bottom:28px; font-size:1.25em;">
+            <span style="display:inline-block; width:32px; text-align:center;">3</span>
+            <span style="font-size:1.5em; font-weight:bold; margin:0 6px;">√</span>
+            <span style="display:inline-block; width:32px; text-align:center;">6</span>
+            <span style="font-size:1.5em; font-weight:bold; margin:0 18px;">−</span>
+            <span style="display:inline-block; width:32px; text-align:center;">5</span>
+            <span style="font-size:1.5em; font-weight:bold; margin:0 6px;">√</span>
+            <span style="display:inline-block; width:32px; text-align:center;">6</span>
+        </span> <span style="font-size:1.5em; font-weight:bold;">=</span>
+        <input type="text" id="input-top-6-coef" style="width:40px; font-size:1.15em; margin-left:12px; text-align:center;" autocomplete="off">
+        <input type="text" id="input-top-6-root" maxlength="1" style="width:28px; font-size:1.15em; margin-left:6px; text-align:center; cursor:pointer;" placeholder="√" autocomplete="off" onclick="toggleRootSign(this)">
+        <input type="text" id="input-top-6" style="width:60px; font-size:1.15em; margin-left:6px; text-align:center;" autocomplete="off">
+        <button onclick="checkTop6()" style="margin-left:8px; font-size:1em; padding:2px 12px; border-radius:6px; background:#e8f5e9; color:#2e7d32; border:1px solid #81c784; cursor:pointer;">Kontrol</button>
+        <span id="result-top-6" style="margin-left:12px;"></span>
+        <br>
+
+        <!-- 5√3 - 2√5 + 3√5 + √3 = 6√3 + √5 -->
+        <span style="display:inline-block; margin-bottom:28px; font-size:1.25em;">
+            <span style="display:inline-block; width:32px; text-align:center;">5</span>
+            <span style="font-size:1.5em; font-weight:bold; margin:0 6px;">√</span>
+            <span style="display:inline-block; width:32px; text-align:center;">3</span>
+            <span style="font-size:1.5em; font-weight:bold; margin:0 18px;">−</span>
+            <span style="display:inline-block; width:32px; text-align:center;">2</span>
+            <span style="font-size:1.5em; font-weight:bold; margin:0 6px;">√</span>
+            <span style="display:inline-block; width:32px; text-align:center;">5</span>
+            <span style="font-size:1.5em; font-weight:bold; margin:0 18px;">+</span>
+            <span style="display:inline-block; width:32px; text-align:center;">3</span>
+            <span style="font-size:1.5em; font-weight:bold; margin:0 6px;">√</span>
+            <span style="display:inline-block; width:32px; text-align:center;">5</span>
+            <span style="font-size:1.5em; font-weight:bold; margin:0 18px;">+</span>
+            <span style="font-size:1.5em; font-weight:bold; margin:0 6px;">√</span>
+            <span style="display:inline-block; width:32px; text-align:center;">3</span>
+        </span> <span style="font-size:1.5em; font-weight:bold;">=</span>
+        <input type="text" id="input-top-7" style="width:200px; font-size:1.15em; margin-left:12px; text-align:center;" autocomplete="off" placeholder="Örn: 6√3 + √5">
+        <button onclick="checkTop7()" style="margin-left:8px; font-size:1em; padding:2px 12px; border-radius:6px; background:#e8f5e9; color:#2e7d32; border:1px solid #81c784; cursor:pointer;">Kontrol</button>
+        <span id="result-top-7" style="margin-left:12px;"></span>
+        <br>
+    </div>
+
+    <!-- YANLIŞLA KARŞILAŞMA: FARKLI KÖKLER -->
+    <div class="aciklama-kutu" style="margin-top:48px; background:#ffebee; border-left-color:#d32f2f;">
+        <b>❌ DİKKAT: Bu İşlem Yapılamaz!</b><br>
+        Kök içindeki sayılar farklı olduğunda toplama/çıkarma yapılmaz!<br>
+        Örnek: <span id="yanlis-ornek-1"></span> şeklinde <b>sadeleştirilemez</b>.<br>
+        Ancak önce sadeleştirme yapılırsa bazen toplanabilir hale gelebilir!
+    </div>
+
+    <div class="formul-kutu" style="margin-top:24px; border-color:#ff9800;">
+        <b>Önce Sadeleştir, Sonra Topla/Çıkar:</b><br>
+        <span id="sadelestir-ornek-1"></span><br>
+        <span id="sadelestir-ornek-1-adim" style="font-size:0.95em; color:#666;"></span><br><br>
+        <span id="sadelestir-ornek-2"></span><br>
+        <span id="sadelestir-ornek-2-adim" style="font-size:0.95em; color:#666;"></span>
+        <hr style="margin:18px 0;">
+        <b>Önce sadeleştirin, sonra toplayın/çıkarın:</b><br>
+
+        <!-- √12 + √27 = 2√3 + 3√3 = 5√3 -->
+        <span style="display:inline-block; margin-bottom:28px; font-size:1.25em;">
+            <span style="font-size:1.5em; font-weight:bold; margin:0 6px;">√</span>
+            <span style="display:inline-block; width:32px; text-align:center;">12</span>
+            <span style="font-size:1.5em; font-weight:bold; margin:0 18px;">+</span>
+            <span style="font-size:1.5em; font-weight:bold; margin:0 6px;">√</span>
+            <span style="display:inline-block; width:32px; text-align:center;">27</span>
+        </span> <span style="font-size:1.5em; font-weight:bold;">=</span>
+        <input type="text" id="input-sad-1-coef" style="width:40px; font-size:1.15em; margin-left:12px; text-align:center;" autocomplete="off">
+        <input type="text" id="input-sad-1-root" maxlength="1" style="width:28px; font-size:1.15em; margin-left:6px; text-align:center; cursor:pointer;" placeholder="√" autocomplete="off" onclick="toggleRootSign(this)">
+        <input type="text" id="input-sad-1" style="width:60px; font-size:1.15em; margin-left:6px; text-align:center;" autocomplete="off">
+        <button onclick="checkSad1()" style="margin-left:8px; font-size:1em; padding:2px 12px; border-radius:6px; background:#fff3e0; color:#f57c00; border:1px solid #ffb74d; cursor:pointer;">Kontrol</button>
+        <span id="result-sad-1" style="margin-left:12px;"></span>
+        <br>
+
+        <!-- √8 - √18 = 2√2 - 3√2 = -1√2 -->
+        <span style="display:inline-block; margin-bottom:28px; font-size:1.25em;">
+            <span style="font-size:1.5em; font-weight:bold; margin:0 6px;">√</span>
+            <span style="display:inline-block; width:32px; text-align:center;">8</span>
+            <span style="font-size:1.5em; font-weight:bold; margin:0 18px;">−</span>
+            <span style="font-size:1.5em; font-weight:bold; margin:0 6px;">√</span>
+            <span style="display:inline-block; width:32px; text-align:center;">18</span>
+        </span> <span style="font-size:1.5em; font-weight:bold;">=</span>
+        <input type="text" id="input-sad-2-coef" style="width:40px; font-size:1.15em; margin-left:12px; text-align:center;" autocomplete="off">
+        <input type="text" id="input-sad-2-root" maxlength="1" style="width:28px; font-size:1.15em; margin-left:6px; text-align:center; cursor:pointer;" placeholder="√" autocomplete="off" onclick="toggleRootSign(this)">
+        <input type="text" id="input-sad-2" style="width:60px; font-size:1.15em; margin-left:6px; text-align:center;" autocomplete="off">
+        <button onclick="checkSad2()" style="margin-left:8px; font-size:1em; padding:2px 12px; border-radius:6px; background:#fff3e0; color:#f57c00; border:1px solid #ffb74d; cursor:pointer;">Kontrol</button>
+        <span id="result-sad-2" style="margin-left:12px;"></span>
+        <br>
+
+        <!-- 2√20 + 3√5 = 4√5 + 3√5 = 7√5 -->
+        <span style="display:inline-block; margin-bottom:28px; font-size:1.25em;">
+            <span style="display:inline-block; width:32px; text-align:center;">2</span>
+            <span style="font-size:1.5em; font-weight:bold; margin:0 6px;">√</span>
+            <span style="display:inline-block; width:32px; text-align:center;">20</span>
+            <span style="font-size:1.5em; font-weight:bold; margin:0 18px;">+</span>
+            <span style="display:inline-block; width:32px; text-align:center;">3</span>
+            <span style="font-size:1.5em; font-weight:bold; margin:0 6px;">√</span>
+            <span style="display:inline-block; width:32px; text-align:center;">5</span>
+        </span> <span style="font-size:1.5em; font-weight:bold;">=</span>
+        <input type="text" id="input-sad-3-coef" style="width:40px; font-size:1.15em; margin-left:12px; text-align:center;" autocomplete="off">
+        <input type="text" id="input-sad-3-root" maxlength="1" style="width:28px; font-size:1.15em; margin-left:6px; text-align:center; cursor:pointer;" placeholder="√" autocomplete="off" onclick="toggleRootSign(this)">
+        <input type="text" id="input-sad-3" style="width:60px; font-size:1.15em; margin-left:6px; text-align:center;" autocomplete="off">
+        <button onclick="checkSad3()" style="margin-left:8px; font-size:1em; padding:2px 12px; border-radius:6px; background:#fff3e0; color:#f57c00; border:1px solid #ffb74d; cursor:pointer;">Kontrol</button>
+        <span id="result-sad-3" style="margin-left:12px;"></span>
+        <br>
+
+        <!-- √12 + √48 = 2√3 + 4√3 = 6√3 -->
+        <span style="display:inline-block; margin-bottom:28px; font-size:1.25em;">
+            <span style="font-size:1.5em; font-weight:bold; margin:0 6px;">√</span>
+            <span style="display:inline-block; width:32px; text-align:center;">12</span>
+            <span style="font-size:1.5em; font-weight:bold; margin:0 18px;">+</span>
+            <span style="font-size:1.5em; font-weight:bold; margin:0 6px;">√</span>
+            <span style="display:inline-block; width:32px; text-align:center;">48</span>
+        </span> <span style="font-size:1.5em; font-weight:bold;">=</span>
+        <input type="text" id="input-sad-4-coef" style="width:40px; font-size:1.15em; margin-left:12px; text-align:center;" autocomplete="off">
+        <input type="text" id="input-sad-4-root" maxlength="1" style="width:28px; font-size:1.15em; margin-left:6px; text-align:center; cursor:pointer;" placeholder="√" autocomplete="off" onclick="toggleRootSign(this)">
+        <input type="text" id="input-sad-4" style="width:60px; font-size:1.15em; margin-left:6px; text-align:center;" autocomplete="off">
+        <button onclick="checkSad4()" style="margin-left:8px; font-size:1em; padding:2px 12px; border-radius:6px; background:#fff3e0; color:#f57c00; border:1px solid #ffb74d; cursor:pointer;">Kontrol</button>
+        <span id="result-sad-4" style="margin-left:12px;"></span>
+        <br>
+
+        <!-- √10 + √40 = √10 + 2√10 = 3√10 -->
+        <span style="display:inline-block; margin-bottom:28px; font-size:1.25em;">
+            <span style="font-size:1.5em; font-weight:bold; margin:0 6px;">√</span>
+            <span style="display:inline-block; width:32px; text-align:center;">10</span>
+            <span style="font-size:1.5em; font-weight:bold; margin:0 18px;">+</span>
+            <span style="font-size:1.5em; font-weight:bold; margin:0 6px;">√</span>
+            <span style="display:inline-block; width:32px; text-align:center;">40</span>
+        </span> <span style="font-size:1.5em; font-weight:bold;">=</span>
+        <input type="text" id="input-sad-5-coef" style="width:40px; font-size:1.15em; margin-left:12px; text-align:center;" autocomplete="off">
+        <input type="text" id="input-sad-5-root" maxlength="1" style="width:28px; font-size:1.15em; margin-left:6px; text-align:center; cursor:pointer;" placeholder="√" autocomplete="off" onclick="toggleRootSign(this)">
+        <input type="text" id="input-sad-5" style="width:60px; font-size:1.15em; margin-left:6px; text-align:center;" autocomplete="off">
+        <button onclick="checkSad5()" style="margin-left:8px; font-size:1em; padding:2px 12px; border-radius:6px; background:#fff3e0; color:#f57c00; border:1px solid #ffb74d; cursor:pointer;">Kontrol</button>
+        <span id="result-sad-5" style="margin-left:12px;"></span>
+        <br>
+
+        <!-- √45 - √20 + √80 = 3√5 - 2√5 + 4√5 = 5√5 -->
+        <span style="display:inline-block; margin-bottom:28px; font-size:1.25em;">
+            <span style="font-size:1.5em; font-weight:bold; margin:0 6px;">√</span>
+            <span style="display:inline-block; width:32px; text-align:center;">45</span>
+            <span style="font-size:1.5em; font-weight:bold; margin:0 18px;">−</span>
+            <span style="font-size:1.5em; font-weight:bold; margin:0 6px;">√</span>
+            <span style="display:inline-block; width:32px; text-align:center;">20</span>
+            <span style="font-size:1.5em; font-weight:bold; margin:0 18px;">+</span>
+            <span style="font-size:1.5em; font-weight:bold; margin:0 6px;">√</span>
+            <span style="display:inline-block; width:32px; text-align:center;">80</span>
+        </span> <span style="font-size:1.5em; font-weight:bold;">=</span>
+        <input type="text" id="input-sad-6-coef" style="width:40px; font-size:1.15em; margin-left:12px; text-align:center;" autocomplete="off">
+        <input type="text" id="input-sad-6-root" maxlength="1" style="width:28px; font-size:1.15em; margin-left:6px; text-align:center; cursor:pointer;" placeholder="√" autocomplete="off" onclick="toggleRootSign(this)">
+        <input type="text" id="input-sad-6" style="width:60px; font-size:1.15em; margin-left:6px; text-align:center;" autocomplete="off">
+        <button onclick="checkSad6()" style="margin-left:8px; font-size:1em; padding:2px 12px; border-radius:6px; background:#fff3e0; color:#f57c00; border:1px solid #ffb74d; cursor:pointer;">Kontrol</button>
+        <span id="result-sad-6" style="margin-left:12px;"></span>
+        <br>
+
+        <!-- 3√54 + √150 = 9√6 + 5√6 = 14√6 -->
+        <span style="display:inline-block; margin-bottom:28px; font-size:1.25em;">
+            <span style="display:inline-block; width:32px; text-align:center;">3</span>
+            <span style="font-size:1.5em; font-weight:bold; margin:0 6px;">√</span>
+            <span style="display:inline-block; width:32px; text-align:center;">54</span>
+            <span style="font-size:1.5em; font-weight:bold; margin:0 18px;">+</span>
+            <span style="font-size:1.5em; font-weight:bold; margin:0 6px;">√</span>
+            <span style="display:inline-block; width:32px; text-align:center;">150</span>
+        </span> <span style="font-size:1.5em; font-weight:bold;">=</span>
+        <input type="text" id="input-sad-7-coef" style="width:40px; font-size:1.15em; margin-left:12px; text-align:center;" autocomplete="off">
+        <input type="text" id="input-sad-7-root" maxlength="1" style="width:28px; font-size:1.15em; margin-left:6px; text-align:center; cursor:pointer;" placeholder="√" autocomplete="off" onclick="toggleRootSign(this)">
+        <input type="text" id="input-sad-7" style="width:60px; font-size:1.15em; margin-left:6px; text-align:center;" autocomplete="off">
+        <button onclick="checkSad7()" style="margin-left:8px; font-size:1em; padding:2px 12px; border-radius:6px; background:#fff3e0; color:#f57c00; border:1px solid #ffb74d; cursor:pointer;">Kontrol</button>
+        <span id="result-sad-7" style="margin-left:12px;"></span>
+        <br>
+
+        <!-- √75 + √48 - √108 = 5√3 + 4√3 - 6√3 = 3√3 -->
+        <span style="display:inline-block; margin-bottom:28px; font-size:1.25em;">
+            <span style="font-size:1.5em; font-weight:bold; margin:0 6px;">√</span>
+            <span style="display:inline-block; width:32px; text-align:center;">75</span>
+            <span style="font-size:1.5em; font-weight:bold; margin:0 18px;">+</span>
+            <span style="font-size:1.5em; font-weight:bold; margin:0 6px;">√</span>
+            <span style="display:inline-block; width:32px; text-align:center;">48</span>
+            <span style="font-size:1.5em; font-weight:bold; margin:0 18px;">−</span>
+            <span style="font-size:1.5em; font-weight:bold; margin:0 6px;">√</span>
+            <span style="display:inline-block; width:32px; text-align:center;">108</span>
+        </span> <span style="font-size:1.5em; font-weight:bold;">=</span>
+        <input type="text" id="input-sad-8-coef" style="width:40px; font-size:1.15em; margin-left:12px; text-align:center;" autocomplete="off">
+        <input type="text" id="input-sad-8-root" maxlength="1" style="width:28px; font-size:1.15em; margin-left:6px; text-align:center; cursor:pointer;" placeholder="√" autocomplete="off" onclick="toggleRootSign(this)">
+        <input type="text" id="input-sad-8" style="width:60px; font-size:1.15em; margin-left:6px; text-align:center;" autocomplete="off">
+        <button onclick="checkSad8()" style="margin-left:8px; font-size:1em; padding:2px 12px; border-radius:6px; background:#fff3e0; color:#f57c00; border:1px solid #ffb74d; cursor:pointer;">Kontrol</button>
+        <span id="result-sad-8" style="margin-left:12px;"></span>
+        <br>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        // Toplama kuralı
+        safeKatexRender("a\\sqrt{b} + c\\sqrt{b} = (a+c)\\sqrt{b}", "toplama-kural");
+        safeKatexRender("3\\sqrt{5} + 2\\sqrt{5} = (3+2)\\sqrt{5} = 5\\sqrt{5}", "ornek-hatirlatma");
+        safeKatexRender("5\\sqrt{2} + 3\\sqrt{2}", "toplama-ornek-1");
+        safeKatexRender("(5+3)\\sqrt{2} = 8\\sqrt{2}", "toplama-ornek-1-aciklama");
+        safeKatexRender("7\\sqrt{3} - 4\\sqrt{3}", "toplama-ornek-2");
+        safeKatexRender("(7-4)\\sqrt{3} = 3\\sqrt{3}", "toplama-ornek-2-aciklama");
+        safeKatexRender("2\\sqrt{5} + 6\\sqrt{5} - 3\\sqrt{5}", "toplama-ornek-3");
+        safeKatexRender("(2+6-3)\\sqrt{5} = 5\\sqrt{5}", "toplama-ornek-3-aciklama");
+        
+        // Yanlış örnek
+        safeKatexRender("2\\sqrt{3} + 5\\sqrt{7}", "yanlis-ornek-1");
+        
+        // Sadeleştirme örnekleri
+        safeKatexRender("\\sqrt{12} + \\sqrt{27}", "sadelestir-ornek-1");
+        safeKatexRender("2\\sqrt{3} + 3\\sqrt{3} = 5\\sqrt{3}", "sadelestir-ornek-1-adim");
+        safeKatexRender("\\sqrt{8} - \\sqrt{18}", "sadelestir-ornek-2");
+        safeKatexRender("2\\sqrt{2} - 3\\sqrt{2} = -1\\sqrt{2} = -\\sqrt{2}", "sadelestir-ornek-2-adim");
+    });
+    
+    function safeKatexRender(expr, id) {
+        var el = document.getElementById(id);
+        if (el) katex.render(expr, el);
+    }
+
+    function toggleRootSign(el) {
+        if (el.value === '√') {
+            el.value = '';
+        } else {
+            el.value = '√';
+        }
+    }
+
+    // TOPLAMA İŞLEMLERİ
+    function checkTop1() {
+        var coef = document.getElementById('input-top-1-coef').value.trim();
+        var root = document.getElementById('input-top-1-root').value.trim();
+        var val = document.getElementById('input-top-1').value.trim();
+        if (coef === '5' && root === '√' && val === '5') {
+            document.getElementById('result-top-1').innerHTML = '<span style="color:#388e3c;font-weight:bold;">Doğru! 3+2=5, kök içi aynı: 5√5</span>';
+        } else {
+            document.getElementById('result-top-1').innerHTML = '<span style="color:#d32f2f;font-weight:bold;">Yanlış! (3+2)√5 = 5√5</span>';
+        }
+    }
+
+    function checkTop2() {
+        var coef = document.getElementById('input-top-2-coef').value.trim();
+        var root = document.getElementById('input-top-2-root').value.trim();
+        var val = document.getElementById('input-top-2').value.trim();
+        if (coef === '3' && root === '√' && val === '3') {
+            document.getElementById('result-top-2').innerHTML = '<span style="color:#388e3c;font-weight:bold;">Doğru! 7-4=3, kök içi aynı: 3√3</span>';
+        } else {
+            document.getElementById('result-top-2').innerHTML = '<span style="color:#d32f2f;font-weight:bold;">Yanlış! (7-4)√3 = 3√3</span>';
+        }
+    }
+
+    function checkTop3() {
+        var coef = document.getElementById('input-top-3-coef').value.trim();
+        var root = document.getElementById('input-top-3-root').value.trim();
+        var val = document.getElementById('input-top-3').value.trim();
+        if (coef === '3' && root === '√' && val === '7') {
+            document.getElementById('result-top-3').innerHTML = '<span style="color:#388e3c;font-weight:bold;">Doğru! -2+5=3, kök içi aynı: 3√7</span>';
+        } else {
+            document.getElementById('result-top-3').innerHTML = '<span style="color:#d32f2f;font-weight:bold;">Yanlış! (-2+5)√7 = 3√7</span>';
+        }
+    }
+
+    function checkTop4() {
+        var coef = document.getElementById('input-top-4-coef').value.trim();
+        var root = document.getElementById('input-top-4-root').value.trim();
+        var val = document.getElementById('input-top-4').value.trim();
+        if ((coef === '1' || coef === '') && root === '√' && val === '2') {
+            document.getElementById('result-top-4').innerHTML = '<span style="color:#388e3c;font-weight:bold;">Doğru! 6-8+3=1, yani 1√2 (veya √2)</span>';
+        } else {
+            document.getElementById('result-top-4').innerHTML = '<span style="color:#d32f2f;font-weight:bold;">Yanlış! (6-8+3)√2 = 1√2</span>';
+        }
+    }
+
+    function checkTop5() {
+        var coef = document.getElementById('input-top-5-coef').value.trim();
+        var root = document.getElementById('input-top-5-root').value.trim();
+        var val = document.getElementById('input-top-5').value.trim();
+        if (coef === '5' && root === '√' && val === '2') {
+            document.getElementById('result-top-5').innerHTML = '<span style="color:#388e3c;font-weight:bold;">Doğru! 2+3=5, kök içi aynı: 5√2</span>';
+        } else {
+            document.getElementById('result-top-5').innerHTML = '<span style="color:#d32f2f;font-weight:bold;">Yanlış! (2+3)√2 = 5√2</span>';
+        }
+    }
+
+    function checkTop6() {
+        var coef = document.getElementById('input-top-6-coef').value.trim();
+        var root = document.getElementById('input-top-6-root').value.trim();
+        var val = document.getElementById('input-top-6').value.trim();
+        if (coef === '-2' && root === '√' && val === '6') {
+            document.getElementById('result-top-6').innerHTML = '<span style="color:#388e3c;font-weight:bold;">Doğru! 3-5=-2, kök içi aynı: -2√6</span>';
+        } else {
+            document.getElementById('result-top-6').innerHTML = '<span style="color:#d32f2f;font-weight:bold;">Yanlış! (3-5)√6 = -2√6</span>';
+        }
+    }
+
+    function checkTop7() {
+        var val = document.getElementById('input-top-7').value.trim().replace(/\s+/g, '');
+        // 5√3 - 2√5 + 3√5 + √3 = (5+1)√3 + (-2+3)√5 = 6√3 + √5
+        if (val === '6√3+√5' || val === '√5+6√3' || val === '6√3+1√5' || val === '1√5+6√3') {
+            document.getElementById('result-top-7').innerHTML = '<span style="color:#388e3c;font-weight:bold;">Doğru! √3 terimleri: 5+1=6, √5 terimleri: -2+3=1 → 6√3 + √5</span>';
+        } else {
+            document.getElementById('result-top-7').innerHTML = '<span style="color:#d32f2f;font-weight:bold;">Yanlış! Aynı kökleri grupla: (5+1)√3 + (-2+3)√5 = 6√3 + √5</span>';
+        }
+    }
+
+    // SADELEŞTİRME İŞLEMLERİ
+    function checkSad1() {
+        var coef = document.getElementById('input-sad-1-coef').value.trim();
+        var root = document.getElementById('input-sad-1-root').value.trim();
+        var val = document.getElementById('input-sad-1').value.trim();
+        if (coef === '5' && root === '√' && val === '3') {
+            document.getElementById('result-sad-1').innerHTML = '<span style="color:#388e3c;font-weight:bold;">Doğru! √12=2√3, √27=3√3 → 2√3+3√3=5√3</span>';
+        } else {
+            document.getElementById('result-sad-1').innerHTML = '<span style="color:#d32f2f;font-weight:bold;">Yanlış! Önce sadeleştir: 2√3 + 3√3 = 5√3</span>';
+        }
+    }
+
+    function checkSad2() {
+        var coef = document.getElementById('input-sad-2-coef').value.trim();
+        var root = document.getElementById('input-sad-2-root').value.trim();
+        var val = document.getElementById('input-sad-2').value.trim();
+        if ((coef === '-1' || coef === '-') && root === '√' && val === '2') {
+            document.getElementById('result-sad-2').innerHTML = '<span style="color:#388e3c;font-weight:bold;">Doğru! √8=2√2, √18=3√2 → 2√2-3√2=-1√2 (veya -√2)</span>';
+        } else {
+            document.getElementById('result-sad-2').innerHTML = '<span style="color:#d32f2f;font-weight:bold;">Yanlış! Önce sadeleştir: 2√2 - 3√2 = -√2</span>';
+        }
+    }
+
+    function checkSad3() {
+        var coef = document.getElementById('input-sad-3-coef').value.trim();
+        var root = document.getElementById('input-sad-3-root').value.trim();
+        var val = document.getElementById('input-sad-3').value.trim();
+        if (coef === '7' && root === '√' && val === '5') {
+            document.getElementById('result-sad-3').innerHTML = '<span style="color:#388e3c;font-weight:bold;">Doğru! 2√20=4√5 → 4√5+3√5=7√5</span>';
+        } else {
+            document.getElementById('result-sad-3').innerHTML = '<span style="color:#d32f2f;font-weight:bold;">Yanlış! √20=2√5, yani 2⋅2√5=4√5 → 4√5+3√5=7√5</span>';
+        }
+    }
+
+    function checkSad4() {
+        var coef = document.getElementById('input-sad-4-coef').value.trim();
+        var root = document.getElementById('input-sad-4-root').value.trim();
+        var val = document.getElementById('input-sad-4').value.trim();
+        if (coef === '6' && root === '√' && val === '3') {
+            document.getElementById('result-sad-4').innerHTML = '<span style="color:#388e3c;font-weight:bold;">Doğru! √12=2√3, √48=4√3 → 2√3+4√3=6√3</span>';
+        } else {
+            document.getElementById('result-sad-4').innerHTML = '<span style="color:#d32f2f;font-weight:bold;">Yanlış! √12=2√3, √48=4√3 → 6√3</span>';
+        }
+    }
+
+    function checkSad5() {
+        var coef = document.getElementById('input-sad-5-coef').value.trim();
+        var root = document.getElementById('input-sad-5-root').value.trim();
+        var val = document.getElementById('input-sad-5').value.trim();
+        if (coef === '3' && root === '√' && val === '10') {
+            document.getElementById('result-sad-5').innerHTML = '<span style="color:#388e3c;font-weight:bold;">Doğru! √10=1√10, √40=2√10 → 1√10+2√10=3√10</span>';
+        } else {
+            document.getElementById('result-sad-5').innerHTML = '<span style="color:#d32f2f;font-weight:bold;">Yanlış! √40=2√10 → √10+2√10=3√10</span>';
+        }
+    }
+
+    function checkSad6() {
+        var coef = document.getElementById('input-sad-6-coef').value.trim();
+        var root = document.getElementById('input-sad-6-root').value.trim();
+        var val = document.getElementById('input-sad-6').value.trim();
+        if (coef === '5' && root === '√' && val === '5') {
+            document.getElementById('result-sad-6').innerHTML = '<span style="color:#388e3c;font-weight:bold;">Doğru! √45=3√5, √20=2√5, √80=4√5 → 3-2+4=5√5</span>';
+        } else {
+            document.getElementById('result-sad-6').innerHTML = '<span style="color:#d32f2f;font-weight:bold;">Yanlış! 3√5 - 2√5 + 4√5 = 5√5</span>';
+        }
+    }
+
+    function checkSad7() {
+        var coef = document.getElementById('input-sad-7-coef').value.trim();
+        var root = document.getElementById('input-sad-7-root').value.trim();
+        var val = document.getElementById('input-sad-7').value.trim();
+        if (coef === '14' && root === '√' && val === '6') {
+            document.getElementById('result-sad-7').innerHTML = '<span style="color:#388e3c;font-weight:bold;">Doğru! √54=3√6 → 3⋅3√6=9√6, √150=5√6 → 9√6+5√6=14√6</span>';
+        } else {
+            document.getElementById('result-sad-7').innerHTML = '<span style="color:#d32f2f;font-weight:bold;">Yanlış! 3√54=9√6, √150=5√6 → 14√6</span>';
+        }
+    }
+
+    function checkSad8() {
+        var coef = document.getElementById('input-sad-8-coef').value.trim();
+        var root = document.getElementById('input-sad-8-root').value.trim();
+        var val = document.getElementById('input-sad-8').value.trim();
+        if (coef === '3' && root === '√' && val === '3') {
+            document.getElementById('result-sad-8').innerHTML = '<span style="color:#388e3c;font-weight:bold;">Doğru! √75=5√3, √48=4√3, √108=6√3 → 5+4-6=3√3</span>';
+        } else {
+            document.getElementById('result-sad-8').innerHTML = '<span style="color:#d32f2f;font-weight:bold;">Yanlış! 5√3 + 4√3 - 6√3 = 3√3</span>';
+        }
+    }
+    </script>
+</div>
+<style>
+.kareli-bg {
+    background-image: url('https://www.transparenttextures.com/patterns/squared-paper.png');
+    background-repeat: repeat;
+}
+.ozel-baslik {
+    background: #c5e1f7;
+    color: #8e24aa;
+    font-size: 2em;
+    font-weight: bold;
+    border-bottom: 4px solid #8e24aa;
+    padding: 8px 24px;
+    margin-bottom: 18px;
+    border-radius: 8px;
+    box-shadow: 2px 2px 8px #e0e0e0;
+    display: inline-block;
+}
+.aciklama-kutu {
+    background: #e3f2fd;
+    color: #1976d2;
+    font-size: 1.15em;
+    padding: 10px 18px;
+    border-radius: 8px;
+    margin-bottom: 18px;
+    border-left: 6px solid #1976d2;
+    max-width: 700px;
+}
+.formul-kutu {
+    background: #fff;
+    border: 2px solid #d32f2f;
+    border-radius: 8px;
+    display: inline-block;
+    padding: 10px 24px;
+    margin-bottom: 24px;
+    margin-left: 12px;
+    box-shadow: 1px 1px 8px #e0e0e0;
+}
+</style>
+{% endblock %}

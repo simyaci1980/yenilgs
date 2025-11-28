@@ -1,0 +1,595 @@
+{% extends "base.html" %}
+{% block extra_head %}
+    <link rel="stylesheet" href="/static/dersler.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+{% endblock %}
+{% block content %}
+<div class="container kareli-bg" style="max-width:1200px; margin:0 auto; font-size:1.25em;">
+    <h2 class="ozel-baslik">Ondalık İfadeler ve Gerçek Sayılar</h2>
+
+    <!-- ONDALİK İFADELERİN KAREKÖKLERİ -->
+    <div class="aciklama-kutu" style="margin-top:24px; background:#e1f5fe; border-left-color:#0277bd;">
+        <b>🔢 Ondalık İfadelerin Karekökleri:</b><br>
+        Karekök içindeki ondalık ifadeler önce <b>rasyonel sayıya dönüştürülür</b>, sonra pay ve payda için karekök alma işlemi yapılır.<br><br>
+        <b>Örnek:</b> <span id="ondalik-karekök-ornek-1"></span><br>
+        <span id="ondalik-karekök-ornek-2"></span>
+    </div>
+
+    
+
+    <div class="formul-kutu" style="margin-top:24px; border-color:#0277bd;">
+        <b>Ondalık Karekökleri Hesapla:</b><br>
+        <span id="hesaplama-ornek-1"></span><br>
+        <span id="hesaplama-ornek-1-cozum" style="font-size:0.95em; color:#666;"></span><br><br>
+        <span id="hesaplama-ornek-2"></span><br>
+        <span id="hesaplama-ornek-2-cozum" style="font-size:0.95em; color:#666;"></span>
+        <hr style="margin:18px 0;">
+        <b>Aşağıdaki ondalık karekökleri hesaplayın:</b><br>
+
+        <!-- √0,36 = 0,6 -->
+        <span style="display:inline-block; margin-bottom:28px; font-size:1.25em;">
+            <span style="font-size:1.5em; font-weight:bold; margin:0 6px;">√</span>
+            <span style="display:inline-block; width:60px; text-align:center;">0,36</span>
+        </span> <span style="font-size:1.5em; font-weight:bold;">=</span>
+        <input type="text" id="input-ondalik-1" style="width:100px; font-size:1.15em; margin-left:12px; text-align:center;" autocomplete="off" placeholder="Ondalık">
+        <button onclick="checkOndalik1()" style="margin-left:8px; font-size:1em; padding:2px 12px; border-radius:6px; background:#e1f5fe; color:#0277bd; border:1px solid #81d4fa; cursor:pointer;">Kontrol</button>
+        <span id="result-ondalik-1" style="margin-left:12px;"></span>
+        <br>
+
+        <!-- √2,25 = 1,5 -->
+        <span style="display:inline-block; margin-bottom:28px; font-size:1.25em;">
+            <span style="font-size:1.5em; font-weight:bold; margin:0 6px;">√</span>
+            <span style="display:inline-block; width:60px; text-align:center;">2,25</span>
+        </span> <span style="font-size:1.5em; font-weight:bold;">=</span>
+        <input type="text" id="input-ondalik-2" style="width:100px; font-size:1.15em; margin-left:12px; text-align:center;" autocomplete="off" placeholder="Ondalık">
+        <button onclick="checkOndalik2()" style="margin-left:8px; font-size:1em; padding:2px 12px; border-radius:6px; background:#e1f5fe; color:#0277bd; border:1px solid #81d4fa; cursor:pointer;">Kontrol</button>
+        <span id="result-ondalik-2" style="margin-left:12px;"></span>
+        <br>
+
+        <!-- √0,8 → 8/10 = 4/5 -->
+        <span style="display:inline-block; margin-bottom:28px; font-size:1.25em;">
+            <span style="font-size:1.5em; font-weight:bold; margin:0 6px;">√</span>
+            <span style="display:inline-block; width:60px; text-align:center;">0,8</span>
+            <span style="margin:0 12px;">rasyonel gösterim:</span>
+        </span>
+        <input type="text" id="input-rasyonel-1" style="width:100px; font-size:1.15em; margin-left:12px; text-align:center;" autocomplete="off" placeholder="Örn: 4/5">
+        <button onclick="checkRasyonel1()" style="margin-left:8px; font-size:1em; padding:2px 12px; border-radius:6px; background:#fff3e0; color:#f57c00; border:1px solid #ffb74d; cursor:pointer;">Kontrol</button>
+        <span id="result-rasyonel-1" style="margin-left:12px;"></span>
+        <br>
+
+        <!-- √0,42 → 42/100 = 21/50 -->
+        <span style="display:inline-block; margin-bottom:28px; font-size:1.25em;">
+            <span style="font-size:1.5em; font-weight:bold; margin:0 6px;">√</span>
+            <span style="display:inline-block; width:60px; text-align:center;">0,42</span>
+            <span style="margin:0 12px;">rasyonel gösterim:</span>
+        </span>
+        <input type="text" id="input-rasyonel-2" style="width:100px; font-size:1.15em; margin-left:12px; text-align:center;" autocomplete="off" placeholder="Örn: 21/50">
+        <button onclick="checkRasyonel2()" style="margin-left:8px; font-size:1em; padding:2px 12px; border-radius:6px; background:#fff3e0; color:#f57c00; border:1px solid #ffb74d; cursor:pointer;">Kontrol</button>
+        <span id="result-rasyonel-2" style="margin-left:12px;"></span>
+        <br>
+
+        <!-- √1,96 = 1,4 -->
+        <span style="display:inline-block; margin-bottom:28px; font-size:1.25em;">
+            <span style="font-size:1.5em; font-weight:bold; margin:0 6px;">√</span>
+            <span style="display:inline-block; width:60px; text-align:center;">1,96</span>
+        </span> <span style="font-size:1.5em; font-weight:bold;">=</span>
+        <input type="text" id="input-ondalik-3" style="width:100px; font-size:1.15em; margin-left:12px; text-align:center;" autocomplete="off" placeholder="Ondalık">
+        <button onclick="checkOndalik3()" style="margin-left:8px; font-size:1em; padding:2px 12px; border-radius:6px; background:#e1f5fe; color:#0277bd; border:1px solid #81d4fa; cursor:pointer;">Kontrol</button>
+        <span id="result-ondalik-3" style="margin-left:12px;"></span>
+        <br>
+
+        <!-- √0,0005 → 5/10000 = 1/2000 -->
+        <span style="display:inline-block; margin-bottom:28px; font-size:1.25em;">
+            <span style="font-size:1.5em; font-weight:bold; margin:0 6px;">√</span>
+            <span style="display:inline-block; width:80px; text-align:center;">0,0005</span>
+            <span style="margin:0 12px;">rasyonel gösterim:</span>
+        </span>
+        <input type="text" id="input-rasyonel-3" style="width:120px; font-size:1.15em; margin-left:12px; text-align:center;" autocomplete="off" placeholder="Örn: 1/2000">
+        <button onclick="checkRasyonel3()" style="margin-left:8px; font-size:1em; padding:2px 12px; border-radius:6px; background:#fff3e0; color:#f57c00; border:1px solid #ffb74d; cursor:pointer;">Kontrol</button>
+        <span id="result-rasyonel-3" style="margin-left:12px;"></span>
+        <br>
+    </div>
+
+    <div class="aciklama-kutu" style="margin-top:24px;">
+        <b>📊 Gerçek Sayılar Nedir?</b><br>
+        Gerçek sayılar, <b>rasyonel sayılar</b> (kesir olarak yazılabilen) ve <b>irrasyonel sayılar</b> (kesir olarak yazılamayan) içerir.<br>
+        • Rasyonel sayılar: <span id="rasyonel-ornek"></span><br>
+        • İrrasyonel sayılar: <span id="irrasyonel-ornek"></span>
+    </div>
+
+    <div class="aciklama-kutu" style="margin-top:24px; background:#fff3e0; border-left-color:#f57c00;">
+        <b>🔢 Karekök ve Ondalık Gösterim:</b><br>
+        • Tam kare sayıların karekökü <b>rasyonel</b> (doğal sayı)<br>
+        • Tam kare olmayan sayıların karekökü <b>irrasyonel</b> (sonsuz ondalık)<br><br>
+        Örnek: <span id="ondalik-ornek"></span>
+    </div>
+
+    <div class="formul-kutu" style="margin-top:24px;">
+        <b>Örnekler:</b><br>
+        <span id="ornek-1"></span> → Rasyonel (tam sayı)<br>
+        <span id="ornek-2"></span> → İrrasyonel (≈ 2.236...)<br>
+        <span id="ornek-3"></span> → İrrasyonel (≈ 2.828...)<br>
+        <span id="ornek-4"></span> → Rasyonel (= 3/2 = 1.5)
+        <hr style="margin:18px 0;">
+        <b>Aşağıdaki sayıların rasyonel mi, irrasyonel mi olduğunu belirleyin:</b><br>
+
+        <!-- √9 -->
+        <span style="display:inline-block; margin-bottom:28px; font-size:1.25em;">
+            <span style="font-size:1.5em; font-weight:bold; margin:0 6px;">√</span>
+            <span style="display:inline-block; width:32px; text-align:center;">9</span>
+            <span style="margin:0 12px;">sayısı:</span>
+        </span>
+        <select id="input-tip-1" style="width:150px; font-size:1.15em; margin-left:12px; padding:4px; border-radius:6px;">
+            <option value="">Seçiniz</option>
+            <option value="rasyonel">Rasyonel</option>
+            <option value="irrasyonel">İrrasyonel</option>
+        </select>
+        <button onclick="checkTip1()" style="margin-left:8px; font-size:1em; padding:2px 12px; border-radius:6px; background:#e8f5e9; color:#2e7d32; border:1px solid #81c784; cursor:pointer;">Kontrol</button>
+        <span id="result-tip-1" style="margin-left:12px;"></span>
+        <br>
+
+        <!-- √7 -->
+        <span style="display:inline-block; margin-bottom:28px; font-size:1.25em;">
+            <span style="font-size:1.5em; font-weight:bold; margin:0 6px;">√</span>
+            <span style="display:inline-block; width:32px; text-align:center;">7</span>
+            <span style="margin:0 12px;">sayısı:</span>
+        </span>
+        <select id="input-tip-2" style="width:150px; font-size:1.15em; margin-left:12px; padding:4px; border-radius:6px;">
+            <option value="">Seçiniz</option>
+            <option value="rasyonel">Rasyonel</option>
+            <option value="irrasyonel">İrrasyonel</option>
+        </select>
+        <button onclick="checkTip2()" style="margin-left:8px; font-size:1em; padding:2px 12px; border-radius:6px; background:#e8f5e9; color:#2e7d32; border:1px solid #81c784; cursor:pointer;">Kontrol</button>
+        <span id="result-tip-2" style="margin-left:12px;"></span>
+        <br>
+
+        <!-- 3/5 -->
+        <span style="display:inline-block; margin-bottom:28px; font-size:1.25em;">
+            <span style="display:inline-block; width:60px; text-align:center;">3/5</span>
+            <span style="margin:0 12px;">sayısı:</span>
+        </span>
+        <select id="input-tip-3" style="width:150px; font-size:1.15em; margin-left:12px; padding:4px; border-radius:6px;">
+            <option value="">Seçiniz</option>
+            <option value="rasyonel">Rasyonel</option>
+            <option value="irrasyonel">İrrasyonel</option>
+        </select>
+        <button onclick="checkTip3()" style="margin-left:8px; font-size:1em; padding:2px 12px; border-radius:6px; background:#e8f5e9; color:#2e7d32; border:1px solid #81c784; cursor:pointer;">Kontrol</button>
+        <span id="result-tip-3" style="margin-left:12px;"></span>
+        <br>
+
+        <!-- π -->
+        <span style="display:inline-block; margin-bottom:28px; font-size:1.25em;">
+            <span style="display:inline-block; width:60px; text-align:center;">π (Pi)</span>
+            <span style="margin:0 12px;">sayısı:</span>
+        </span>
+        <select id="input-tip-4" style="width:150px; font-size:1.15em; margin-left:12px; padding:4px; border-radius:6px;">
+            <option value="">Seçiniz</option>
+            <option value="rasyonel">Rasyonel</option>
+            <option value="irrasyonel">İrrasyonel</option>
+        </select>
+        <button onclick="checkTip4()" style="margin-left:8px; font-size:1em; padding:2px 12px; border-radius:6px; background:#e8f5e9; color:#2e7d32; border:1px solid #81c784; cursor:pointer;">Kontrol</button>
+        <span id="result-tip-4" style="margin-left:12px;"></span>
+        <br>
+
+        <!-- √16 -->
+        <span style="display:inline-block; margin-bottom:28px; font-size:1.25em;">
+            <span style="font-size:1.5em; font-weight:bold; margin:0 6px;">√</span>
+            <span style="display:inline-block; width:32px; text-align:center;">16</span>
+            <span style="margin:0 12px;">sayısı:</span>
+        </span>
+        <select id="input-tip-5" style="width:150px; font-size:1.15em; margin-left:12px; padding:4px; border-radius:6px;">
+            <option value="">Seçiniz</option>
+            <option value="rasyonel">Rasyonel</option>
+            <option value="irrasyonel">İrrasyonel</option>
+        </select>
+        <button onclick="checkTip5()" style="margin-left:8px; font-size:1em; padding:2px 12px; border-radius:6px; background:#e8f5e9; color:#2e7d32; border:1px solid #81c784; cursor:pointer;">Kontrol</button>
+        <span id="result-tip-5" style="margin-left:12px;"></span>
+        <br>
+    </div>
+
+    <!-- SAYILARI SIRALAMA -->
+    <div class="aciklama-kutu" style="margin-top:48px; background:#e8f5e9; border-left-color:#2e7d32;">
+        <b>📏 Gerçek Sayıları Sıralama:</b><br>
+        Kareköklü sayıları sıralamak için:<br>
+        • Yaklaşık değerlerini hesapla<br>
+        • Veya karesini alarak karşılaştır
+    </div>
+
+    <div class="formul-kutu" style="margin-top:24px; border-color:#2e7d32;">
+        <b>Sıralama Örnekleri:</b><br>
+        <span id="siralama-ornek-1"></span><br>
+        <span id="siralama-ornek-1-cozum" style="font-size:0.95em; color:#666;"></span>
+        <hr style="margin:18px 0;">
+        <b>Aşağıdaki sayıları küçükten büyüğe sıralayın:</b><br>
+
+        <!-- √5, 2, √3 -->
+        <div style="margin-bottom:28px;">
+            <span style="font-size:1.25em; margin-bottom:12px; display:block;">
+                <span style="font-size:1.5em; font-weight:bold; margin:0 6px;">√</span>5, 
+                2, 
+                <span style="font-size:1.5em; font-weight:bold; margin:0 6px;">√</span>3
+            </span>
+            <div style="display:flex; align-items:center; gap:10px; margin-top:10px; flex-wrap:wrap;">
+                <select id="siralama-1-pos1" style="width:80px; font-size:1em; padding:4px;">
+                    <option value="">1. sayı</option>
+                    <option value="√5">√5</option>
+                    <option value="2">2</option>
+                    <option value="√3">√3</option>
+                </select>
+                <span style="font-size:1.5em; font-weight:bold;">&lt;</span>
+                <select id="siralama-1-pos2" style="width:80px; font-size:1em; padding:4px;">
+                    <option value="">2. sayı</option>
+                    <option value="√5">√5</option>
+                    <option value="2">2</option>
+                    <option value="√3">√3</option>
+                </select>
+                <span style="font-size:1.5em; font-weight:bold;">&lt;</span>
+                <select id="siralama-1-pos3" style="width:80px; font-size:1em; padding:4px;">
+                    <option value="">3. sayı</option>
+                    <option value="√5">√5</option>
+                    <option value="2">2</option>
+                    <option value="√3">√3</option>
+                </select>
+            </div>
+            <button onclick="checkSiralama1()" style="margin-top:10px; font-size:1em; padding:6px 18px; border-radius:6px; background:#e8f5e9; color:#2e7d32; border:1px solid #81c784; cursor:pointer;">Kontrol</button>
+            <span id="result-siralama-1" style="margin-left:12px;"></span>
+        </div>
+
+        <!-- √10, 3, √7 -->
+        <div style="margin-bottom:28px;">
+            <span style="font-size:1.25em; margin-bottom:12px; display:block;">
+                <span style="font-size:1.5em; font-weight:bold; margin:0 6px;">√</span>10, 
+                3, 
+                <span style="font-size:1.5em; font-weight:bold; margin:0 6px;">√</span>7
+            </span>
+            <div style="display:flex; align-items:center; gap:10px; margin-top:10px; flex-wrap:wrap;">
+                <select id="siralama-2-pos1" style="width:80px; font-size:1em; padding:4px;">
+                    <option value="">1. sayı</option>
+                    <option value="√10">√10</option>
+                    <option value="3">3</option>
+                    <option value="√7">√7</option>
+                </select>
+                <span style="font-size:1.5em; font-weight:bold;">&lt;</span>
+                <select id="siralama-2-pos2" style="width:80px; font-size:1em; padding:4px;">
+                    <option value="">2. sayı</option>
+                    <option value="√10">√10</option>
+                    <option value="3">3</option>
+                    <option value="√7">√7</option>
+                </select>
+                <span style="font-size:1.5em; font-weight:bold;">&lt;</span>
+                <select id="siralama-2-pos3" style="width:80px; font-size:1em; padding:4px;">
+                    <option value="">3. sayı</option>
+                    <option value="√10">√10</option>
+                    <option value="3">3</option>
+                    <option value="√7">√7</option>
+                </select>
+            </div>
+            <button onclick="checkSiralama2()" style="margin-top:10px; font-size:1em; padding:6px 18px; border-radius:6px; background:#e8f5e9; color:#2e7d32; border:1px solid #81c784; cursor:pointer;">Kontrol</button>
+            <span id="result-siralama-2" style="margin-left:12px;"></span>
+        </div>
+    </div>
+
+    <!-- DEVİRLİ ONDALIK İFADELER -->
+    <div class="aciklama-kutu" style="margin-top:48px; background:#fce4ec; border-left-color:#c2185b;">
+        <b>🔄 Devirli Ondalık İfadeleri Kesire Çevirme:</b><br>
+        Devirli ondalık ifadeleri <span id="devirli-formul"></span> biçiminde yazarken:<br><br>
+        <b>PAY:</b> Sayının Tamamı − Devretmeyen Kısım<br>
+        <b>PAYDA:</b> Virgülden Sonra → Devreden Kadar 9, Devretmeyen Kadar 0<br><br>
+        <b>Örnekler:</b><br>
+        <span id="devirli-ornek-1"></span><br>
+        <span id="devirli-ornek-1-cozum" style="font-size:0.95em; color:#666;"></span><br><br>
+        <span id="devirli-ornek-2"></span><br>
+        <span id="devirli-ornek-2-cozum" style="font-size:0.95em; color:#666;"></span>
+    </div>
+
+    <div class="formul-kutu" style="margin-top:24px; border-color:#c2185b;">
+        <b>Devirli Ondalık Dönüşümleri:</b><br>
+        <hr style="margin:18px 0;">
+        <b>Aşağıdaki devirli ondalık sayıları kesire çevirin:</b><br>
+
+        <!-- 0,5̄ (0,555...) = 5/9 -->
+        <span style="display:inline-block; margin-bottom:28px; font-size:1.25em;">
+            <span style="display:inline-block; width:120px; text-align:center;">0,5̄ (0,555...)</span>
+            <span style="margin:0 12px;">kesir:</span>
+        </span>
+        <input type="text" id="input-devirli-1" style="width:100px; font-size:1.15em; margin-left:12px; text-align:center;" autocomplete="off" placeholder="Örn: 5/9">
+        <button onclick="checkDevirli1()" style="margin-left:8px; font-size:1em; padding:2px 12px; border-radius:6px; background:#fce4ec; color:#c2185b; border:1px solid #f48fb1; cursor:pointer;">Kontrol</button>
+        <span id="result-devirli-1" style="margin-left:12px;"></span>
+        <br>
+
+        <!-- 1,82̄ (1,8222...) = (182-18)/90 = 164/90 = 82/45 -->
+        <span style="display:inline-block; margin-bottom:28px; font-size:1.25em;">
+            <span style="display:inline-block; width:120px; text-align:center;">1,82̄ (1,8222...)</span>
+            <span style="margin:0 12px;">kesir:</span>
+        </span>
+        <input type="text" id="input-devirli-2" style="width:100px; font-size:1.15em; margin-left:12px; text-align:center;" autocomplete="off" placeholder="Örn: 82/45">
+        <button onclick="checkDevirli2()" style="margin-left:8px; font-size:1em; padding:2px 12px; border-radius:6px; background:#fce4ec; color:#c2185b; border:1px solid #f48fb1; cursor:pointer;">Kontrol</button>
+        <span id="result-devirli-2" style="margin-left:12px;"></span>
+        <br>
+
+        <!-- 0,3̄ (0,333...) = 3/9 = 1/3 -->
+        <span style="display:inline-block; margin-bottom:28px; font-size:1.25em;">
+            <span style="display:inline-block; width:120px; text-align:center;">0,3̄ (0,333...)</span>
+            <span style="margin:0 12px;">kesir:</span>
+        </span>
+        <input type="text" id="input-devirli-3" style="width:100px; font-size:1.15em; margin-left:12px; text-align:center;" autocomplete="off" placeholder="Örn: 1/3">
+        <button onclick="checkDevirli3()" style="margin-left:8px; font-size:1em; padding:2px 12px; border-radius:6px; background:#fce4ec; color:#c2185b; border:1px solid #f48fb1; cursor:pointer;">Kontrol</button>
+        <span id="result-devirli-3" style="margin-left:12px;"></span>
+        <br>
+
+        <!-- 2,45̄ (2,4555...) = (245-24)/90 = 221/90 -->
+        <span style="display:inline-block; margin-bottom:28px; font-size:1.25em;">
+            <span style="display:inline-block; width:120px; text-align:center;">2,45̄ (2,4555...)</span>
+            <span style="margin:0 12px;">kesir:</span>
+        </span>
+        <input type="text" id="input-devirli-4" style="width:100px; font-size:1.15em; margin-left:12px; text-align:center;" autocomplete="off" placeholder="Örn: 221/90">
+        <button onclick="checkDevirli4()" style="margin-left:8px; font-size:1em; padding:2px 12px; border-radius:6px; background:#fce4ec; color:#c2185b; border:1px solid #f48fb1; cursor:pointer;">Kontrol</button>
+        <span id="result-devirli-4" style="margin-left:12px;"></span>
+        <br>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        // Ondalık karekökleri
+        safeKatexRender("\\sqrt{0.36} = \\sqrt{\\frac{36}{100}} = \\frac{6}{10} = 0.6", "ondalik-karekök-ornek-1");
+        safeKatexRender("\\sqrt{2.25} = \\sqrt{\\frac{225}{100}} = \\frac{15}{10} = 1.5", "ondalik-karekök-ornek-2");
+        
+        // Rasyonel gösterim örnekleri
+        safeKatexRender("0.8 = \\frac{8}{10} = \\frac{4}{5}", "rasyonel-ornek-1");
+        safeKatexRender("0.42 = \\frac{42}{100} = \\frac{21}{50}", "rasyonel-ornek-2");
+        safeKatexRender("1.96 = \\frac{196}{100} = \\frac{49}{25}", "rasyonel-ornek-3");
+        safeKatexRender("0.0005 = \\frac{5}{10000} = \\frac{1}{2000}", "rasyonel-ornek-4");
+        
+        // Hesaplama örnekleri
+        safeKatexRender("\\sqrt{0.36} = \\sqrt{\\frac{36}{100}}", "hesaplama-ornek-1");
+        safeKatexRender("\\frac{\\sqrt{36}}{\\sqrt{100}} = \\frac{6}{10} = 0.6", "hesaplama-ornek-1-cozum");
+        safeKatexRender("\\sqrt{2.25} = \\sqrt{\\frac{225}{100}}", "hesaplama-ornek-2");
+        safeKatexRender("\\frac{\\sqrt{225}}{\\sqrt{100}} = \\frac{15}{10} = 1.5", "hesaplama-ornek-2-cozum");
+        
+        safeKatexRender("\\frac{1}{2}, \\frac{3}{4}, -2, 0.5", "rasyonel-ornek");
+        safeKatexRender("\\sqrt{2}, \\sqrt{3}, \\pi, e", "irrasyonel-ornek");
+        safeKatexRender("\\sqrt{4} = 2 \\text{ (rasyonel)}, \\sqrt{5} \\approx 2.236... \\text{ (irrasyonel)}", "ondalik-ornek");
+        
+        safeKatexRender("\\sqrt{5}, 2, \\sqrt{3} \\text{ sayılarını sırala}", "siralama-ornek-1");
+        safeKatexRender("\\sqrt{3} \\approx 1.73, 2 = 2, \\sqrt{5} \\approx 2.24 \\Rightarrow \\sqrt{3} < 2 < \\sqrt{5}", "siralama-ornek-1-cozum");
+        
+        // Devirli ondalık örnekleri
+        safeKatexRender("\\frac{a}{b}", "devirli-formul");
+        safeKatexRender("0.\\overline{5} = 0.555... \\text{ kesire çevir}", "devirli-ornek-1");
+        safeKatexRender("\\frac{5-0}{9} = \\frac{5}{9}", "devirli-ornek-1-cozum");
+        safeKatexRender("1.8\\overline{2} = 1.8222... \\text{ kesire çevir}", "devirli-ornek-2");
+        safeKatexRender("\\frac{182-18}{90} = \\frac{164}{90} = \\frac{82}{45}", "devirli-ornek-2-cozum");
+    });
+    
+    function safeKatexRender(expr, id) {
+        var el = document.getElementById(id);
+        if (el) katex.render(expr, el);
+    }
+
+    // TİP BELİRLEME FONKSİYONLARI
+    function checkTip1() {
+        var val = document.getElementById('input-tip-1').value;
+        if (val === 'rasyonel') {
+            document.getElementById('result-tip-1').innerHTML = '<span style="color:#388e3c;font-weight:bold;">Doğru! √9 = 3 (tam sayı, rasyonel)</span>';
+        } else if (val === 'irrasyonel') {
+            document.getElementById('result-tip-1').innerHTML = '<span style="color:#d32f2f;font-weight:bold;">Yanlış! √9 = 3, tam sayıdır (rasyonel)</span>';
+        } else {
+            document.getElementById('result-tip-1').innerHTML = '<span style="color:#f57c00;font-weight:bold;">Lütfen bir seçim yapın!</span>';
+        }
+    }
+
+    function checkTip2() {
+        var val = document.getElementById('input-tip-2').value;
+        if (val === 'irrasyonel') {
+            document.getElementById('result-tip-2').innerHTML = '<span style="color:#388e3c;font-weight:bold;">Doğru! √7 kesir olarak yazılamaz (irrasyonel)</span>';
+        } else if (val === 'rasyonel') {
+            document.getElementById('result-tip-2').innerHTML = '<span style="color:#d32f2f;font-weight:bold;">Yanlış! 7 tam kare değil, √7 irrasyoneldir</span>';
+        } else {
+            document.getElementById('result-tip-2').innerHTML = '<span style="color:#f57c00;font-weight:bold;">Lütfen bir seçim yapın!</span>';
+        }
+    }
+
+    function checkTip3() {
+        var val = document.getElementById('input-tip-3').value;
+        if (val === 'rasyonel') {
+            document.getElementById('result-tip-3').innerHTML = '<span style="color:#388e3c;font-weight:bold;">Doğru! 3/5 bir kesir, rasyoneldir</span>';
+        } else if (val === 'irrasyonel') {
+            document.getElementById('result-tip-3').innerHTML = '<span style="color:#d32f2f;font-weight:bold;">Yanlış! Kesir olarak yazılabilir (rasyonel)</span>';
+        } else {
+            document.getElementById('result-tip-3').innerHTML = '<span style="color:#f57c00;font-weight:bold;">Lütfen bir seçim yapın!</span>';
+        }
+    }
+
+    function checkTip4() {
+        var val = document.getElementById('input-tip-4').value;
+        if (val === 'irrasyonel') {
+            document.getElementById('result-tip-4').innerHTML = '<span style="color:#388e3c;font-weight:bold;">Doğru! π ≈ 3.14159... kesir olarak yazılamaz (irrasyonel)</span>';
+        } else if (val === 'rasyonel') {
+            document.getElementById('result-tip-4').innerHTML = '<span style="color:#d32f2f;font-weight:bold;">Yanlış! π sonsuz ondalıklı, irrasyoneldir</span>';
+        } else {
+            document.getElementById('result-tip-4').innerHTML = '<span style="color:#f57c00;font-weight:bold;">Lütfen bir seçim yapın!</span>';
+        }
+    }
+
+    function checkTip5() {
+        var val = document.getElementById('input-tip-5').value;
+        if (val === 'rasyonel') {
+            document.getElementById('result-tip-5').innerHTML = '<span style="color:#388e3c;font-weight:bold;">Doğru! √16 = 4 (tam sayı, rasyonel)</span>';
+        } else if (val === 'irrasyonel') {
+            document.getElementById('result-tip-5').innerHTML = '<span style="color:#d32f2f;font-weight:bold;">Yanlış! √16 = 4, tam sayıdır (rasyonel)</span>';
+        } else {
+            document.getElementById('result-tip-5').innerHTML = '<span style="color:#f57c00;font-weight:bold;">Lütfen bir seçim yapın!</span>';
+        }
+    }
+
+    // ONDALİK KAREKÖK FONKSİYONLARI
+    function checkOndalik1() {
+        var val = document.getElementById('input-ondalik-1').value.trim().replace(',', '.');
+        if (val === '0.6' || val === '0,6') {
+            document.getElementById('result-ondalik-1').innerHTML = '<span style="color:#388e3c;font-weight:bold;">Doğru! √0,36 = √(36/100) = 6/10 = 0,6</span>';
+        } else {
+            document.getElementById('result-ondalik-1').innerHTML = '<span style="color:#d32f2f;font-weight:bold;">Yanlış! 36/100 = (6/10)² → √0,36 = 0,6</span>';
+        }
+    }
+
+    function checkOndalik2() {
+        var val = document.getElementById('input-ondalik-2').value.trim().replace(',', '.');
+        if (val === '1.5' || val === '1,5') {
+            document.getElementById('result-ondalik-2').innerHTML = '<span style="color:#388e3c;font-weight:bold;">Doğru! √2,25 = √(225/100) = 15/10 = 1,5</span>';
+        } else {
+            document.getElementById('result-ondalik-2').innerHTML = '<span style="color:#d32f2f;font-weight:bold;">Yanlış! 225/100 = (15/10)² → √2,25 = 1,5</span>';
+        }
+    }
+
+    function checkOndalik3() {
+        var val = document.getElementById('input-ondalik-3').value.trim().replace(',', '.');
+        if (val === '1.4' || val === '1,4') {
+            document.getElementById('result-ondalik-3').innerHTML = '<span style="color:#388e3c;font-weight:bold;">Doğru! √1,96 = √(196/100) = 14/10 = 1,4</span>';
+        } else {
+            document.getElementById('result-ondalik-3').innerHTML = '<span style="color:#d32f2f;font-weight:bold;">Yanlış! 196/100 = (14/10)² → √1,96 = 1,4</span>';
+        }
+    }
+
+    // RASYONEL GÖSTERİM FONKSİYONLARI
+    function checkRasyonel1() {
+        var val = document.getElementById('input-rasyonel-1').value.trim().replace(/\s+/g, '');
+        if (val === '8/10' || val === '4/5') {
+            document.getElementById('result-rasyonel-1').innerHTML = '<span style="color:#388e3c;font-weight:bold;">Doğru! 0,8 = 8/10 = 4/5 (sadeleştirilmiş)</span>';
+        } else {
+            document.getElementById('result-rasyonel-1').innerHTML = '<span style="color:#d32f2f;font-weight:bold;">Yanlış! 1 basamak → 8/10 (veya sadeleştir: 4/5)</span>';
+        }
+    }
+
+    function checkRasyonel2() {
+        var val = document.getElementById('input-rasyonel-2').value.trim().replace(/\s+/g, '');
+        if (val === '42/100' || val === '21/50') {
+            document.getElementById('result-rasyonel-2').innerHTML = '<span style="color:#388e3c;font-weight:bold;">Doğru! 0,42 = 42/100 = 21/50 (sadeleştirilmiş)</span>';
+        } else {
+            document.getElementById('result-rasyonel-2').innerHTML = '<span style="color:#d32f2f;font-weight:bold;">Yanlış! 2 basamak → 42/100 (veya sadeleştir: 21/50)</span>';
+        }
+    }
+
+    function checkRasyonel3() {
+        var val = document.getElementById('input-rasyonel-3').value.trim().replace(/\s+/g, '');
+        if (val === '5/10000' || val === '1/2000') {
+            document.getElementById('result-rasyonel-3').innerHTML = '<span style="color:#388e3c;font-weight:bold;">Doğru! 0,0005 = 5/10000 = 1/2000 (sadeleştirilmiş)</span>';
+        } else {
+            document.getElementById('result-rasyonel-3').innerHTML = '<span style="color:#d32f2f;font-weight:bold;">Yanlış! 4 basamak → 5/10000 (veya sadeleştir: 1/2000)</span>';
+        }
+    }
+
+    // SIRALAMA FONKSİYONLARI
+    function checkSiralama1() {
+        var pos1 = document.getElementById('siralama-1-pos1').value;
+        var pos2 = document.getElementById('siralama-1-pos2').value;
+        var pos3 = document.getElementById('siralama-1-pos3').value;
+        var resultSpan = document.getElementById('result-siralama-1');
+        
+        // Doğru sıra: √3 < 2 < √5
+        if (pos1 === '√3' && pos2 === '2' && pos3 === '√5') {
+            resultSpan.innerHTML = '<span style="color:#388e3c;font-weight:bold;display:block;margin-top:10px;">✅ Doğru! √3 ≈ 1.73 < 2 < √5 ≈ 2.24</span>';
+        } else if (pos1 === '' || pos2 === '' || pos3 === '') {
+            resultSpan.innerHTML = '<span style="color:#f57c00;font-weight:bold;display:block;margin-top:10px;">⚠️ Lütfen tüm kutucukları doldurun!</span>';
+        } else if (pos1 === pos2 || pos2 === pos3 || pos1 === pos3) {
+            resultSpan.innerHTML = '<span style="color:#f57c00;font-weight:bold;display:block;margin-top:10px;">⚠️ Her sayıyı bir kez kullanmalısın!</span>';
+        } else {
+            resultSpan.innerHTML = '<span style="color:#d32f2f;font-weight:bold;display:block;margin-top:10px;">❌ Yanlış! √3 ≈ 1.73, 2 = 2, √5 ≈ 2.24<br>Doğru sıra: √3 < 2 < √5</span>';
+        }
+    }
+
+    function checkSiralama2() {
+        var pos1 = document.getElementById('siralama-2-pos1').value;
+        var pos2 = document.getElementById('siralama-2-pos2').value;
+        var pos3 = document.getElementById('siralama-2-pos3').value;
+        var resultSpan = document.getElementById('result-siralama-2');
+        
+        // Doğru sıra: √7 < 3 < √10
+        if (pos1 === '√7' && pos2 === '3' && pos3 === '√10') {
+            resultSpan.innerHTML = '<span style="color:#388e3c;font-weight:bold;display:block;margin-top:10px;">✅ Doğru! √7 ≈ 2.65 < 3 < √10 ≈ 3.16</span>';
+        } else if (pos1 === '' || pos2 === '' || pos3 === '') {
+            resultSpan.innerHTML = '<span style="color:#f57c00;font-weight:bold;display:block;margin-top:10px;">⚠️ Lütfen tüm kutucukları doldurun!</span>';
+        } else if (pos1 === pos2 || pos2 === pos3 || pos1 === pos3) {
+            resultSpan.innerHTML = '<span style="color:#f57c00;font-weight:bold;display:block;margin-top:10px;">⚠️ Her sayıyı bir kez kullanmalısın!</span>';
+        } else {
+            resultSpan.innerHTML = '<span style="color:#d32f2f;font-weight:bold;display:block;margin-top:10px;">❌ Yanlış! √7 ≈ 2.65, 3 = 3, √10 ≈ 3.16<br>Doğru sıra: √7 < 3 < √10</span>';
+        }
+    }
+
+    // DEVİRLİ ONDALIK FONKSİYONLARI
+    function checkDevirli1() {
+        var val = document.getElementById('input-devirli-1').value.trim().replace(/\s+/g, '');
+        if (val === '5/9') {
+            document.getElementById('result-devirli-1').innerHTML = '<span style="color:#388e3c;font-weight:bold;">Doğru! Pay: 5-0=5, Payda: 9 (1 devreden) → 5/9</span>';
+        } else {
+            document.getElementById('result-devirli-1').innerHTML = '<span style="color:#d32f2f;font-weight:bold;">Yanlış! Tamamı 5, devretmeyen yok (5-0)/9 = 5/9</span>';
+        }
+    }
+
+    function checkDevirli2() {
+        var val = document.getElementById('input-devirli-2').value.trim().replace(/\s+/g, '');
+        if (val === '164/90' || val === '82/45') {
+            document.getElementById('result-devirli-2').innerHTML = '<span style="color:#388e3c;font-weight:bold;">Doğru! Pay: 182-18=164, Payda: 90 (1 devreden, 1 devretmeyen) → 164/90 = 82/45</span>';
+        } else {
+            document.getElementById('result-devirli-2').innerHTML = '<span style="color:#d32f2f;font-weight:bold;">Yanlış! (182-18)/90 = 164/90 (sadeleştir: 82/45)</span>';
+        }
+    }
+
+    function checkDevirli3() {
+        var val = document.getElementById('input-devirli-3').value.trim().replace(/\s+/g, '');
+        if (val === '3/9' || val === '1/3') {
+            document.getElementById('result-devirli-3').innerHTML = '<span style="color:#388e3c;font-weight:bold;">Doğru! Pay: 3-0=3, Payda: 9 → 3/9 = 1/3 (sadeleştirilmiş)</span>';
+        } else {
+            document.getElementById('result-devirli-3').innerHTML = '<span style="color:#d32f2f;font-weight:bold;">Yanlış! (3-0)/9 = 3/9 = 1/3</span>';
+        }
+    }
+
+    function checkDevirli4() {
+        var val = document.getElementById('input-devirli-4').value.trim().replace(/\s+/g, '');
+        if (val === '221/90') {
+            document.getElementById('result-devirli-4').innerHTML = '<span style="color:#388e3c;font-weight:bold;">Doğru! Pay: 245-24=221, Payda: 90 (1 devreden, 1 devretmeyen) → 221/90</span>';
+        } else {
+            document.getElementById('result-devirli-4').innerHTML = '<span style="color:#d32f2f;font-weight:bold;">Yanlış! (245-24)/90 = 221/90</span>';
+        }
+    }
+    </script>
+</div>
+<style>
+.kareli-bg {
+    background-image: url('https://www.transparenttextures.com/patterns/squared-paper.png');
+    background-repeat: repeat;
+}
+.ozel-baslik {
+    background: #c5e1f7;
+    color: #8e24aa;
+    font-size: 2em;
+    font-weight: bold;
+    border-bottom: 4px solid #8e24aa;
+    padding: 8px 24px;
+    margin-bottom: 18px;
+    border-radius: 8px;
+    box-shadow: 2px 2px 8px #e0e0e0;
+    display: inline-block;
+}
+.aciklama-kutu {
+    background: #e3f2fd;
+    color: #1976d2;
+    font-size: 1.15em;
+    padding: 10px 18px;
+    border-radius: 8px;
+    margin-bottom: 18px;
+    border-left: 6px solid #1976d2;
+    max-width: 700px;
+}
+.formul-kutu {
+    background: #fff;
+    border: 2px solid #d32f2f;
+    border-radius: 8px;
+    display: inline-block;
+    padding: 10px 24px;
+    margin-bottom: 24px;
+    margin-left: 12px;
+    box-shadow: 1px 1px 8px #e0e0e0;
+}
+</style>
+{% endblock %}
