@@ -1,0 +1,133 @@
+{% extends "base.html" %}
+{% block extra_head %}
+<link rel="stylesheet" href="/static/dersler.css">
+<style>
+    .floating-icon { position:absolute; font-size:3em; opacity:0.12; pointer-events:none; z-index:0; }
+    .container { position:relative; }
+    @media (max-width:768px){ .floating-icon{ display:none; } }
+    .pill { display:inline-block; padding:6px 12px; border-radius:999px; font-weight:600; }
+</style>
+{% endblock %}
+{% block content %}
+<div class="container">
+    <!-- Yüzen ikonlar -->
+    <div class="floating-icon" style="top:120px; left:-60px;">⚔️</div>
+    <div class="floating-icon" style="top:300px; left:-70px;">🎯</div>
+    <div class="floating-icon" style="top:520px; left:-65px;">📜</div>
+    <div class="floating-icon" style="top:120px; right:-60px;">🏛️</div>
+    <div class="floating-icon" style="top:340px; right:-70px;">🛡️</div>
+
+    <h1 class="main-title">Batı Cephesi ve Düzenli Ordunun Kurulması <span style="color:#3949ab;">⚔️</span></h1>
+    <p style="text-align:center; color:#555; max-width:900px; margin:0 auto 28px auto;">Mondros sonrasında dağılan Osmanlı ordusunun yerini alacak düzenli ordunun kurulması, Kuvâ-yı Millîye'den düzenli orduya geçiş, İnönü savaşları ve Batı Cephesi'nin yapılandırılması.</p>
+
+    <!-- Düzenli Orduya Geçiş -->
+    <section class="section">
+        <h2><span style="color:#3949ab;">&#9733;</span> Düzenli Ordunun Kurulması</h2>
+        <div class="highlight-box" style="background:#e8eaf6; padding:20px; border-radius:12px;">
+            <b style="color:#283593;">Mondros sonrası tablo:</b> Osmanlı ordusu dağıldı; 15. ve 20. Kolordular dışında düzenli birlik kalmadı. Kuvâ-yı Millîye batı ve güneyde fedakârca direnirken, merkezî disiplin eksikliği meclis otoritesini zedeliyordu.
+        </div>
+        <div class="example-box" style="margin-top:18px;">
+            <ul style="line-height:1.8;">
+                <li><b>Sivas Kongresi sonrası:</b> Temsil Heyeti, Batı Anadolu Kuvâ-yı Millîye'sini örgütlemek için Ali Fuat Paşa'yı Batı Anadolu Genel Kuvâ-yı Milliye Komutanı yaptı.</li>
+                <li><b>Gediz Taarruzu (Ekim 1920):</b> Kuvâ-yı Millîye Yunanlara hücum etti ancak başarısız oldu; dağınıklık ve disiplin sorunları ortaya çıktı.</li>
+                <li><b>9 Kasım 1920:</b> Batı Cephesi ikiye ayrıldı. <span class="pill" style="background:#303f9f; color:white;">İzmit-Kütahya arası</span> Batı Cephesi Komutanı Albay İsmet (İnönü); <span class="pill" style="background:#1565c0; color:white;">Afyon-Adana arası</span> Güney Cephesi Komutanı Albay Refet (Bele).</li>
+                <li><b>Kuvâ-yı Millîye'den düzene geçiş:</b> Birlikler Genelkurmay'a bağlandı; düzen ve disiplin hedeflendi.</li>
+                <li><b>Baş eğmeyenler:</b> Demirci Mehmet Efe, Çerkez Ethem gibi komutanlar ayaklandı; düzenli ordu bastırdı.</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- I. İnönü -->
+    <section class="section">
+        <h2><span style="color:#3949ab;">&#9733;</span> I. İnönü Muharebesi (6-10 Ocak 1921)</h2>
+        <div class="highlight-box" style="background:#e8eaf6; padding:20px; border-radius:12px;">
+            <b style="color:#283593;">Amaç:</b> Yunanlar, Eskişehir'i alıp demiryoluyla Ankara'ya ulaşmak ve Meclisi dağıtmak istedi. İngiliz desteğiyle yeni kurulan düzenli orduyu yok etmeyi hedeflediler.
+        </div>
+        <div class="example-box" style="margin-top:16px;">
+            <ul style="line-height:1.8;">
+                <li>6 Ocak: Bursa-Uşak hattından Eskişehir-Afyon yönüne saldırı başladı.</li>
+                <li>9-10 Ocak: İnönü mevzilerinde şiddetli çarpışmalar; <b>İsmet Bey</b> komutasındaki Türk ordusu Yunanları durdurdu.</li>
+                <li><b>Sonuç:</b> Yunanlar geri çekildi; düzenli ordunun ilk zaferi kazanıldı.</li>
+            </ul>
+        </div>
+        <div class="highlight-box" style="background:#f1f8e9; padding:18px; border-radius:10px;">
+            <b style="color:#2e7d32;">Zaferin etkileri:</b>
+            <ul style="line-height:1.7; margin-top:8px;">
+                <li>Teşkilat-ı Esasiye Kanunu (20 Ocak 1921) kabul edildi; yeni Türk Devleti'nin ilk anayasası.</li>
+                <li>Çerkez Ethem Ayaklanması bastırıldı.</li>
+                <li>Londra Konferansı kararı alındı; TBMM'nin meşruiyeti duyuruldu.</li>
+                <li>TBMM-Afganistan Dostluk Antlaşması imzalandı.</li>
+                <li>İstiklal Marşı (12 Mart 1921) millî marş kabul edildi.</li>
+                <li>Sovyet Rusya ile Moskova Antlaşması (16 Mart 1921) imzalandı.</li>
+                <li>İngiltere'nin Yunanlara güveni sarsıldı; halkın ordu ve Meclise güveni arttı.</li>
+                <li>İsmet Bey generalliğe yükseltildi.</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- II. İnönü -->
+    <section class="section">
+        <h2><span style="color:#3949ab;">&#9733;</span> II. İnönü Muharebesi (23 Mart - 1 Nisan 1921)</h2>
+        <div class="highlight-box" style="background:#e8eaf6; padding:20px; border-radius:12px;">
+            <b style="color:#283593;">Sebep:</b> Londra Konferansı'nda TBMM'nin barış taslağını reddetmesi üzerine İngiliz desteğiyle Yunanlar yeniden saldırdı; Eskişehir, Kütahya, Afyon üzerinden Ankara'yı hedefledi.
+        </div>
+        <div class="example-box" style="margin-top:14px;">
+            <ul style="line-height:1.8;">
+                <li>23 Mart: Yunan saldırısı başladı.</li>
+                <li>26-31 Mart: İnönü mevzilerinde çetin çarpışmalar; Türk ordusu savunmada kaldı.</li>
+                <li>1 Nisan: Yunanlar geri çekildi; Afyon'u boşalttılar.</li>
+            </ul>
+        </div>
+        <div class="highlight-box" style="background:#f1f8e9; padding:16px; border-radius:10px;">
+            <b style="color:#2e7d32;">Sonuçlar:</b>
+            <ul style="line-height:1.7; margin-top:6px;">
+                <li>Mustafa Kemal Paşa: "Siz yalnız düşmanı değil, milletin makus talihini de yendiniz."</li>
+                <li>TBMM ve orduya güven yükseldi; İtalya çekilmeye başladı, Yunanlar Kocaeli'den, Fransızlar Zonguldak'tan çekildi.</li>
+                <li>Malta'daki 40 Türk esir serbest bırakıldı.</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Kütahya-Eskişehir -->
+    <section class="section">
+        <h2><span style="color:#3949ab;">&#9733;</span> Kütahya-Eskişehir Muharebeleri (10-24 Temmuz 1921)</h2>
+        <div class="highlight-box" style="background:#e8eaf6; padding:20px; border-radius:12px;">
+            <b style="color:#283593;">Gelişmeler:</b> II. İnönü'den sonra Türk taarruz denemeleri sonuç vermedi. Yunan Kralı Konstantin yeni saldırıyı açıkladı; Yunan ordusu hazırlıklarını tamamladı.
+        </div>
+        <div class="example-box" style="margin-top:14px;">
+            <ul style="line-height:1.8;">
+                <li>10 Temmuz: Yunan genel saldırısı başladı.</li>
+                <li>13-19 Temmuz: Afyon, Kütahya, Eskişehir düştü; geniş cephede savunma yapılamadı.</li>
+                <li><b>Sakarya'nın doğusuna çekilme:</b> Mustafa Kemal Paşa emriyle taktik geri çekilme; ordunun yıpranması önlendi, Yunan ordusu lojistikten uzaklaştırıldı.</li>
+            </ul>
+        </div>
+        <div class="highlight-box" style="background:#fff3e0; padding:16px; border-radius:10px;">
+            <b style="color:#e65100;">Etkiler:</b>
+            <ul style="line-height:1.7; margin-top:6px;">
+                <li>Meclisin Kayseri'ye taşınması tartışıldı; Mustafa Kemal sorumluluğu üstlenerek Başkomutanlığa giden yolu açtı.</li>
+                <li>Fransa görüşmeleri erteledi; İtalya çekilme kararını askıya aldı.</li>
+                <li>Ordunun yeniden hazırlanması için Sakarya öncesi zaman kazanıldı.</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Anayasa ve Diplomasi -->
+    <section class="section">
+        <h2><span style="color:#3949ab;">&#9733;</span> Anayasa ve Diplomasi Adımları</h2>
+        <div class="example-box">
+            <ul style="line-height:1.8;">
+                <li><b>Teşkilat-ı Esasiye Kanunu (20 Ocak 1921):</b> 24 maddelik ilk anayasa; egemenlik kayıtsız şartsız milletindir, yasama-yürütme TBMM'de toplanır.</li>
+                <li><b>Londra Konferansı (21 Şubat - 12 Mart 1921):</b> TBMM doğrudan davet edildi; Bekir Sami Bey Misak-ı Millî'yi savundu, Sevr reddedildi, TBMM fiilen tanındı.</li>
+                <li><b>Afganistan Dostluk Antlaşması (1 Mart 1921):</b> İlk Müslüman devlet tanıması; karşılıklı bağımsızlık ve askerî eğitim desteği.</li>
+                <li><b>İstiklal Marşı (12 Mart 1921):</b> Mehmet Âkif'in eseri millî marş oldu; Osman Zeki Üngör bestesi 1930'dan itibaren kullanıldı.</li>
+                <li><b>Moskova Antlaşması (16 Mart 1921):</b> Sovyet Rusya Misak-ı Millî'yi büyük ölçüde tanıdı; Kars-Ardahan-Artvin TBMM'ye bırakıldı, Batum Gürcistan'a; gizli antlaşmalar reddedildi.</li>
+            </ul>
+        </div>
+    </section>
+
+    <div style="margin:40px auto; text-align:center; padding-bottom:60px;">
+        <a href="/inkilap/unite-3/" style="display:inline-block; padding:14px 28px; background:#3949ab; color:white; border-radius:8px; text-decoration:none; font-weight:bold; font-size:1.05em; box-shadow:0 2px 8px rgba(0,0,0,0.2); margin-right:12px;">← 3. Ünite Ana Sayfa</a>
+        <a href="/inkilap/" style="display:inline-block; padding:14px 28px; background:#c5cae9; color:#1a237e; border-radius:8px; text-decoration:none; font-weight:bold; font-size:1.05em; box-shadow:0 2px 8px rgba(0,0,0,0.2);">← İnkılap Tarihi Ana Sayfa</a>
+    </div>
+</div>
+{% endblock %}

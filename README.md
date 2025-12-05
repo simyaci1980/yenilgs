@@ -197,7 +197,108 @@ box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 
 **Not:** Yeni sayfa eklerken içeriği ortalamak için `<div class="container">` kullan, `brochure-container` kullanma.
 
+---
+
+### Fen Ünitesi Ara Sayfası Stili (Beğenilen Stil ⭐)
+
+**Dosya:** `lgsweb/templates/fen/fen_unite_1.html`
+
+**Temel Özellikler:**
+- 📐 Layout: Tek kolon grid (`grid-template-columns: 1fr`)
+- 📦 Maksimum genişlik: 800px, ortalanmış
+- 🎨 Gradient kartlar: 135deg açılı, aktif konular canlı renk
+- 📱 Responsive: Mobilde otomatik uyumlu
+
+**Tasarım Bileşenleri:**
+
+1. **Başlık ve Alt Başlık:**
+```html
+<h1 class="main-title">1. ÜNİTE: MEVSİMLER VE İKLİM 🌍</h1>
+<p style="text-align:center; color:#666; font-size:1.1em; margin-bottom:40px;">
+    Bu ünitede Dünya'nın hareketleri, mevsimler ve iklim konularını öğreneceğiz.
+</p>
+```
+
+2. **Tek Kolon Grid Container:**
+```html
+<div style="display:grid; grid-template-columns:1fr; gap:20px; max-width:800px; margin:0 auto;">
+```
+
+3. **Aktif Konu Kartı:**
+```html
+<a href="/fen/mevsimler-iklim/" 
+   style="display:block; 
+          background:linear-gradient(135deg, #2196F3 0%, #1976d2 100%); 
+          padding:24px; 
+          border-radius:12px; 
+          text-decoration:none; 
+          color:white; 
+          box-shadow:0 4px 12px rgba(0,0,0,0.15); 
+          transition:transform 0.2s;" 
+   onmouseover="this.style.transform='translateY(-4px)'" 
+   onmouseout="this.style.transform='translateY(0)'">
+    <div style="display:flex; align-items:center; gap:16px;">
+        <div style="font-size:3em;">🌍</div>
+        <div style="flex:1;">
+            <h2 style="margin:0; font-size:1.4em; color:white;">Mevsimler ve İklim</h2>
+            <p style="margin:8px 0 0 0; opacity:0.9; font-size:0.95em;">
+                Dünya'nın hareketleri, eksen eğikliği...
+            </p>
+        </div>
+        <div style="font-size:2em;">→</div>
+    </div>
+</a>
+```
+
+4. **Kilitli/Hazırlanıyor Konu Kartı (Eskisi):**
+```html
+<div style="display:block; 
+            background:linear-gradient(135deg, #90caf9 0%, #64b5f6 100%); 
+            padding:24px; 
+            border-radius:12px; 
+            color:white; 
+            box-shadow:0 4px 12px rgba(0,0,0,0.1); 
+            opacity:0.7;">
+    <div style="display:flex; align-items:center; gap:16px;">
+        <div style="font-size:3em;">🌡️</div>
+        <div style="flex:1;">
+            <h2 style="margin:0; font-size:1.4em; color:white;">İklim Olayları</h2>
+            <p style="margin:8px 0 0 0; opacity:0.9; font-size:0.95em;">
+                (Yakında eklenecek)
+            </p>
+        </div>
+        <div style="font-size:1.5em; opacity:0.5;">🔒</div>
+    </div>
+</div>
+```
+
+**Renk Paletleri (Fen için):**
+- Mavi: `#2196F3`, `#1976d2` (Ana konu rengi)
+- Teal/Yeşil: `#00897b`, `#00695c` (İkinci konu)
+- Açık mavi: `#90caf9`, `#64b5f6` (Kilitli durum)
+
+**Avantajlar:**
+- ✅ Tek kolon = Mobilde düzen bozulmaz
+- ✅ Hover efekti = Etkileşimli, modern
+- ✅ Gradient = Görsel derinlik
+- ✅ Emoji + Ok = Net navigasyon
+- ✅ Opacity 0.7 = Kilitli konular belli
+
+**Kullanım Kuralı:**
+- 🔧 Tüm fen ünitesi ara sayfaları (`fen_unite_1.html`, `fen_unite_2.html`, vb.) bu stili kullanmalı
+- 🎨 Renk değişimi: Her ünite için farklı gradient tonları seçilebilir
+- 📝 İçerik: Ünite başlığı + kısa açıklama + konu kartları
+
+**Örnek Uygulama:**
+```
+fen.html (7 ünite kartı)
+  └─ fen_unite_1.html (2 konu kartı - TEK KOLON)
+       ├─ mevsimler_iklim.html
+       └─ iklim_olaylari.html
+```
+
 
 ## 📄 Lisans
 
 Eğitim amaçlı proje.
+

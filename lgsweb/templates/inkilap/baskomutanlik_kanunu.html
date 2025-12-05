@@ -1,0 +1,115 @@
+{% extends "base.html" %}
+{% block extra_head %}
+<link rel="stylesheet" href="/static/dersler.css">
+<style>
+    .floating-icon { position:absolute; font-size:3em; opacity:0.12; pointer-events:none; z-index:0; }
+    .container { position:relative; }
+    @media (max-width:768px){ .floating-icon{ display:none; } }
+    .list-item { background:#fff8e1; padding:12px 14px; border-left:4px solid #f57f17; border-radius:4px; margin:8px 0; }
+</style>
+{% endblock %}
+{% block content %}
+<div class="container">
+    <!-- Yüzen ikonlar -->
+    <div class="floating-icon" style="top:120px; left:-60px;">⚖️</div>
+    <div class="floating-icon" style="top:320px; left:-70px;">📜</div>
+    <div class="floating-icon" style="top:520px; left:-65px;">💪</div>
+    <div class="floating-icon" style="top:140px; right:-60px;">🛡️</div>
+    <div class="floating-icon" style="top:340px; right:-70px;">🇹🇷</div>
+
+    <h1 class="main-title">3.4 Başkomutanlık Kanunu (5 Ağustos 1921) <span style="color:#e65100;">⚖️</span></h1>
+    <p style="text-align:center; color:#555; max-width:900px; margin:0 auto 28px auto;">
+        Kütahya-Eskişehir yenilgisinden sonra parlamento tartışmalarıyla çalkantıda olan Türkiye, Mustafa Kemal Paşa'ya sınırsız yetkiler vererek kritik dönemi atlattı. Ardından Tekalif-i Milliye Emirleriyle millet tüm kaynakları seferber etti.
+    </p>
+
+    <!-- Kütahya-Eskişehir ve Kriz -->
+    <section class="section">
+        <h2><span style="color:#e65100;">&#9733;</span> Kütahya-Eskişehir Yenilgisi ve Mecliste Kriz</h2>
+        <div class="highlight-box" style="background:#fff3e0; padding:20px; border-radius:12px;">
+            <b style="color:#e65100;">Durumu:</b> Türk ordusu Sakarya'nın doğusuna çekildi; Yunanlar Ankara'ya yaklaştı. Mecliste şiddetli tartışmalar çıktı.
+        </div>
+        <div class="example-box" style="margin-top:14px;">
+            <ul style="line-height:1.8;">
+                <li><b>Muhalif milletvekillerinin eleştirileri:</b> Başkomutan Fevzi Paşa ve Mustafa Kemal Paşa'yı sorumlu tutmuşlardı.</li>
+                <li><b>Sorular:</b> "Ordu nereye gidiyor? Millet nereye götürülüyor? Sorumlu kim?" Muhalifler ordunun başında sorumlu kişi görmek istiyorlardı.</li>
+                <li><b>Mustafa Kemal'in cevabı:</b> Atatürk'ün Nutuk'ta belirttiği gibi, kötümselik hava meydana gelmişti; ama bu en buhranlı günlerde ordunun devamla direnmesi gerekiyordu.</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Başkomutanlık Kanunu -->
+    <section class="section">
+        <h2><span style="color:#e65100;">&#9733;</span> Başkomutanlık Kanunu (5 Ağustos 1921)</h2>
+        <div class="highlight-box" style="background:#fff3e0; padding:20px; border-radius:12px;">
+            <b style="color:#e65100;">Karar:</b> Hem Mustafa Kemal'e inanan hem muhalif milletvekillerinin çoğu onun ordunun başında görmesini istedi. 4 Ağustos gizli oturumda Mustafa Kemal önerge verdi.
+        </div>
+        <div class="example-box" style="margin-top:14px;">
+            <ul style="line-height:1.8;">
+                <li><b>Kanunun içeriği (5 madde):</b> Mustafa Kemal Paşa'ya başkomutanlık verildi.</li>
+                <li><b>Yetkiler:</b> Meclisin tüm olağanüstü yetkilerini (yasama, yürütme) <b>3 ay süreyle</b> kullanacaktı; gerekirse uzatılacaktı.</li>
+                <li><b>Pratik sonuç:</b> Ordu kararlarında hız ve karar birliği sağlandı; savaş malzeme ve stratejisinde tek kişi sorumlu oldu.</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Mustafa Kemal'in İdadesi -->
+    <section class="section">
+        <h2><span style="color:#e65100;">&#9733;</span> Başkomutanlık Yetkisi Alırken Söyledikleri</h2>
+        <div class="highlight-box" style="background:#fff8e1; padding:20px; border-radius:12px;">
+            <b style="color:#e65100;">Nutuk'ta kayıtlı sözler:</b><br><br>
+            <i style="color:#555; font-size:1.05em;">
+                "...Ulusumuzu esir etmek isteyen düşmanları ne olursa olsun yeneceğimize olan iman ve güvenim, bir dakika olsun sarsılmamıştır. Bu dakikada, bu tam inancımı yüce kurulunuza karşı, bütün millete karşı ve bütün dünyaya karşı ilan ederim…"
+            </i><br><br>
+            Kütahya-Eskişehir yenilgisine rağmen, Mustafa Kemal vatanın kurtuluşu için tüm sorumluluğu üzerine aldı ve zafer inancını duyurdu.
+        </div>
+    </section>
+
+    <!-- Tekalif-i Milliye Emirleri -->
+    <section class="section">
+        <h2><span style="color:#e65100;">&#9733;</span> Tekalif-i Milliye Emirleri (7-8 Ağustos 1921)</h2>
+        <div class="highlight-box" style="background:#fff3e0; padding:20px; border-radius:12px;">
+            <b style="color:#e65100;">Amaç:</b> Polatlı'daki karargâhta ordu komuta ettikten sonra Mustafa Kemal Paşa, ordunun Yunan saldırısına karşılık vermesi için asker, silah, cephane ve malzeme ihtiyacını gidermek istedi. Başkomutanlık yasama yetkisini kullanarak bu emirleri yayımladı.
+        </div>
+        <div class="example-box" style="margin-top:14px;">
+            <ul style="line-height:1.8;">
+                <li><b>Uygulamalar:</b> Her ilçede komisyonlar kuruldu; hukuki sorunlar için bazı illere İstiklal Mahkemeleri gönderildi (fakat pek gerek olmadı).</li>
+                <li><b>Halk desteği:</b> Türk milleti vatanı için hiçbir fedakârlıktan kaçınmadı; bu millî dayanışmaya seve seve katıldı.</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Emirlerin Konuları -->
+    <section class="section">
+        <h2><span style="color:#e65100;">&#9733;</span> Tekalif-i Milliye Emirleri'nin İçeriği</h2>
+        <div class="example-box">
+            <ul style="line-height:1.8;">
+                <li><b>Kişisel eşyalar:</b> Her ev birer kat çamaşır, birer çift çorap ve çarık hazırlayıp komisyona verecektir.</li>
+                <li><b>Ticari mallar:</b> Çamaşırlık bez, kaput bezi, pamuk, yün, tiftik, demir kundura çivisi, tel çivi, çarık ipliği, nal, yular, kaşağı gibi malların <b>%40'ına el konacak</b> (para sonra ödenir).</li>
+                <li><b>Gıda ve çamaştırıcı:</b> Halkın buğday, saman, un, arpa, fasulye, nohut, şeker, sabun, yağ gibi ürünlerinin <b>%40'ına el konacak</b> (para sonra ödenir).</li>
+                <li><b>Ulaşım:</b> Taşıt olanlar ayda bir kez 100 km'lik mesafeye askeri nakliye yapacak (bedelsiz).</li>
+                <li><b>Silah ve cephane:</b> Halkın elindeki savaşa elverişli bütün silah ve cephane <b>3 gün içinde</b> komisyona verilecektir.</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Millî Dayanışma -->
+    <section class="section">
+        <h2><span style="color:#e65100;">&#9733;</span> Millî Dayanışmanın Göstergesi</h2>
+        <div class="highlight-box" style="background:#e8f5e9; padding:20px; border-radius:12px;">
+            <b style="color:#2e7d32;">Sonuç:</b> Tekalif-i Milliye Emirleriyle Türk milleti maddi ve maneli tüm kaynaklarını ordu için seferber etti. Sadece emirleri uygulamakla kalmadı; <b>vatanseverlik, millî birlik, beraberlik, millî dayanışma ve fedakârlığın güzel örneklerinden birini bütün dünyaya gösterdi.</b>
+        </div>
+        <div class="example-box" style="margin-top:14px;">
+            <ul style="line-height:1.8;">
+                <li>İhtiyaçları büyük ölçüde giderilen Türk ordusu savaşa hazır hale geldi.</li>
+                <li>Bundan sonra Sakarya boylarında <b>ölüm kalım savaşı</b> başlayacaktı.</li>
+                <li>Bu dayanışma Yunan saldırısını yenmede kritik rol oynayacaktı.</li>
+            </ul>
+        </div>
+    </section>
+
+    <div style="margin:40px auto; text-align:center; padding-bottom:60px;">
+        <a href="/inkilap/unite-3/" style="display:inline-block; padding:14px 28px; background:#e65100; color:white; border-radius:8px; text-decoration:none; font-weight:bold; font-size:1.05em; box-shadow:0 2px 8px rgba(0,0,0,0.2); margin-right:12px;">← 3. Ünite Ana Sayfa</a>
+        <a href="/inkilap/" style="display:inline-block; padding:14px 28px; background:#ffe0b2; color:#bf360c; border-radius:8px; text-decoration:none; font-weight:bold; font-size:1.05em; box-shadow:0 2px 8px rgba(0,0,0,0.2);">← İnkılap Tarihi Ana Sayfa</a>
+    </div>
+</div>
+{% endblock %}

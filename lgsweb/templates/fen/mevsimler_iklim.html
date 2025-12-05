@@ -1,0 +1,489 @@
+{% extends "base.html" %}
+{% block extra_head %}
+    <link rel="stylesheet" href="/static/dersler.css">
+    <style>
+        .floating-icon {
+            position: absolute;
+            font-size: 3em;
+            opacity: 0.15;
+            pointer-events: none;
+            z-index: 0;
+        }
+        .container {
+            position: relative;
+        }
+        @media (max-width: 768px) {
+            .floating-icon {
+                display: none;
+            }
+        }
+    </style>
+{% endblock %}
+{% block content %}
+<div class="container">
+    <!-- Yüzen İkonlar - Sol -->
+    <div class="floating-icon" style="top: 100px; left: -60px;">🌍</div>
+    <div class="floating-icon" style="top: 300px; left: -70px;">☀️</div>
+    <div class="floating-icon" style="top: 500px; left: -65px;">🌧️</div>
+    <div class="floating-icon" style="top: 700px; left: -60px;">❄️</div>
+    <div class="floating-icon" style="top: 900px; left: -70px;">🌡️</div>
+    
+    <!-- Yüzen İkonlar - Sağ -->
+    <div class="floating-icon" style="top: 150px; right: -60px;">🌤️</div>
+    <div class="floating-icon" style="top: 350px; right: -70px;">🌈</div>
+    <div class="floating-icon" style="top: 550px; right: -65px;">🌊</div>
+    <div class="floating-icon" style="top: 750px; right: -60px;">🍂</div>
+    <div class="floating-icon" style="top: 950px; right: -70px;">🌸</div>
+
+    <h1 class="main-title">MEVSİMLER VE İKLİM <span style="color:#1976d2;">🌍</span></h1>
+    <ul class="topic-list">
+        <li>Mevsimler Nasıl Oluşur?</li>
+        <li>Hava Durumu ve İklim</li>
+    </ul>
+    <hr>
+
+    <!-- MEVSİMLER NASIL OLUŞUR -->
+    <section class="section">
+        <h2><span style="color:#1976d2;">&#9733;</span> Mevsimler Nasıl Oluşur?</h2>
+        
+        <!-- Dünya'nın Şekli ve Hareketleri -->
+        <div class="example-box" style="background:#fff; border-left:6px solid #1976d2; padding:20px; border-radius:8px; margin-top:24px; box-shadow:0 2px 8px rgba(0,0,0,0.1);">
+            <h3 style="color:#1565c0; margin-top:0;">🌍 Dünya'nın Şekli ve Hareketleri</h3>
+            
+            <div style="background:#e3f2fd; padding:16px; border-radius:8px; margin:12px 0;">
+                <b style="color:#0d47a1;">Dünya'nın Şekli:</b><br>
+                <span style="color:#555;">Dünya <b>geoid</b> şeklindedir. Kürenin kutuplardan basık, ekvatordan şişkin biçimidir.</span><br>
+                <span style="color:#555;">• Güneş ışınları yeryüzüne <b>farklı açılarla</b> düşer</span>
+            </div>
+
+            <div style="margin:16px 0;">
+                <b style="color:#1565c0;">İki Temel Hareket:</b><br><br>
+                
+                <div style="background:#fff9c4; padding:12px; border-radius:8px; margin:8px 0;">
+                    <b style="color:#f57f17;">1️⃣ Dönme Hareketi (Günlük Hareket):</b><br>
+                    <span style="color:#555;">• Dünya kendi ekseni etrafında <b>batıdan doğuya</b> döner</span><br>
+                    <span style="color:#555;">• Bir tam dönüş: <b>24 saat</b></span><br>
+                    <span style="color:#555;">• Sonuç: <b style="color:#e53935;">Gece-gündüz oluşur</b></span><br>
+                    <span style="color:#555;">• Gün içinde sıcaklıklar değişir</span><br>
+                    <span style="color:#555;">• Cisimlerin gölge boyu gün içinde değişir</span>
+                </div>
+
+                <div style="background:#c8e6c9; padding:12px; border-radius:8px; margin:8px 0;">
+                    <b style="color:#2e7d32;">2️⃣ Dolanma Hareketi (Yıllık Hareket):</b><br>
+                    <span style="color:#555;">• Dünya Güneş etrafında dolanır</span><br>
+                    <span style="color:#555;">• Bir tur: <b>365 gün 6 saat</b></span><br>
+                    <span style="color:#555;">• Yörünge şekli: <b>Elips</b></span><br>
+                    <span style="color:#555;">• Dünya'nın ekseni <b>eğiktir</b></span><br>
+                    <span style="color:#555;">• Sonuç: <b style="color:#e53935;">Mevsimler oluşur</b></span><br>
+                    <span style="color:#555;">• Yıl içinde sıcaklıklar değişir</span><br>
+                    <span style="color:#555;">• Gece-gündüz süreleri değişir</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="highlight-box" style="background:#e3f2fd; padding:24px; border-radius:12px; margin-top:24px;">
+            <b style="color:#0d47a1;">Mevsimlerin Oluşmasında İki Olay Etkilidir:</b>
+            <div style="margin-top:12px; line-height:1.8;">
+                <span style="color:#555;">1️⃣ Dünya'nın <b style="color:#1976d2;">Güneş etrafında dolanması</b> (Yıllık hareket)</span><br>
+                <span style="color:#555;">2️⃣ Dünya'nın dönme ekseninin <b style="color:#1976d2;">eğik olması</b> (23° 27')</span>
+            </div>
+            <div style="background:#fff3e0; padding:12px; border-radius:8px; margin-top:16px; border-left:4px solid #f57f17;">
+                <b style="color:#e65100;">⚠️ ÖNEMLİ:</b> Dünya'nın Güneş'e olan <b>uzaklığı mevsimleri etkilemez!</b><br>
+                <span style="color:#666; font-size:0.9em;">• 3 Ocak: Güneş'e en yakın → Kuzey yarımkürede KIŞ</span><br>
+                <span style="color:#666; font-size:0.9em;">• 4 Temmuz: Güneş'e en uzak → Kuzey yarımkürede YAZ</span>
+            </div>
+        </div>
+
+        <!-- Dünya'nın Eksen Eğikliği Görseli -->
+        <div style="background:#fff; padding:32px; border-radius:12px; margin-top:24px; text-align:center; box-shadow:0 2px 8px rgba(0,0,0,0.1);">
+            <p style="font-weight:bold; color:#1976d2; margin-bottom:20px;">🌍 Dünya'nın Eksen Eğikliği (23,5°)</p>
+            <div style="display:inline-block; position:relative;">
+                <!-- Güneş -->
+                <div style="position:absolute; left:-80px; top:50%; transform:translateY(-50%);">
+                    <div style="width:60px; height:60px; border-radius:50%; background:linear-gradient(135deg, #FFD700 0%, #FFA500 100%); box-shadow:0 0 20px rgba(255,215,0,0.5);"></div>
+                    <p style="margin-top:8px; font-size:0.9em; color:#f57c00;">☀️ Güneş</p>
+                </div>
+                
+                <!-- Dünya (Eğik) -->
+                <div style="transform:rotate(23.5deg); display:inline-block;">
+                    <div style="width:80px; height:80px; border-radius:50%; background:linear-gradient(135deg, #2196F3 0%, #4CAF50 50%, #8BC34A 100%); position:relative; box-shadow:0 4px 12px rgba(0,0,0,0.3);">
+                        <!-- Eksen çizgisi -->
+                        <div style="position:absolute; width:2px; height:110px; background:#e53935; left:50%; top:50%; transform:translate(-50%, -50%);"></div>
+                        <div style="position:absolute; top:-20px; left:50%; transform:translateX(-50%); color:#e53935; font-size:0.8em; font-weight:bold;">K</div>
+                        <div style="position:absolute; bottom:-20px; left:50%; transform:translateX(-50%); color:#e53935; font-size:0.8em; font-weight:bold;">G</div>
+                    </div>
+                </div>
+                
+                <!-- Eğiklik açısı gösterimi -->
+                <div style="position:absolute; right:-100px; top:50%; transform:translateY(-50%); color:#e53935; font-weight:bold;">
+                    <div style="font-size:1.2em;">23,5°</div>
+                    <div style="font-size:0.8em; color:#666;">Eksen Eğikliği</div>
+                </div>
+            </div>
+            <p style="margin-top:24px; color:#666; font-size:0.95em;">Bu eğiklik sayesinde mevsimler oluşur</p>
+        </div>
+
+        <!-- Eksen Eğikliği Kavramları -->
+        <div class="example-box" style="background:#fff; border-left:6px solid #9c27b0; padding:20px; border-radius:8px; margin-top:24px; box-shadow:0 2px 8px rgba(0,0,0,0.1);">
+            <h3 style="color:#7b1fa2; margin-top:0;">📐 Eksen Eğikliği Nedir?</h3>
+            
+            <div style="margin:12px 0; padding-left:16px;">
+                <b style="color:#8e24aa;">🔹 Yörünge Düzlemi:</b><br>
+                <span style="color:#666;">Dünya'nın Güneş'in etrafında dolanırken izlediği yola yörünge düzlemi denir.</span>
+            </div>
+
+            <div style="margin:12px 0; padding-left:16px;">
+                <b style="color:#8e24aa;">🔹 Yörünge Ekseni:</b><br>
+                <span style="color:#666;">Yörünge düzlemini dik olarak kestiği kabul edilen hayali çizgiye yörünge ekseni denir.</span>
+            </div>
+
+            <div style="margin:12px 0; padding-left:16px;">
+                <b style="color:#8e24aa;">🔹 Dünya'nın Ekseni:</b><br>
+                <span style="color:#666;">Kutuplardan ve yerin merkezinden geçtiği kabul edilen hayali çizgiye Dünya'nın ekseni denir.</span>
+            </div>
+
+            <div style="margin:12px 0; padding-left:16px;">
+                <b style="color:#8e24aa;">🔹 Ekvator Düzlemi:</b><br>
+                <span style="color:#666;">Dünya'yı iki eşit parçaya bölen hayali çizginin meydana getirdiği düzleme Ekvator düzlemi denir.</span>
+            </div>
+
+            <div style="background:#f3e5f5; padding:16px; border-radius:8px; margin-top:16px;">
+                <b style="color:#7b1fa2;">⚡ Eksen Eğikliği:</b><br>
+                <span style="color:#555;">Yörünge ekseni ile Dünya'nın ekseni birbiri ile <b>çakışmaz</b>. Aralarında <b style="color:#e53935;">23° 27'</b> lik bir eğiklik vardır.</span><br>
+                <span style="color:#666; font-size:0.9em; margin-top:8px; display:block;">
+                    ⚠️ 21 Mart ve 23 Eylül'de eksen eğikliğinin etkisi ortadan kalkar.
+                </span>
+            </div>
+        </div>
+
+        <!-- Dönenceler -->
+        <div class="highlight-box" style="background:#fff9c4; padding:20px; border-radius:8px; margin-top:24px; border-left:6px solid #f57f17;">
+            <b style="color:#e65100;">🌏 Dönenceler</b><br>
+            <span style="color:#555; margin-top:8px; display:block;">Yer kürenin eksen eğikliğinden dolayı <b>Dönenceler</b> oluşur.</span><br><br>
+            
+            <div style="margin:8px 0;">
+                <b style="color:#f57f17;">🔸 Yengeç Dönencesi (Kuzey - 23,5° K):</b><br>
+                <span style="color:#666;">Kuzey yarımkürede Dünyanın Güneş ışığını dik alabileceği en uzak nokta</span><br>
+                <span style="color:#666; font-size:0.9em;">→ Ülkemiz Yengeç Dönencesi'nin <b>üst tarafında</b> kalır</span>
+            </div>
+
+            <div style="margin:8px 0;">
+                <b style="color:#f57f17;">🔸 Oğlak Dönencesi (Güney - 23,5° G):</b><br>
+                <span style="color:#666;">Güney yarımkürede Dünyanın Güneş ışığını dik alabileceği en uzak nokta</span>
+            </div>
+        </div>
+        
+        <div class="example-box" style="background:#fff; border-left:6px solid #1976d2; padding:20px; border-radius:8px; margin-top:24px;">
+            <p><b style="color:#1565c0;">🌍 Eksen Eğikliğinin Sonuçları:</b></p>
+            <ul style="line-height:2;">
+                <li>Bir noktaya düşen Güneş ışınlarının açısı yıl boyunca değişir → <b style="color:#e53935;">Mevsimler oluşur</b></li>
+                <li>Güneş farklı zamanlarda farklı yerlere dik açıyla gelir</li>
+                <li>Dünya üzerinde yıl boyunca gölge boyu değişir</li>
+                <li>Dönence alanları ve kutup daireleri meydana gelir</li>
+                <li>Güneş'in doğuş-batış saatleri değişir</li>
+                <li>Gece ve gündüz süreleri uzar ve kısalır</li>
+                <li>Mevsimlere göre sıcaklık ve basınç farkları meydana gelir</li>
+                <li>Kuzey ve Güney yarımkürede <b>farklı mevsimler</b> yaşanır</li>
+            </ul>
+        </div>
+
+        <!-- Eksen Eğikliği Olmasaydı -->
+        <div class="highlight-box" style="background:#ffebee; padding:20px; border-radius:8px; margin-top:24px; border-left:6px solid #c62828;">
+            <b style="color:#b71c1c;">❌ Eksen Eğikliği Olmasaydı Ne Olurdu?</b><br><br>
+            <div style="line-height:2; color:#555;">
+                ❌ Güneş ışınları yıl boyu <b>sadece ekvatora</b> dik gelirdi<br>
+                ❌ Gece-gündüz süreleri <b>hep eşit</b> olurdu<br>
+                ❌ <b style="color:#c62828;">Mevsimler oluşmazdı</b><br>
+                ❌ Güneş ışınlarının gelme açısı <b>sabit</b> kalırdı<br>
+                ❌ Gölge boyu <b>hep aynı</b> olurdu<br>
+                ❌ Bir bölgede sıcaklık yıl boyunca <b>değişmezdi</b>
+            </div>
+        </div>
+
+        <div class="highlight-box" style="background:#fff; padding:16px; border-radius:8px; border-left:4px solid #1976d2; margin-top:16px;">
+            <b style="color:#0d47a1;">🔹 Mevsimler:</b><br>
+            <span style="color:#555;">Dünyanın farklı bölgeleri yıl boyunca Güneş ışınlarını farklı açılarda alır.</span><br><br>
+            
+            <!-- 4 Mevsim Görseli -->
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px; margin:20px 0;">
+                <!-- İlkbahar -->
+                <div style="background:linear-gradient(135deg, #c8e6c9 0%, #a5d6a7 100%); padding:20px; border-radius:12px; box-shadow:0 2px 8px rgba(0,0,0,0.1);">
+                    <div style="font-size:2.5em; text-align:center;">🌸</div>
+                    <h4 style="color:#2e7d32; margin:12px 0 8px 0; text-align:center;">İLKBAHAR</h4>
+                    <div style="font-size:0.85em; color:#555; text-align:center;">21 Mart - 21 Haziran</div>
+                    <div style="margin-top:12px; font-size:0.9em; color:#666;">
+                        ✓ Gece-gündüz eşit<br>
+                        ✓ Hava ısınır<br>
+                        ✓ Çiçekler açar
+                    </div>
+                </div>
+                
+                <!-- Yaz -->
+                <div style="background:linear-gradient(135deg, #fff59d 0%, #ffeb3b 100%); padding:20px; border-radius:12px; box-shadow:0 2px 8px rgba(0,0,0,0.1);">
+                    <div style="font-size:2.5em; text-align:center;">☀️</div>
+                    <h4 style="color:#f57f17; margin:12px 0 8px 0; text-align:center;">YAZ</h4>
+                    <div style="font-size:0.85em; color:#555; text-align:center;">21 Haziran - 23 Eylül</div>
+                    <div style="margin-top:12px; font-size:0.9em; color:#666;">
+                        ✓ En uzun gün<br>
+                        ✓ En sıcak mevsim<br>
+                        ✓ Güneş dik gelir
+                    </div>
+                </div>
+                
+                <!-- Sonbahar -->
+                <div style="background:linear-gradient(135deg, #ffcc80 0%, #ffb74d 100%); padding:20px; border-radius:12px; box-shadow:0 2px 8px rgba(0,0,0,0.1);">
+                    <div style="font-size:2.5em; text-align:center;">🍂</div>
+                    <h4 style="color:#e65100; margin:12px 0 8px 0; text-align:center;">SONBAHAR</h4>
+                    <div style="font-size:0.85em; color:#555; text-align:center;">23 Eylül - 21 Aralık</div>
+                    <div style="margin-top:12px; font-size:0.9em; color:#666;">
+                        ✓ Gece-gündüz eşit<br>
+                        ✓ Hava soğur<br>
+                        ✓ Yapraklar dökülür
+                    </div>
+                </div>
+                
+                <!-- Kış -->
+                <div style="background:linear-gradient(135deg, #b3e5fc 0%, #81d4fa 100%); padding:20px; border-radius:12px; box-shadow:0 2px 8px rgba(0,0,0,0.1);">
+                    <div style="font-size:2.5em; text-align:center;">❄️</div>
+                    <h4 style="color:#01579b; margin:12px 0 8px 0; text-align:center;">KIŞ</h4>
+                    <div style="font-size:0.85em; color:#555; text-align:center;">21 Aralık - 21 Mart</div>
+                    <div style="margin-top:12px; font-size:0.9em; color:#666;">
+                        ✓ En kısa gün<br>
+                        ✓ En soğuk mevsim<br>
+                        ✓ Kar yağar
+                    </div>
+                </div>
+            </div>
+
+            <div style="margin:12px 0; padding-left:16px;">
+                <b style="color:#1565c0;">☀️ İlkbahar (21 Mart - 21 Haziran):</b><br>
+                <span style="color:#666;">• Güneş ışınları Ekvator'a dik gelir (21 Mart)</span><br>
+                <span style="color:#666;">• Gece ve gündüz eşit uzunluktadır</span><br>
+                <span style="color:#666;">• Hava ısınmaya başlar</span>
+            </div>
+
+            <div style="margin:12px 0; padding-left:16px;">
+                <b style="color:#1565c0;">🌞 Yaz (21 Haziran - 23 Eylül):</b><br>
+                <span style="color:#666;">• Güneş ışınları Kuzey Yarımküre'ye daha dik gelir</span><br>
+                <span style="color:#666;">• Kuzey Yarımküre'de en uzun gün (21 Haziran)</span><br>
+                <span style="color:#666;">• Sıcaklık en yüksek seviyededir</span>
+            </div>
+
+            <div style="margin:12px 0; padding-left:16px;">
+                <b style="color:#1565c0;">🍂 Sonbahar (23 Eylül - 21 Aralık):</b><br>
+                <span style="color:#666;">• Güneş ışınları tekrar Ekvator'a dik gelir (23 Eylül)</span><br>
+                <span style="color:#666;">• Gece ve gündüz tekrar eşit uzunluktadır</span><br>
+                <span style="color:#666;">• Hava soğumaya başlar</span>
+            </div>
+
+            <div style="margin:12px 0; padding-left:16px;">
+                <b style="color:#1565c0;">❄️ Kış (21 Aralık - 21 Mart):</b><br>
+                <span style="color:#666;">• Güneş ışınları Güney Yarımküre'ye daha dik gelir</span><br>
+                <span style="color:#666;">• Kuzey Yarımküre'de en kısa gün (21 Aralık)</span><br>
+                <span style="color:#666;">• Sıcaklık en düşük seviyededir</span>
+            </div>
+        </div>
+
+        <!-- Birim Yüzeye Düşen Enerji -->
+        <div class="example-box" style="background:#fff; border-left:6px solid #ff5722; padding:20px; border-radius:8px; margin-top:24px; box-shadow:0 2px 8px rgba(0,0,0,0.1);">
+            <h3 style="color:#d84315; margin-top:0;">⚡ Birim Yüzeye Düşen Enerji</h3>
+            
+            <div style="background:#fff3e0; padding:16px; border-radius:8px; margin:12px 0;">
+                <b style="color:#e65100;">💡 Temel Kural:</b><br>
+                <span style="color:#555;">Birim yüzey arttıkça → Birim yüzeye düşen enerji miktarı (enerji yoğunluğu) <b style="color:#e53935;">AZALIR</b></span><br>
+                <span style="color:#666; font-size:0.9em; margin-top:8px; display:block;">
+                    → Alan ile düşen enerji miktarı <b>ters orantılıdır</b>
+                </span>
+            </div>
+
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px; margin:20px 0;">
+                <!-- A Bölgesi - Dik Işınlar -->
+                <div style="background:linear-gradient(135deg, #ffeb3b 0%, #ffc107 100%); padding:16px; border-radius:8px; text-align:center;">
+                    <div style="font-size:2em;">☀️</div>
+                    <b style="color:#f57f17;">A BÖLGESİ</b><br>
+                    <div style="font-size:0.9em; color:#555; margin-top:8px;">
+                        ✓ Işınlar <b>DİK</b> gelir<br>
+                        ✓ <b>Dar alan</b> aydınlatılır<br>
+                        ✓ Enerji <b style="color:#e65100;">FAZLA</b><br>
+                        → <b>YAZ MEVSİMİ</b>
+                    </div>
+                </div>
+
+                <!-- B Bölgesi - Eğik Işınlar -->
+                <div style="background:linear-gradient(135deg, #b3e5fc 0%, #81d4fa 100%); padding:16px; border-radius:8px; text-align:center;">
+                    <div style="font-size:2em;">🌥️</div>
+                    <b style="color:#01579b;">B BÖLGESİ</b><br>
+                    <div style="font-size:0.9em; color:#555; margin-top:8px;">
+                        ✓ Işınlar <b>EĞİK</b> gelir<br>
+                        ✓ <b>Geniş alan</b> aydınlatılır<br>
+                        ✓ Enerji <b style="color:#1976d2;">AZ</b><br>
+                        → <b>KIŞ MEVSİMİ</b>
+                    </div>
+                </div>
+            </div>
+
+            <div style="background:#e8f5e9; padding:12px; border-radius:8px; margin-top:12px;">
+                <b style="color:#2e7d32;">📍 Örnekler:</b><br>
+                <span style="color:#555;">• Ekvatorda güneş ışınları <b>dik</b> düşer → Birim yüzeye enerji <b>FAZLA</b></span><br>
+                <span style="color:#555;">• Kutuplarda güneş ışınları <b>eğik</b> düşer → Birim yüzeye enerji <b>AZ</b></span><br>
+                <span style="color:#555;">• Kış mevsiminde birim yüzeye düşen toplam enerji <b>az</b>dır (eğik açı + kısa gündüz)</span>
+            </div>
+        </div>
+
+        <!-- Gölge Uzunluğu -->
+        <div class="example-box" style="background:#fff; border-left:6px solid #673ab7; padding:20px; border-radius:8px; margin-top:24px; box-shadow:0 2px 8px rgba(0,0,0,0.1);">
+            <h3 style="color:#4527a0; margin-top:0;">🕐 Gölge Uzunluğu</h3>
+            
+            <div style="background:#ede7f6; padding:16px; border-radius:8px; margin:12px 0;">
+                <b style="color:#4527a0;">Tanım:</b><br>
+                <span style="color:#555;">Güneş ışınlarının yıl içerisinde farklı açılarla gelmesi, Dünya üzerindeki bir cismin <b>öğle vakti ölçülen gölge boyunun değişmesine</b> neden olur.</span>
+            </div>
+
+            <div style="margin:16px 0;">
+                <b style="color:#673ab7;">Bir cismin gölge boyu şunlara bağlı olarak değişir:</b><br><br>
+                <div style="padding-left:16px; line-height:2; color:#555;">
+                    🔹 Dünya'nın <b>eksen eğikliği</b><br>
+                    🔹 Dünya'nın <b>günlük hareketi</b><br>
+                    🔹 Dünya'nın <b>yıllık hareketi</b><br>
+                    🔹 Dünya üzerindeki <b>bulunulan yer</b>
+                </div>
+            </div>
+
+            <div style="background:#fff9c4; padding:16px; border-radius:8px; border-left:4px solid #f57f17; margin-top:16px;">
+                <b style="color:#e65100;">⚡ ÖNEMLİ KURAL:</b><br>
+                <span style="color:#555;">Güneş ışınlarının yeryüzü ile yaptığı açı <b style="color:#e53935;">küçüldükçe</b> gölge boyu <b style="color:#e53935;">ARTAR</b></span><br><br>
+                <span style="color:#666; font-size:0.9em;">• Işınlar dik gelirse → Gölge <b>KISA</b> (Yaz mevsimi)</span><br>
+                <span style="color:#666; font-size:0.9em;">• Işınlar eğik gelirse → Gölge <b>UZUN</b> (Kış mevsimi)</span>
+            </div>
+
+            <div style="margin-top:16px; text-align:center;">
+                <div style="display:inline-block; text-align:left; background:#f5f5f5; padding:16px; border-radius:8px;">
+                    <b style="color:#673ab7;">📊 Öğle Vakti Gölge Boyu:</b><br>
+                    <span style="color:#666;">21 Haziran (Yaz) → En KISA gölge</span><br>
+                    <span style="color:#666;">21 Aralık (Kış) → En UZUN gölge</span><br>
+                    <span style="color:#666;">21 Mart ve 23 Eylül → Orta uzunluk</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="interactive-box" style="background:#e3f2fd; padding:20px; border-radius:8px; margin-top:24px;">
+            <p><b style="color:#0d47a1;">🧩 Soru:</b> <span style="color:#2c3e50;">Neden Kuzey Yarımküre'de yaz iken Güney Yarımküre'de kış yaşanır?</span></p>
+            <button class="answer-btn" onclick="document.getElementById('ans1').style.display='block'">Cevabı Göster</button>
+            <div id="ans1" style="display:none; margin-top:12px; padding:12px; background:#bbdefb; border-left:4px solid #1976d2;">
+                <b>Cevap:</b> Dünya'nın eksen eğikliği nedeniyle Güneş ışınları bir yarımküreye daha dik gelirken, diğer yarımküreye daha eğik gelir. Güneş ışınları dik geldiğinde o bölgede yaz, eğik geldiğinde kış yaşanır.
+            </div>
+        </div>
+    </section>
+
+    <!-- HAVA DURUMU VE İKLİM -->
+    <section class="section">
+        <h2><span style="color:#0277bd;">&#9733;</span> Hava Durumu ve İklim</h2>
+        
+        <div class="highlight-box" style="background:#e3f2fd; padding:24px; border-radius:12px;">
+            <b style="color:#0d47a1;">Hava Durumu ve İklim Farkı:</b>
+            <div style="margin-top:16px; line-height:1.8;">
+                <b style="color:#1976d2;">🌤️ Hava Durumu:</b> <span style="color:#555;">Bir yerin belli bir andaki atmosfer koşullarıdır. Kısa sürelidir (günlük, saatlik).</span><br><br>
+                <b style="color:#1976d2;">🌍 İklim:</b> <span style="color:#555;">Bir yerin uzun yıllar (en az 30 yıl) boyunca gözlenen ortalama hava koşullarıdır. Uzun sürelidir.</span>
+            </div>
+        </div>
+
+        <div class="example-box" style="background:#fff; border-left:6px solid #0277bd; padding:20px; border-radius:8px; margin-top:24px; box-shadow:0 2px 8px rgba(0,0,0,0.1);">
+            <h3 style="color:#0d47a1; margin-top:0;">İklimi Etkileyen Faktörler</h3>
+            
+            <div style="margin:12px 0; padding-left:16px;">
+                <b style="color:#1565c0;">1. Enlem (Güneş ışınlarının geliş açısı):</b><br>
+                <span style="color:#666;">• Ekvator'a yaklaştıkça sıcaklık artar</span><br>
+                <span style="color:#666;">• Kutuplara yaklaştıkça sıcaklık azalır</span>
+            </div>
+
+            <div style="margin:12px 0; padding-left:16px;">
+                <b style="color:#1565c0;">2. Yükselti (Rakım):</b><br>
+                <span style="color:#666;">• Her 100 m yükseldikçe sıcaklık 0,6°C azalır</span><br>
+                <span style="color:#666;">• Yüksek yerlerde hava daha soğuktur</span>
+            </div>
+
+            <div style="margin:12px 0; padding-left:16px;">
+                <b style="color:#1565c0;">3. Denizlere Uzaklık:</b><br>
+                <span style="color:#666;">• Kıyı bölgelerde iklim ılımandır</span><br>
+                <span style="color:#666;">• İç kesimlerde kış-yaz farkı fazladır</span>
+            </div>
+
+            <div style="margin:12px 0; padding-left:16px;">
+                <b style="color:#1565c0;">4. Rüzgar Yönü:</b><br>
+                <span style="color:#666;">• Denizden esen rüzgarlar yağış getirir</span><br>
+                <span style="color:#666;">• Karadaki rüzgarlar kuru havadır</span>
+            </div>
+
+            <div style="margin:12px 0; padding-left:16px;">
+                <b style="color:#1565c0;">5. Bitki Örtüsü:</b><br>
+                <span style="color:#666;">• Ormanlar havayı soğutur ve nemlendiri</span><br>
+                <span style="color:#666;">• Çöller sıcaklık farkını artırır</span>
+            </div>
+        </div>
+
+        <div class="example-box" style="background:#fff; border-left:6px solid #0277bd; padding:20px; border-radius:8px; margin-top:24px;">
+            <p><b style="color:#1565c0;">🎯 Pratik Örnek:</b></p>
+            <p style="color:#2c3e50;">
+                Ankara'da 2 Aralık 2025 günü hava sıcaklığı 8°C, rüzgarlı ve yağmurlu.<br>
+                Bu bilgi <b style="color:#e53935;">hava durumu</b> bilgisidir.<br><br>
+                Ankara'nın iklimi karasaldır, yazları sıcak ve kurak, kışları soğuk ve kar yağışlıdır.<br>
+                Bu bilgi <b style="color:#43a047;">iklim</b> bilgisidir.
+            </p>
+        </div>
+
+        <div class="interactive-box" style="background:#e3f2fd; padding:20px; border-radius:8px; margin-top:24px;">
+            <p><b style="color:#0d47a1;">🧩 Soru 1:</b> <span style="color:#2c3e50;">Dağlık bölgelerde iklim neden daha soğuktur?</span></p>
+            <button class="answer-btn" onclick="document.getElementById('ans3').style.display='block'">Cevabı Göster</button>
+            <div id="ans3" style="display:none; margin-top:12px; padding:12px; background:#bbdefb; border-left:4px solid #1976d2;">
+                <b>Cevap:</b> Yükselti arttıkça sıcaklık azalır. Her 100 m yükseldikçe sıcaklık yaklaşık 0,6°C düşer. Bu nedenle dağlık bölgelerde iklim daha soğuktur.
+            </div>
+        </div>
+
+        <div class="interactive-box" style="background:#e3f2fd; padding:20px; border-radius:8px; margin-top:16px;">
+            <p><b style="color:#0d47a1;">🧩 Soru 2:</b> <span style="color:#2c3e50;">"Bugün İstanbul'da hava yağmurlu ve 12°C" cümlesi hava durumu mu, iklim mi?</span></p>
+            <button class="answer-btn" onclick="document.getElementById('ans4').style.display='block'">Cevabı Göster</button>
+            <div id="ans4" style="display:none; margin-top:12px; padding:12px; background:#bbdefb; border-left:4px solid #1976d2;">
+                <b>Cevap:</b> <b style="color:#e53935;">Hava durumu</b>. Çünkü "bugün" kelimesi kısa süreli bir durumu ifade ediyor. İklim uzun yılların ortalamasıdır.
+            </div>
+        </div>
+    </section>
+
+    <!-- ÖNEMLİ İPUÇLARI -->
+    <section class="section">
+        <h2><span style="color:#0288d1;">&#9733;</span> Önemli İpuçları</h2>
+        
+        <div class="highlight-box" style="background:#e1f5fe;">
+            <b style="color:#01579b;">💡 İpucu 1:</b> Mevsimler Dünya'nın eksen eğikliği nedeniyle oluşur, Güneş'e uzaklıktan değil!
+        </div>
+
+        <div class="highlight-box" style="background:#e1f5fe;">
+            <b style="color:#01579b;">💡 İpucu 2:</b> 21 Mart ve 23 Eylül'de eksen eğikliğinin etkisi ortadan kalkar (Ekinoks).
+        </div>
+
+        <div class="highlight-box" style="background:#e1f5fe;">
+            <b style="color:#01579b;">💡 İpucu 3:</b> Işınlar dik gelirse → Birim alana enerji FAZLA → Yaz mevsimi
+        </div>
+
+        <div class="highlight-box" style="background:#e1f5fe;">
+            <b style="color:#01579b;">💡 İpucu 4:</b> Işınlar eğik gelirse → Gölge boyu UZUN → Kış mevsimi
+        </div>
+
+        <div class="highlight-box" style="background:#e1f5fe;">
+            <b style="color:#01579b;">💡 İpucu 5:</b> Hava durumu = Kısa süreli (günlük), İklim = Uzun süreli (30 yıl+)
+        </div>
+
+        <div class="highlight-box" style="background:#e1f5fe;">
+            <b style="color:#01579b;">💡 İpucu 6:</b> Yükselti arttıkça sıcaklık azalır: Her 100 m → -0,6°C
+        </div>
+    </section>
+
+    <div style="margin:40px auto; text-align:center; padding-bottom:60px;">
+        <a href="/fen/unite-1/" style="display:inline-block; padding:14px 28px; background:#1976d2; color:white; border-radius:8px; text-decoration:none; font-weight:bold; font-size:1.1em; box-shadow:0 2px 8px rgba(0,0,0,0.2); margin-right:12px;">
+            ← 1. Ünite Ana Sayfa
+        </a>
+        <a href="/fen/" style="display:inline-block; padding:14px 28px; background:#bbdefb; color:#0d47a1; border-radius:8px; text-decoration:none; font-weight:bold; font-size:1.1em; box-shadow:0 2px 8px rgba(0,0,0,0.2);">
+            ← Fen Bilimleri Ana Sayfa
+        </a>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,146 @@
+{% extends "base.html" %}
+{% block extra_head %}
+<link rel="stylesheet" href="/static/dersler.css">
+<style>
+    .floating-icon { position:absolute; font-size:3em; opacity:0.12; pointer-events:none; z-index:0; }
+    .container { position:relative; }
+    @media (max-width:768px){ .floating-icon{ display:none; } }
+</style>
+{% endblock %}
+{% block content %}
+<div class="container">
+    <!-- Yüzen ikonlar -->
+    <div class="floating-icon" style="top:120px; left:-60px;">🕊️</div>
+    <div class="floating-icon" style="top:340px; left:-70px;">📜</div>
+    <div class="floating-icon" style="top:560px; left:-65px;">🤝</div>
+    <div class="floating-icon" style="top:140px; right:-60px;">🇹🇷</div>
+    <div class="floating-icon" style="top:360px; right:-70px;">⚖️</div>
+
+    <h1 class="main-title">3.6 Lozan Barış Antlaşması (24 Temmuz 1923) <span style="color:#0d47a1;">🕊️</span></h1>
+    <p style="text-align:center; color:#555; max-width:900px; margin:0 auto 28px auto;">
+        Millî Mücadele'nin askerî zaferlerinin diplomasi masasında meyvesini vermesi. Türkiye tanındı, Sevr tarihe gömüldü, yeni bir Türk Devleti doğdu.
+    </p>
+
+    <!-- Lozan Öncesi Durum -->
+    <section class="section">
+        <h2><span style="color:#0d47a1;">&#9733;</span> Lozan Konferansı Öncesi Hazırlıklar</h2>
+        <div class="highlight-box" style="background:#e3f2fd; padding:20px; border-radius:12px;">
+            <b style="color:#0d47a1;">Amaç:</b> Mudanya Ateşkes'ten sonra nihai ve kalıcı barış görüşmelerine başlamak.
+        </div>
+        <div class="example-box" style="margin-top:14px;">
+            <ul style="line-height:1.8;">
+                <li><b>Yerin seçimi:</b> Mustafa Kemal İzmir'i istiyordu; fakat İtilaf devletleri tarafsız İsviçre'nin Lozan şehrini seçti.</li>
+                <li><b>Oyun:</b> İtilaf devletleri TBMM Hükûmeti'nin yanı sıra İstanbul Hükûmeti'ni de davet etti (ikilik yaratmak amaçlı).</li>
+                <li><b>Karşılık:</b> TBMM 1 Kasım 1922'de saltanatı kaldırdı; İstanbul Hükûmeti'nin konferansa katılmasını engelledi.</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Türk Heyeti ve Talimat -->
+    <section class="section">
+        <h2><span style="color:#0d47a1;">&#9733;</span> Türk Heyeti ve Temsil</h2>
+        <div class="highlight-box" style="background:#e3f2fd; padding:20px; border-radius:12px;">
+            <b style="color:#0d47a1;">Heyet başkanı:</b> İsmet Paşa (Mudanya görüşmelerini de başarıyla yürütmüştü). Dışişleri Bakanı Yusuf Kemal Bey'in istifası üzerine İsmet Paşa bakanlığa atandı.
+        </div>
+        <div class="example-box" style="margin-top:14px;">
+            <ul style="line-height:1.8;">
+                <li><b>Talimat:</b> Hükûmet 12 maddelik bir talimat verdi.</li>
+                <li><b>Mustafa Kemal'in emri:</b> "Ermeni Meselesi" ve "Kapitülasyonlar" konusunda kesinlikle taviz verilmemesi.</li>
+                <li><b>Yetki:</b> İtilaf devletleri kabul etmezse, müzakereleri kesip Lozan'dan dönme yetkisi verildi.</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Konferans Başlangıcı -->
+    <section class="section">
+        <h2><span style="color:#0d47a1;">&#9733;</span> Lozan Konferansı'nın Başlangıcı (20 Kasım 1922)</h2>
+        <div class="highlight-box" style="background:#e3f2fd; padding:20px; border-radius:12px;">
+            <b style="color:#0d47a1;">Katılımcılar:</b> TBMM, İngiltere, Fransa, İtalya, Japonya, Romanya, Yunanistan, Yugoslavya. Sovyetler Birliği ve Bulgaristan Boğazlar konuşulurken çağrıldı. ABD gözlemci.
+        </div>
+        <div class="example-box" style="margin-top:14px;">
+            <ul style="line-height:1.8;">
+                <li><b>Komisyonlar:</b> Çeşitli konularda kurulan komisyonlar çalışmaya başladı.</li>
+                <li><b>Anlaşmalar:</b> Bazı konularda uzlaşma sağlandı.</li>
+                <li><b>Anlaşamadıkları:</b> Musul, Boğazlar, Kapitülasyonlar, Osmanlı borçları, savaş tazminatı, nüfus mübadelesi.</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- İsmet Paşa'nın Konuşması -->
+    <section class="section">
+        <h2><span style="color:#0d47a1;">&#9733;</span> İsmet Paşa'nın Tarihî Sözleri</h2>
+        <div class="highlight-box" style="background:#e1f5fe; padding:20px; border-radius:12px;">
+            <b style="color:#01579b;">Lord Curzon sonrası söz alan İsmet Paşa:</b><br><br>
+            <i style="color:#555; font-size:1.05em;">
+                "Çok ıstırap çektik, çok kan akıttık, bütün medeni milletler gibi hürriyet ve bağımsızlık istiyoruz."
+            </i><br><br>
+            TBMM Hükûmetinin Misakımillî çerçevesindeki haklı istekleri ön yargılarla hareket eden İtilaf devletleri tarafından dikkate alınmadı.
+        </div>
+    </section>
+
+    <!-- Konferansın Kesintiye Uğraması -->
+    <section class="section">
+        <h2><span style="color:#0d47a1;">&#9733;</span> Konferansın Kesintiye Uğraması ve İç Gelişmeler</h2>
+        <div class="highlight-box" style="background:#e3f2fd; padding:20px; border-radius:12px;">
+            <b style="color:#0d47a1;">4 Şubat 1923:</b> Konferans dağıldı; heyetler ülkelerine döndü. Anlaşmazlık devam ediyordu.
+        </div>
+        <div class="example-box" style="margin-top:14px;">
+            <ul style="line-height:1.8;">
+                <li><b>17 Şubat 1923:</b> Türkiye İktisat Kongresi toplandı. Ekonomik bağımsızlığın da siyasi bağımsızlık kadar önemli olduğu vurgulandı; kapitülasyonlar kesinlikle kaldırılmalı mesajı iletildi.</li>
+                <li><b>1 Nisan 1923:</b> I. TBMM'de seçimlerin yenilenmesine karar verildi.</li>
+                <li><b>Durum:</b> Hiçbir taraf yeniden savaşı göze alamadığı için, diplomatik çabalar devam etti.</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Konferansın Yeniden Toplanması -->
+    <section class="section">
+        <h2><span style="color:#0d47a1;">&#9733;</span> Konferansın Ikinci Evresi ve İmza (23 Nisan - 24 Temmuz 1923)</h2>
+        <div class="highlight-box" style="background:#e3f2fd; padding:20px; border-radius:12px;">
+            <b style="color:#0d47a1;">23 Nisan 1923:</b> Lozan Konferansı yeniden toplandı. 3 ay kadar tartışmalı müzakereler sonunda uzlaşma sağlandı.
+        </div>
+        <div class="example-box" style="margin-top:14px;">
+            <ul style="line-height:1.8;">
+                <li><b>24 Temmuz 1923:</b> Lozan Barış Antlaşması imzalandı.</li>
+                <li><b>23 Ağustos 1923:</b> TBMM tarafından onaylandı.</li>
+                <li><b>Madde sayısı:</b> Ekler hariç 143 maddeden oluşan kapsamlı antlaşma.</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Lozan'ın Anlamı -->
+    <section class="section">
+        <h2><span style="color:#0d47a1;">&#9733;</span> Lozan Barış Antlaşması'nın Tarihi Anlamı</h2>
+        <div class="highlight-box" style="background:#c8e6c9; padding:20px; border-radius:12px;">
+            <b style="color:#2e7d32;">Tanınma ve Egemenlik:</b> Lozan Barış Antlaşması'yla yeni Türk Devleti'nin varlığı ve bağımsızlığı tüm dünya tarafından kabul edildi.
+        </div>
+        <div class="example-box" style="margin-top:14px;">
+            <ul style="line-height:1.8;">
+                <li><b>Sevr'in iptal edilmesi:</b> Mondros ve Sevr'e dayanan işgale karşı milletin var olma mücadelesi kazandı. Sevr antlaşması tarihe gömüldü.</li>
+                <li><b>Kapsamı:</b> Sadece Millî Mücadele savaşlarının sonuçları değil, asırları aşan devlet borçları, kapitülasyonlar, azınlıklar, Fener Patrikhanesi, Boğazlar gibi sorunlar da ele alındı.</li>
+                <li><b>Misakımillî ve tavizler:</b> Başta İngiltere olmak üzere galip devletlere karşı uzun ve zorlayıcı mücadeleye rağmen Misakımillî sınırlarına tam olarak ulaşılamadı. Bazı sorunlar ilerleyen zamanda Türkiye lehine çözülecektir.</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Lozan Maddeleri -->
+    <section class="section">
+        <h2><span style="color:#0d47a1;">&#9733;</span> Lozan Barış Antlaşması'nın Temel Maddeleri</h2>
+        <div class="example-box">
+            <ul style="line-height:1.8;">
+                <li><b>Sınırlar:</b> Türkiye'nin sınırları belirlendi. Batı Trakya Yunanistan'a bırakıldı.</li>
+                <li><b>İstanbul ve Boğazlar:</b> İstanbul Türkiye'ye iade edildi. Boğazlar uluslararası statüye alındı, silahsızlandırıldı.</li>
+                <li><b>Kapitülasyonlar:</b> Tüm kapitülasyonlar kaldırıldı; Türkiye'nin egemenliği tam olarak tanındı.</li>
+                <li><b>Azınlıklar:</b> Azınlık hakları tanındı; Fener Patrikhanesi tanındı.</li>
+                <li><b>Borçlar ve tazminat:</b> Osmanlı Devleti'nin borçları konusunda mutabakat sağlandı. Savaş tazminatı istenmedi.</li>
+                <li><b>Nüfus mübadelesi:</b> Türkiye-Yunanistan arasında nüfus mübadelesi başlatıldı (Türkler batısı ve Yunanlılar doğudan takas).</li>
+            </ul>
+        </div>
+    </section>
+
+    <div style="margin:40px auto; text-align:center; padding-bottom:60px;">
+        <a href="/inkilap/unite-3/" style="display:inline-block; padding:14px 28px; background:#0d47a1; color:white; border-radius:8px; text-decoration:none; font-weight:bold; font-size:1.05em; box-shadow:0 2px 8px rgba(0,0,0,0.2); margin-right:12px;">← 3. Ünite Ana Sayfa</a>
+        <a href="/inkilap/" style="display:inline-block; padding:14px 28px; background:#b3e5fc; color:#01579b; border-radius:8px; text-decoration:none; font-weight:bold; font-size:1.05em; box-shadow:0 2px 8px rgba(0,0,0,0.2);">← İnkılap Tarihi Ana Sayfa</a>
+    </div>
+</div>
+{% endblock %}

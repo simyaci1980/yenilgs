@@ -12,8 +12,65 @@ def turkce(request):
 def fen(request):
     return render(request, 'fen/fen.html')
 
+def fen_unite_1(request):
+    return render(request, 'fen/fen_unite_1.html')
+
+def mevsimler_iklim(request):
+    return render(request, 'fen/mevsimler_iklim.html')
+
+def iklim_olaylari(request):
+    return render(request, 'fen/iklim_olaylari.html')
+
+def fen_unite_2(request):
+    return render(request, 'fen/fen_unite_2.html')
+
+def fen_unite_3(request):
+    return render(request, 'fen/fen_unite_3.html')
+
+def fen_unite_4(request):
+    return render(request, 'fen/fen_unite_4.html')
+
+def fen_unite_5(request):
+    return render(request, 'fen/fen_unite_5.html')
+
+def fen_unite_6(request):
+    return render(request, 'fen/fen_unite_6.html')
+
+def fen_unite_7(request):
+    return render(request, 'fen/fen_unite_7.html')
+
 def inkilap(request):
     return render(request, 'inkilap/inkilap.html')
+
+def inkilap_unite_1(request):
+    return render(request, 'inkilap/inkilap_unite_1.html')
+
+def inkilap_unite_2(request):
+    return render(request, 'inkilap/inkilap_unite_2.html')
+
+def inkilap_unite_3(request):
+    return render(request, 'inkilap/inkilap_unite_3.html')
+
+def dogu_guney_cepheleri(request):
+    return render(request, 'inkilap/dogu_guney_cepheleri.html')
+
+def bati_cepheleri(request):
+    return render(request, 'inkilap/bati_cepheleri.html')
+
+def maarif_kongresi(request):
+    return render(request, 'inkilap/maarif_kongresi.html')
+
+def baskomutanlik_kanunu(request):
+    return render(request, 'inkilap/baskomutanlik_kanunu.html')
+
+def sakarya_mudanya(request):
+    return render(request, 'inkilap/sakarya_mudanya.html')
+
+def lozan_baris(request):
+    return render(request, 'inkilap/lozan_baris.html')
+
+def sanat_edebiyat(request):
+    return render(request, 'inkilap/sanat_edebiyat.html')
 
 def ingilizce(request):
     return render(request, 'ingilizce/ingilizce.html')
