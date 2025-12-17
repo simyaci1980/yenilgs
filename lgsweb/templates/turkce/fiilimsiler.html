@@ -1,0 +1,119 @@
+{% extends "base.html" %}
+
+{% block extra_head %}
+<link rel="stylesheet" href="/static/dersler.css">
+<style>
+    .floating-icon { position:absolute; font-size:3em; pointer-events:none; z-index:0; }
+    .container { position:relative; }
+    @media (max-width:768px){ .floating-icon{ display:none; } }
+</style>
+<style>
+.fiilimsi-box {
+    background: #181c24;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px #0005;
+    padding: 24px 18px;
+    margin-bottom: 24px;
+    color: #e0e6ef;
+}
+.fiilimsi-uyari {
+    background: #2a1a1a;
+    border-left: 5px solid #e53935;
+    color: #ffcdd2;
+    padding: 16px 18px;
+    border-radius: 10px;
+    margin-bottom: 18px;
+}
+.fiilimsi-ekstra {
+    background: #1a2a3a;
+    border-left: 5px solid #1976d2;
+    color: #b3e5fc;
+    padding: 14px 18px;
+    border-radius: 10px;
+    margin-bottom: 18px;
+}
+.fiilimsi-ornek {
+    background: #26324a;
+    border-left: 5px solid #fbc02d;
+    color: #fffde7;
+    padding: 16px 18px;
+    border-radius: 10px;
+    margin-bottom: 18px;
+}
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <!-- Yüzen ikonlar -->
+    <div class="floating-icon" style="top:120px; left:-60px; opacity:1; filter:drop-shadow(0 0 8px rgba(52, 152, 219, 0.6));">📚</div>
+    <div class="floating-icon" style="top:300px; left:-70px; opacity:1; filter:drop-shadow(0 0 8px rgba(52, 152, 219, 0.6));">✍️</div>
+    <div class="floating-icon" style="top:520px; left:-65px; opacity:1; filter:drop-shadow(0 0 8px rgba(232, 93, 93, 0.6));">📖</div>
+    <div class="floating-icon" style="top:120px; right:-60px; opacity:1; filter:drop-shadow(0 0 8px rgba(232, 93, 93, 0.6));">🗣️</div>
+    <div class="floating-icon" style="top:340px; right:-70px; opacity:1; filter:drop-shadow(0 0 8px rgba(243, 156, 18, 0.6));">🎤</div>
+    <h1 class="main-title fiilimsi-title">1. ÜNİTE: Fiilimsiler</h1>
+    <div class="fiilimsi-box">
+        <b>Tanım:</b> Fiilden türetilen, olumsuzu yapılabilen, isim-fiil, sıfat-fiil, zarf-fiil görevlerinde kullanılabilen sözcüklere <b>fiilimsi (eylemsi)</b> denir.
+    </div>
+
+    <h2  style="margin-top:32px; background:#181c24; color: #ffb74d; border-radius:8px; padding:10px 18px;">Fiilimsilerin Özellikleri</h2>
+    <ul style="margin-bottom:18px; background:#181c24; color:#fff; border-radius:10px; padding:18px 18px 18px 28px;">
+        <li>Fiil kök ya da gövdelerinden türerler. <span style="color:#90caf9;">(Ör: gidince → "git-" fiilinden)</span></li>
+        <li>Kip ve kişi eki alarak çekimlenemezler. (Çekimlenirse fiil olur.)</li>
+        <li>Olumsuzluk eklerini alabilirler. <span style="color:#90caf9;">(Ör: anlamamak, susmayarak)</span></li>
+        <li>Cümlede isim, sıfat ve zarf görevinde kullanılırlar.</li>
+        <li>İsim çekim eklerini alabilirler. <span style="color:#90caf9;">(Ör: konuşmalar, konuşması, konuşmaktan)</span></li>
+        <li>Cümlenin başında, ortasında ya da sonunda bulunabilirler.</li>
+        <li>Fiilimsi ekleri yapım ekidir, alan sözcük türemiş olur.</li>
+    </ul>
+
+    <div class="fiilimsi-ornek">
+        <b>Örnekler:</b><br>
+        <ul style="margin:8px 0 0 16px;">
+            <li>Yüz<span style="color:#1976d2; font-weight:bold;">mek</span> tüm kasları çalıştırır.</li>
+            <li>Oku<span style="color:#1976d2; font-weight:bold;">ma</span> yazması yokmuş.</li>
+            <li>Geli<span style="color:#1976d2; font-weight:bold;">şi</span>yle gid<span style="color:#1976d2; font-weight:bold;">işi</span> bir oldu.</li>
+        </ul>
+    </div>
+
+    <div class="fiilimsi-uyari">
+        <b>Uyarı:</b> Tüm fiilimsi ekleri <b>yapım ekidir</b>. Fiilimsi eki alan sözcük türemiş sözcüktür.
+    </div>
+
+    <h2  style="margin-top:32px; background:#181c24; color: #ffb74d; border-radius:8px; padding:10px 18px;">Fiilimsi (Eylemsi) Çeşitleri</h2>
+    <ol style="margin-bottom:18px; background:#181c24; color:#fff; border-radius:10px; padding:18px 18px 18px 28px;">
+        <li><b>İsim-Fiiller (Mastarlar):</b> Fiil kök ya da gövdelerine “-ma, -mak, -ış” ekleri getirilerek yapılan fiilimsilere isim-fiil denir. <br> <b>Formül:</b> <span style="color:#90caf9;">ma y ış mak</span>
+            <ul style="margin-top:6px;">
+                <li>Yüz<span style="color:#1976d2; font-weight:bold;">mek</span> tüm kasları çalıştırır.</li>
+                <li>Oku<span style="color:#1976d2; font-weight:bold;">ma</span> yazması yokmuş.</li>
+                <li>Geli<span style="color:#1976d2; font-weight:bold;">şi</span>yle gid<span style="color:#1976d2; font-weight:bold;">işi</span> bir oldu.</li>
+            </ul>
+            <div style="margin-top:8px; color:#e57373;">Uyarı: Olumsuzluk eki olan -ma/-me ile isim-fiil eki olan -ma/-me karıştırılmamalı.</div>
+        </li>
+        <li style="margin-top:16px;"><b>Sıfat-Fiiller (Ortaçlar):</b> Fiil kök ya da gövdelerine “-an, -ası, -mez, -ar, -dik, -ecek, -miş” ekleri getirilerek yapılan fiilimsilere sıfat-fiil denir. <br> <b>Formül:</b> <span style="color:#90caf9;">anası mezar dikecekmiş</span>
+            <ul style="margin-top:6px;">
+                <li>Şu gel<span style="color:#388e3c; font-weight:bold;">en</span> çocuk benim kardeşim.</li>
+                <li>Eli öpül<span style="color:#388e3c; font-weight:bold;">esi</span> annelerimizin değerini bilelim.</li>
+                <li>Okun<span style="color:#388e3c; font-weight:bold;">acak</span> kitaplarım var daha.</li>
+            </ul>
+        </li>
+        <li style="margin-top:16px;"><b>Zarf-Fiiller (Ulaçlar/Bağ-Fiiller):</b> Fiil kök veya gövdelerine “-ken, -alı, -esiye, -r -maz, -a -a, -ip, -ince, -a, -arak, -madan, -maksızın, -diğinde, -dıkça, -casına” ve benzeri ekler getirilerek oluşturulur.
+            <ul style="margin-top:6px;">
+                <li>Çocuk yat<span style="color:#e65100; font-weight:bold;">ar</span> yatar<span style="color:#e65100; font-weight:bold;">maz</span> uyudu.</li>
+                <li>Biraz dinlen<span style="color:#e65100; font-weight:bold;">ip</span> çalışmaya devam ettik.</li>
+                <li>Bağır<span style="color:#e65100; font-weight:bold;">arak</span> yanımıza gel<span style="color:#e65100; font-weight:bold;">ince</span> biz de korktuk.</li>
+            </ul>
+        </li>
+    </ol>
+
+    <div class="fiilimsi-ekstra">
+        <b>Ekstra Bilgi:</b> Fiilimsiler cümlede isim, sıfat ve zarf görevinde kullanılabilir. Kalıcı isim olanlar olumsuzluk eki almaz.
+    </div>
+
+    <div class="fiilimsi-ornek">
+        <b>Yan Cümle ve Yarım Yargı:</b><br>
+        Fiilimsiler, cümlenin sonunda olmadıklarında <b>yarım yargı</b> bildirir ve <b>yan cümle</b> oluştururlar.<br>
+        <i>Örnek: Beni görünce yanıma geldi. ("görünce" yan cümle, "geldi" temel cümle)</i>
+    </div>
+
+{% endblock %}

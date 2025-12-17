@@ -1,0 +1,172 @@
+{% extends "base.html" %}
+
+{% block extra_head %}
+<link rel="stylesheet" href="/static/dersler.css">
+<style>
+    .floating-icon { position:absolute; font-size:3em; pointer-events:none; z-index:0; }
+    .container { position:relative; }
+    @media (max-width:768px){ .floating-icon{ display:none; } }
+</style>
+<style>
+.cumle-box {
+    background: #181c24;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px #0005;
+    padding: 24px 18px;
+    margin-bottom: 24px;
+    color: #e0e6ef;
+}
+.cumle-uyari {
+    background: #2a1a1a;
+    border-left: 5px solid #e53935;
+    color: #ffcdd2;
+    padding: 16px 18px;
+    border-radius: 10px;
+    margin-bottom: 18px;
+}
+.cumle-ekstra {
+    background: #1a2a3a;
+    border-left: 5px solid #1976d2;
+    color: #b3e5fc;
+    padding: 14px 18px;
+    border-radius: 10px;
+    margin-bottom: 18px;
+}
+.cumle-ornek {
+    background: #26324a;
+    border-left: 5px solid #fbc02d;
+    color: #fffde7;
+    padding: 16px 18px;
+    border-radius: 10px;
+    margin-bottom: 18px;
+}
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <!-- Yüzen ikonlar -->
+    <div class="floating-icon" style="top:120px; left:-60px; opacity:1; filter:drop-shadow(0 0 8px rgba(52, 152, 219, 0.6));">📚</div>
+    <div class="floating-icon" style="top:300px; left:-70px; opacity:1; filter:drop-shadow(0 0 8px rgba(52, 152, 219, 0.6));">✍️</div>
+    <div class="floating-icon" style="top:520px; left:-65px; opacity:1; filter:drop-shadow(0 0 8px rgba(232, 93, 93, 0.6));">📖</div>
+    <div class="floating-icon" style="top:120px; right:-60px; opacity:1; filter:drop-shadow(0 0 8px rgba(232, 93, 93, 0.6));">🗣️</div>
+    <div class="floating-icon" style="top:340px; right:-70px; opacity:1; filter:drop-shadow(0 0 8px rgba(243, 156, 18, 0.6));">🎤</div>
+    <h1 class="main-title" style="color:#ffb74d; background:#181c24; border-radius:8px; padding:10px 18px;">2. ÜNİTE: Cümlenin Öğeleri</h1>
+    <div class="cumle-box">
+        <b>Tanım:</b> Cümlede anlamı oluşturan, yüklem başta olmak üzere özne, nesne, yer tamlayıcısı ve zarf tamlayıcısı gibi bölümlere <span style="color:#90caf9;">cümlenin öğeleri</span> denir. Temel ve yardımcı ögeler olarak ikiye ayrılır.
+    </div>
+
+    <h2 style="margin-top:32px; background:#181c24; color: #ffb74d; border-radius:8px; padding:10px 18px;">A. TEMEL ÖGELER</h2>
+    <div class="cumle-box">
+        <b>1. YÜKLEM</b><br>
+        Cümlede oluş, iş ve hareket bildiren sözcük ya da sözcük grubudur. Cümlede ilk bulunan ögedir ancak yüklemi bulduran herhangi bir soru yoktur. Diğer ögeleri bulabilmek için tüm sorular yükleme sorulur.<br>
+        <ul style="margin:8px 0 0 16px;">
+            <li>Fiiller, kip ve kişi eki alarak yüklem olabilir.</li>
+            <li>İsimler veya isim soylu sözcükler ek-fiil alarak yüklem olabilir.</li>
+            <li>Cümlede birden fazla yüklem bulunabilir.</li>
+            <li>Yüklem, genelde cümlenin sonundadır ancak başında veya ortasında da olabilir.</li>
+            <li>Tek bir sözcük veya sözcük grubu yüklem olabilir.</li>
+            <li>Tüm sözcük türleri yüklem olabilir.</li>
+        </ul>
+    </div>
+    <div class="cumle-ornek">
+        <b>Örnekler:</b>
+        <ul style="margin:8px 0 0 16px;">
+            <li>Mehmet çok hızlı <span style="color:#ffb74d; font-weight:bold;">koşuyorsun</span>. <span style="color:#388e3c;">(Yüklem)</span></li>
+            <li>Uzunca bir yolculuktan sonra <span style="color:#ffb74d; font-weight:bold;">köydeydik</span>. <span style="color:#388e3c;">(Yüklem)</span></li>
+            <li>Çok <span style="color:#ffb74d; font-weight:bold;">yoruldum</span>, yatıp biraz <span style="color:#ffb74d; font-weight:bold;">dinleneceğim</span>. <span style="color:#388e3c;">(İki yüklem)</span></li>
+            <li>Derya’yı dün sabah okulda <span style="color:#ffb74d; font-weight:bold;">görmüştüm</span>.</li>
+            <li>Dün sabah okulda <span style="color:#ffb74d; font-weight:bold;">görmüştüm</span> Derya’yı.</li>
+            <li>Arabası yarı yolda <span style="color:#ffb74d; font-weight:bold;">bozuldu</span>.</li>
+            <li><span style="color:#ffb74d; font-weight:bold;">Yeşilin binbir tonuyla bezeli bir ormandaydık.</span></li>
+            <li><span style="color:#ffb74d; font-weight:bold;">Sınıfın en uzun boylu öğrencisiydi.</span></li>
+            <li>Anahtarı düşürdüğü yer <span style="color:#ffb74d; font-weight:bold;">buraydı</span>. <span style="color:#388e3c;">(Zamir)</span></li>
+            <li>Tek görevi dosyaları <span style="color:#ffb74d; font-weight:bold;">düzenlemekti</span>. <span style="color:#388e3c;">(Fiilimsi)</span></li>
+            <li>Çöp kovaları binanın arkasında<span style="color:#ffb74d; font-weight:bold;">ydı</span>. <span style="color:#388e3c;">(İsim tamlaması)</span></li>
+            <li>Ömer, çalışkan bir <span style="color:#ffb74d; font-weight:bold;">çocuktur</span>. <span style="color:#388e3c;">(Sıfat tamlaması)</span></li>
+            <li>Yardımlarınız için <span style="color:#ffb74d; font-weight:bold;"></Yard>teşekkür ederim</span>. <span style="color:#388e3c;">(Birleşik fiil)</span></li>
+            <li>Bu hediyeler, <span style="color:#ffb74d; font-weight:bold;">benim içinmiş</span>. <span style="color:#388e3c;">(Edat grubu)</span></li>
+            <li>Başım yine <span style="color:#ffb74d; font-weight:bold;">dara düştü</span>. <span style="color:#388e3c;">(Deyim)</span></li>
+        </ul>
+    </div>
+
+    <div class="cumle-box">
+        <b>2. ÖZNE</b><br>
+        Bir cümlede bildirilen işi yapan, yüklemin bildirdiği durumu üzerine alan <span style="color:#43a047; font-weight:bold;">kişi veya varlık</span>tır. Yüklemden sonraki en önemli ögedir. Özneyi bulabilmek için yükleme <span style="color:#1976d2; font-weight:bold;">“Kim?”</span> ve <span style="color:#1976d2; font-weight:bold;">“Ne?”</span> soruları sorulur. Bu soruları <span style="color:#1976d2; font-weight:bold;">“-en kim?”</span>, <span style="color:#1976d2; font-weight:bold;">“-en ne?”</span>; <span style="color:#1976d2; font-weight:bold;">“olan kim?”</span>, <span style="color:#1976d2; font-weight:bold;">“olan ne?”</span> kalıplarıyla sormak en doğrusudur.
+        <ul style="margin:8px 0 0 16px;">
+            <li><span style="color:#43a047; font-weight:bold;">Gerçek özne</span>: Açık ve gizli özne olmak üzere ikiye ayrılır.</li>
+            <li><span style="color:#43a047; font-weight:bold;">Sözde özne</span>: Eylemin, kimin tarafından yapıldığı belli olmayan cümlelerde yapılan işten etkilenen ögedir.</li>
+        </ul>
+    </div>
+    <div class="cumle-ornek">
+        <b>Örnekler:</b>
+        <ul style="margin:8px 0 0 16px;">
+            <li><span style="color:#43a047; font-weight:bold;">Deniz</span> yeni bir kitap aldı. <span style="color:#388e3c;">(Özne: Deniz)</span></li>
+            <li><span style="color:#43a047; font-weight:bold;">Şiddetli rüzgâr</span> ağacın dallarını kırmış. <span style="color:#388e3c;">(Özne: Şiddetli rüzgâr)</span></li>
+            <li><span style="color:#43a047; font-weight:bold;">Ömer</span> ailenin tek çocuğudur. <span style="color:#388e3c;">(Özne: Ömer)</span></li>
+            <li><span style="color:#43a047; font-weight:bold;">Babaannesinin evi</span> üst sokaktaydı. <span style="color:#388e3c;">(Özne: Babaannesinin evi)</span></li>
+            <li><span style="color:#43a047; font-weight:bold;">Neslihan Hanım</span> gazetesini sabahları okur. <span style="color:#388e3c;">(Açık özne)</span></li>
+            <li><span style="color:#43a047; font-weight:bold;">(O)</span> Gazetesini sabahları okur. <span style="color:#388e3c;">(Gizli özne)</span></li>
+            <li><span style="color:#43a047; font-weight:bold;">Davetiyeler</span> ilgililere yollandı. <span style="color:#388e3c;">(Sözde özne)</span></li>
+            <li><span style="color:#43a047; font-weight:bold;">Olay</span> titizlikle araştırıldı. <span style="color:#388e3c;">(Sözde özne)</span></li>
+        </ul>
+    </div>
+
+    <h2 style="margin-top:32px; background:#181c24; color: #ffb74d; border-radius:8px; padding:10px 18px;">B. YARDIMCI ÖGELER</h2>
+    <div class="cumle-box">
+        <b>1. NESNE</b><br>
+        Cümlede, öznenin yaptığı işten etkilenen <span style="color:#e53935; font-weight:bold;">varlık</span>tır. Nesne, <span style="color:#e53935; font-weight:bold;">belirtili</span> ve <span style="color:#e53935; font-weight:bold;">belirtisiz</span> olmak üzere ikiye ayrılır. Nesneyi bulmak için yükleme <span style="color:#1976d2; font-weight:bold;">“Neyi?”</span>, <span style="color:#1976d2; font-weight:bold;">“Kimi?”</span>, <span style="color:#1976d2; font-weight:bold;">“Nereyi?”</span> (belirtili nesne) ve <span style="color:#1976d2; font-weight:bold;">“Ne?”</span> (belirtisiz nesne) soruları sorulur.
+        <ul style="margin:8px 0 0 16px;">
+            <li><span style="color:#e53935; font-weight:bold;">Belirtili nesne</span>: “Neyi?”, “Kimi?”, “Nereyi?” sorularının cevabıdır ve belirtme hâl eki alır.</li>
+            <li><span style="color:#e53935; font-weight:bold;">Belirtisiz nesne</span>: “Ne?” sorusunun cevabıdır ve yalın hâlde bulunur.</li>
+        </ul>
+    </div>
+    <div class="cumle-ornek">
+        <b>Örnekler:</b>
+        <ul style="margin:8px 0 0 16px;">
+            <li>Babam <span style="color:#e53935; font-weight:bold;">ağaçları</span> suluyor. <span style="color:#388e3c;">(Belirtili nesne: ağaçları)</span></li>
+            <li>Zeynep <span style="color:#e53935; font-weight:bold;">ablasını</span> taklit ediyor. <span style="color:#388e3c;">(Belirtili nesne: ablasını)</span></li>
+            <li>Ağaçlar <span style="color:#e53935; font-weight:bold;">bahçeyi</span> süslüyor. <span style="color:#388e3c;">(Belirtili nesne: bahçeyi)</span></li>
+            <li>Kardeşim <span style="color:#e53935; font-weight:bold;">bir bardak süt</span> istedi. <span style="color:#388e3c;">(Belirtisiz nesne: bir bardak süt)</span></li>
+            <li>Ayla <span style="color:#e53935; font-weight:bold;">“Bu konuyu çok iyi anladım.”</span> dedi. <span style="color:#388e3c;">(Belirtisiz nesne: Bu konuyu çok iyi anladım)</span></li>
+        </ul>
+    </div>
+
+    <div class="cumle-box">
+        <b>2. YER TAMLAYICISI <span style="font-weight:normal; color:#90caf9;">(dolaylı tümleç)</span></b><br>
+        Özneyi kullanarak yükleme sorulan <span style="color:#1976d2; font-weight:bold;">“Kime?”</span>, <span style="color:#1976d2; font-weight:bold;">“Kimde?”</span>, <span style="color:#1976d2; font-weight:bold;">“Kimden?”</span>; <span style="color:#1976d2; font-weight:bold;">“Neye?”</span>, <span style="color:#1976d2; font-weight:bold;">“Neyde?”</span>, <span style="color:#1976d2; font-weight:bold;">“Neyden?”</span>; <span style="color:#1976d2; font-weight:bold;">“Nereye?”</span>, <span style="color:#1976d2; font-weight:bold;">“Nerede?”</span>, <span style="color:#1976d2; font-weight:bold;">“Nereden?”</span> sorularının cevabıdır. Yer tamlayıcısı olan sözcük ya da sözcük grubunda mutlaka <span style="color:#8e24aa; font-weight:bold;">“-e, -de, -den”</span> hâl eklerinden biri bulunur.
+    </div>
+    <div class="cumle-ornek">
+        <b>Örnekler:</b>
+        <ul style="margin:8px 0 0 16px;">
+            <li>Eve ulaştığınızda <span style="color:#8e24aa; font-weight:bold;">bana</span> haber verin. <span style="color:#388e3c;">(Yer tamlayıcısı: bana)</span></li>
+            <li>Bir dönem <span style="color:#8e24aa; font-weight:bold;">köyde</span> yaşadım. <span style="color:#388e3c;">(Yer tamlayıcısı: köyde)</span></li>
+            <li>Yoğurt, <span style="color:#8e24aa; font-weight:bold;">sütten</span> yapılır. <span style="color:#388e3c;">(Yer tamlayıcısı: sütten)</span></li>
+        </ul>
+    </div>
+
+    <div class="cumle-box">
+        <b>3. ZARF TAMLAYICISI <span style="font-weight:normal; color:#90caf9;">(zarf tümleci)</span></b><br>
+        Özneyi kullanarak yükleme sorulan <span style="color:#1976d2; font-weight:bold;">“Ne zaman?”</span>, <span style="color:#1976d2; font-weight:bold;">“Nasıl?”</span>, <span style="color:#1976d2; font-weight:bold;">“Niçin?”</span>, <span style="color:#1976d2; font-weight:bold;">“Niye?”</span>, <span style="color:#1976d2; font-weight:bold;">“Neden?”</span>, <span style="color:#1976d2; font-weight:bold;">“Ne kadar?”</span>, <span style="color:#1976d2; font-weight:bold;">“Ne şekilde?”</span>, <span style="color:#1976d2; font-weight:bold;">“Ne ile?”</span>, <span style="color:#1976d2; font-weight:bold;">“Kim ile?”</span>, <span style="color:#1976d2; font-weight:bold;">“Nereye?”</span> sorularının cevabıdır.
+    </div>
+    <div class="cumle-ornek">
+        <b>Örnekler:</b>
+        <ul style="margin:8px 0 0 16px;">
+            <li><span style="color:#00838f; font-weight:bold;">Canım sıkıldığında</span> buraya gelirim. <span style="color:#388e3c;">(Zarf tamlayıcısı: canım sıkıldığında)</span></li>
+            <li><span style="color:#00838f; font-weight:bold;">Meraklanma diye</span> senden gizledik. <span style="color:#388e3c;">(Zarf tamlayıcısı: meraklanma diye)</span></li>
+            <li>Beni almak için <span style="color:#00838f; font-weight:bold;">arabayla</span> gelmiş. <span style="color:#388e3c;">(Zarf tamlayıcısı: arabayla)</span></li>
+        </ul>
+    </div>
+
+    <div class="cumle-uyari">
+        <b>Uyarı:</b> <span style="color:#e57373;">Ögeleri bulurken önce yüklem, sonra özne bulunur. Diğer ögeler, özne aracılığıyla yükleme sorulan sorularla bulunur. “Kimin?”, “Neyin?” diye bir öge buldurma sorusu yoktur; bu soruları sormak bir tamlamayı bölmek anlamına gelir.</span>
+    </div>
+
+    <div class="cumle-ekstra">
+        <b>Ekstra Bilgi:</b> <span style="color:#b3e5fc;">Herhangi bir öge, bir tek sözcükten oluşabileceği gibi sözcük gruplarından da oluşabilir. Deyimler, ikilemeler, edat grupları, fiilimsi grupları, yardımcı fiillerle oluşan birleşik fiiller, isim ve sıfat tamlamaları tek bir ögedir, parçalanmaz.</span>
+    </div>
+    <a href="/turkce/cumlenin_ogeleri_alistirma/" id="ogeleri-bul-btn" style="display:block; margin:32px auto 0 auto; background:#ffb74d; color:#181c24; font-size:1.2em; font-weight:bold; border:none; border-radius:8px; padding:12px 32px; box-shadow:0 2px 8px #0003; cursor:pointer; text-align:center; text-decoration:none; transition:background 0.2s;">Cümlenin ögelerini bulalım</a>
+</div>
+
+
+{% endblock %}

@@ -49,6 +49,30 @@ python manage.py runserver
 - ✅ `karekok_ondalik.html` dropdown sıralama eklendi
 - ✅ JavaScript syntax hataları düzeltildi
 
+
+## 🎨 Sayfa Tasarımı: Türkçe/fiilimsiler.html
+
+**fiilimsiler.html Görsel ve Yapısal Özeti:**
+
+- **Arka Plan:**
+    - Tüm ana içerik `.container` içinde, arka plan rengi koyu (#181c24).
+- **Başlıklar:**
+    - Tüm başlıklar (h1, h2) turuncu (#ffb74d) renkte, köşeleri yuvarlatılmış ve koyu arka plan üzerinde.
+- **Metin Renkleri:**
+    - Genel metin rengi açık (#e0e6ef veya #fff), kutu içlerinde kontrast sağlanır.
+- **Kutu Yapısı ve Sınıflar:**
+    - `.fiilimsi-box`: Ana bilgi kutusu, koyu arka plan (#181c24), açık metin, gölge ve radius.
+    - `.fiilimsi-ornek`: Örnekler için, daha açık koyu (#26324a), sarı kenar (#fbc02d), açık sarı metin (#fffde7).
+    - `.fiilimsi-uyari`: Uyarı kutusu, bordo arka plan (#2a1a1a), kırmızı kenar (#e53935), açık kırmızı metin (#ffcdd2).
+    - `.fiilimsi-ekstra`: Ekstra bilgi kutusu, mavi-gri arka plan (#1a2a3a), mavi kenar (#1976d2), açık mavi metin (#b3e5fc).
+- **Vurgu ve Detay Renkleri:**
+    - Örneklerde ve formüllerde: #90caf9 (açık mavi), #1976d2 (mavi), #388e3c (yeşil), #e65100 (turuncu), #e57373 (uyarı).
+- **Kullanım:**
+    - Her kutu ve başlık için inline veya class tabanlı stil uygulanır. Tüm stiller ya sayfa içi `<style>` bloğunda ya da `dersler.css` ile birlikte yüklenir.
+- **Tema:**
+    - Koyu tema, yüksek kontrast, okunabilirlik ve renkli başlık/kutu ayrımı ön planda.
+
+---
 ## 💡 Teknik Çözümler
 
 ### Karekök İşareti (√) Gösterimi

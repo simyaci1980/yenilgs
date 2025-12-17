@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block extra_head %}
+<link rel="stylesheet" href="/static/dersler.css">
+<style>
+    .container { position:relative; }
+    .alistirma-box {
+        background: #181c24;
+        border-radius: 12px;
+        box-shadow: 0 2px 8px #0005;
+        padding: 24px 18px;
+        margin-bottom: 24px;
+        color: #e0e6ef;
+    }
+    .alistirma-title {
+        color:#ffb74d;
+        background:#181c24;
+        border-radius:8px;
+        padding:10px 18px;
+        margin-bottom:24px;
+        text-align:center;
+    }
+</style>
+<style>
+    .cumle-parca { display:inline-block; margin:0 2px; padding:2px 6px; border-radius:6px; background:#23293a; color:#fff; font-size:1.1em; }
+    .secenek-btn { margin:8px 8px 0 0; padding:8px 18px; border-radius:8px; border:none; background:#26324a; color:#fff; font-weight:bold; font-size:1em; cursor:pointer; transition:background 0.2s; }
+    .secenek-btn.dogru { background:#43a047; color:#fff; }
+    .secenek-btn.yanlis { background:#e53935; color:#fff; }
+    #soru-alani { margin:24px 0 8px 0; font-size:1.15em; color:#ffb74d; font-weight:bold; }
+    #sonuc-alani { margin-top:18px; font-size:1.1em; color:#43a047; }
+    #cumle-alani .dogru { background:#43a047 !important; color:#fff !important; transition:background 0.2s; }
+</style>
+<script src="/static/js/cumle_ogeleri_alistirma.js"></script>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1 class="alistirma-title">Cümlenin Öğeleri Alıştırmaları</h1>
+    <div id="main-alistirma"></div>
+</div>
+{% endblock %}

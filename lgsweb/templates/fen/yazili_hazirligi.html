@@ -1,0 +1,227 @@
+{% extends "base.html" %}
+{% block extra_head %}
+    <link rel="stylesheet" href="/static/dersler.css">
+    <style>
+        body, .container {
+            background: #181c24 !important;
+            color: #e0e6ef !important;
+        }
+        .main-title {
+            color: #90caf9 !important;
+            text-shadow: 0 2px 8px #111a;
+        }
+        .soru-kutu {
+            background: #23293a;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px #0005;
+            padding: 24px 18px;
+            margin-bottom: 24px;
+            color: #e0e6ef;
+        }
+        .cevap {
+            display: none;
+            margin-top: 10px;
+            background: #26324a;
+            border-radius: 8px;
+            padding: 12px;
+            color: #90caf9;
+        }
+        .cevap-btn {
+            margin-top: 10px;
+            background: #1976d2;
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            padding: 6px 18px;
+            cursor: pointer;
+            font-size: 1em;
+            box-shadow: 0 2px 8px #0003;
+        }
+        .cevap-btn:hover {
+            background: #1565c0;
+        }
+        ul, ol {
+            color: #b0b8c9;
+        }
+        a, a:visited {
+            color: #90caf9;
+        }
+        .dy-secim {
+            margin-top: 12px;
+        }
+        .dy-btn {
+            background: #23293a;
+            color: #fff;
+            border: 2px solid #1976d2;
+            border-radius: 6px;
+            padding: 6px 18px;
+            cursor: pointer;
+            font-size: 1em;
+            margin-right: 10px;
+            transition: background 0.2s, color 0.2s;
+        }
+        .dy-btn.selected {
+            background: #1976d2;
+            color: #fff;
+        }
+        .dy-sonuc {
+            display: inline-block;
+            margin-left: 16px;
+            font-weight: bold;
+            font-size: 1em;
+        }
+        .dy-dogru {
+            color: #4caf50;
+        }
+        .dy-yanlis {
+            color: #e53935;
+        }
+    </style>
+    <script>
+    function dogruYanlisCevapla(soruId, secim, dogruCevap) {
+        var sonucSpan = document.getElementById('dy-sonuc-' + soruId);
+        var btnDogru = document.getElementById('dy-btn-dogru-' + soruId);
+        var btnYanlis = document.getElementById('dy-btn-yanlis-' + soruId);
+        btnDogru.classList.remove('selected');
+        btnYanlis.classList.remove('selected');
+        if (secim === 'Doğru') btnDogru.classList.add('selected');
+        else btnYanlis.classList.add('selected');
+        if (secim === dogruCevap) {
+            sonucSpan.textContent = '✔ Doğru';
+            sonucSpan.className = 'dy-sonuc dy-dogru';
+        } else {
+            sonucSpan.textContent = '✘ Yanlış';
+            sonucSpan.className = 'dy-sonuc dy-yanlis';
+        }
+    }
+    </script>
+{% endblock %}
+{% block content %}
+<div class="container">
+    <h1 class="main-title">3. ÜNİTE: BASINÇ - Yazılı Hazırlığı 📝</h1>
+    <p style="text-align:center; color:#666; font-size:1.1em; margin-bottom:32px;">
+        Aşağıda bu üniteyle ilgili örnek yazılı soruları ve özetler bulabilirsin. Cevabı görmek için butona tıkla.
+    </p>
+    <div style="max-width:800px; margin:0 auto;">
+        <div class="soru-kutu">
+            <b>1. Basınç nedir? Katı, sıvı ve gazlarda basınç nasıl oluşur?</b>
+            <button class="cevap-btn" onclick="this.nextElementSibling.style.display='block'; this.style.display='none';">Cevabı Göster</button>
+            <div class="cevap">Basınç, birim yüzeye etki eden dik kuvvettir. Katılarda yüzey alanı ve kuvvetle, sıvılarda derinlik ve yoğunlukla, gazlarda ise kabın her yerine eşit olarak oluşur.</div>
+        </div>
+        <div class="soru-kutu">
+            <b>2. Katı basıncı nelere bağlıdır? Açıkla ve örnek ver.</b>
+            <button class="cevap-btn" onclick="this.nextElementSibling.style.display='block'; this.style.display='none';">Cevabı Göster</button>
+            <div class="cevap">Katı basıncı uygulanan kuvvetin büyüklüğüne ve yüzey alanına bağlıdır. Örnek: Topuklu ayakkabı ile yere uygulanan basınç, spor ayakkabıya göre daha fazladır.</div>
+        </div>
+        <div class="soru-kutu">
+            <b>3. Sıvı basıncı formülü nedir? Derinlik ve yoğunluk nasıl etkiler?</b>
+            <button class="cevap-btn" onclick="this.nextElementSibling.style.display='block'; this.style.display='none';">Cevabı Göster</button>
+            <div class="cevap">Sıvı basıncı: P = h . d . g (derinlik x yoğunluk x yerçekimi). Derinlik ve yoğunluk arttıkça basınç artar.</div>
+        </div>
+        <div class="soru-kutu">
+            <b>4. Gaz basıncı nasıl ölçülür? Manometre ve barometre nedir?</b>
+            <button class="cevap-btn" onclick="this.nextElementSibling.style.display='block'; this.style.display='none';">Cevabı Göster</button>
+            <div class="cevap">Gaz basıncı manometre ile ölçülür. Barometre ise açık hava basıncını ölçer.</div>
+        </div>
+        <div class="soru-kutu">
+            <b>5. Günlük hayatta basınca örnekler veriniz.</b>
+            <button class="cevap-btn" onclick="this.nextElementSibling.style.display='block'; this.style.display='none';">Cevabı Göster</button>
+            <div class="cevap">Çivinin ucu sivri olduğu için tahtaya kolayca batar, kar ayakkabısı ile kar üzerinde batmadan yürünür, damacana pompası ile suyun çıkması.</div>
+        </div>
+        <div class="soru-kutu">
+            <b>6. Çözümlü Soru: 200 N'luk bir cisim 0,5 m²'lik bir yüzeye konuluyor. Oluşan basınç kaç Pascal'dır?</b>
+            <button class="cevap-btn" onclick="this.nextElementSibling.style.display='block'; this.style.display='none';">Cevabı Göster</button>
+            <div class="cevap">P = F / A = 200 / 0,5 = 400 Pa</div>
+        </div>
+        <!-- Yeni Eklenen Sorular -->
+        <div class="soru-kutu">
+            <b>7. Pascal Prensibi nedir? Günlük hayattan iki örnek veriniz.</b>
+            <button class="cevap-btn" onclick="this.nextElementSibling.style.display='block'; this.style.display='none';">Cevabı Göster</button>
+            <div class="cevap">Pascal Prensibi: Sıvılar, uygulanan basıncı her yöne ve eşit büyüklükte iletir. Örnek: Hidrolik fren sistemi, berber koltuğu, hidrolik liftler.</div>
+        </div>
+        <div class="soru-kutu">
+            <b>8. Açık hava basıncı nedir? Torricelli deneyi ile açıklayınız.</b>
+            <button class="cevap-btn" onclick="this.nextElementSibling.style.display='block'; this.style.display='none';">Cevabı Göster</button>
+            <div class="cevap">Açık hava basıncı, atmosferin yeryüzüne uyguladığı basınçtır. Torricelli, cıva dolu bir boruyu ters çevirip cıva kabına batırarak 76 cmHg'lik açık hava basıncını ölçmüştür.</div>
+        </div>
+        <div class="soru-kutu">
+            <b>9. Bernoulli İlkesi nedir? Uygulama alanlarından birini açıklayınız.</b>
+            <button class="cevap-btn" onclick="this.nextElementSibling.style.display='block'; this.style.display='none';">Cevabı Göster</button>
+            <div class="cevap">Bernoulli İlkesi: Hızlı akan bir akışkanın bulunduğu yerde basınç azalır. Uygulama: Uçak kanatlarının üstünde hava hızlı akar ve basınç azalır, bu sayede uçak havalanır.</div>
+        </div>
+        <div class="soru-kutu">
+            <b>10. Sıvı basıncı hangi değişkenlere bağlıdır, hangi değişkenlere bağlı değildir?</b>
+            <button class="cevap-btn" onclick="this.nextElementSibling.style.display='block'; this.style.display='none';">Cevabı Göster</button>
+            <div class="cevap">Sıvı basıncı derinlik (yükseklik) ve yoğunluğa bağlıdır. Kabın şekline, hacmine ve sıvı miktarına bağlı değildir.</div>
+        </div>
+        <div class="soru-kutu">
+            <b>11. Kapalı kaptaki gaz basıncı nelere bağlıdır?</b>
+            <button class="cevap-btn" onclick="this.nextElementSibling.style.display='block'; this.style.display='none';">Cevabı Göster</button>
+            <div class="cevap">Kapalı kaptaki gaz basıncı, gazın miktarına, sıcaklığına ve kabın hacmine bağlıdır. Hacim azaldıkça basınç artar.</div>
+        </div>
+        <div class="soru-kutu">
+            <b>12. Basıncın günlük yaşamda ve teknolojide üç uygulamasını yazınız.</b>
+            <button class="cevap-btn" onclick="this.nextElementSibling.style.display='block'; this.style.display='none';">Cevabı Göster</button>
+            <div class="cevap">Bıçağın keskin olması, otomobil fren sistemleri (hidrolik), pipetle meyve suyu içmek, şırınga, vantuzun cama yapışması, itfaiye merdiveni hidrolik sistemi.</div>
+        </div>
+        <div class="soru-kutu">
+            <b>Kısa Özet:</b>
+            <ul style="margin:10px 0 0 0;">
+                <li>Basınç, birim yüzeye etki eden dik kuvvet olarak tanımlanır.</li>
+                <li>Katılarda basınç: P = F / A (Kuvvet / Yüzey Alanı)</li>
+                <li>Sıvılarda basınç: P = h . d . g (derinlik, yoğunluk, yerçekimi)</li>
+                <li>Gazlar her yöne basınç uygular, kapalı kaplarda manometre ile ölçülür.</li>
+            </ul>
+        </div>
+        <!-- Doğru-Yanlış Soruları -->
+        <div class="soru-kutu">
+            <b>13. Katıların basıncı aynen ilettiği söylenebilir. (D/Y)</b>
+            <div class="dy-secim">
+                <button id="dy-btn-dogru-13" class="dy-btn" onclick="dogruYanlisCevapla(13, 'Doğru', 'Yanlış')">Doğru</button>
+                <button id="dy-btn-yanlis-13" class="dy-btn" onclick="dogruYanlisCevapla(13, 'Yanlış', 'Yanlış')">Yanlış</button>
+                <span id="dy-sonuc-13" class="dy-sonuc"></span>
+            </div>
+        </div>
+        <div class="soru-kutu">
+            <b>14. Sıvı basıncı kabın şekline bağlıdır. (D/Y)</b>
+            <div class="dy-secim">
+                <button id="dy-btn-dogru-14" class="dy-btn" onclick="dogruYanlisCevapla(14, 'Doğru', 'Yanlış')">Doğru</button>
+                <button id="dy-btn-yanlis-14" class="dy-btn" onclick="dogruYanlisCevapla(14, 'Yanlış', 'Yanlış')">Yanlış</button>
+                <span id="dy-sonuc-14" class="dy-sonuc"></span>
+            </div>
+        </div>
+        <div class="soru-kutu">
+            <b>15. Pascal prensibine göre sıvılar basıncı her yöne eşit iletir. (D/Y)</b>
+            <div class="dy-secim">
+                <button id="dy-btn-dogru-15" class="dy-btn" onclick="dogruYanlisCevapla(15, 'Doğru', 'Doğru')">Doğru</button>
+                <button id="dy-btn-yanlis-15" class="dy-btn" onclick="dogruYanlisCevapla(15, 'Yanlış', 'Doğru')">Yanlış</button>
+                <span id="dy-sonuc-15" class="dy-sonuc"></span>
+            </div>
+        </div>
+        <div class="soru-kutu">
+            <b>16. Açık hava basıncı deniz seviyesinden yukarı çıkıldıkça artar. (D/Y)</b>
+            <div class="dy-secim">
+                <button id="dy-btn-dogru-16" class="dy-btn" onclick="dogruYanlisCevapla(16, 'Doğru', 'Yanlış')">Doğru</button>
+                <button id="dy-btn-yanlis-16" class="dy-btn" onclick="dogruYanlisCevapla(16, 'Yanlış', 'Yanlış')">Yanlış</button>
+                <span id="dy-sonuc-16" class="dy-sonuc"></span>
+            </div>
+        </div>
+        <div class="soru-kutu">
+            <b>17. Kapalı kaptaki gazın hacmi azalırsa basıncı artar. (D/Y)</b>
+            <div class="dy-secim">
+                <button id="dy-btn-dogru-17" class="dy-btn" onclick="dogruYanlisCevapla(17, 'Doğru', 'Doğru')">Doğru</button>
+                <button id="dy-btn-yanlis-17" class="dy-btn" onclick="dogruYanlisCevapla(17, 'Yanlış', 'Doğru')">Yanlış</button>
+                <span id="dy-sonuc-17" class="dy-sonuc"></span>
+            </div>
+        </div>
+        <div class="soru-kutu">
+            <b>18. Bernoulli ilkesine göre akışkanın hızı arttıkça basınç da artar. (D/Y)</b>
+            <div class="dy-secim">
+                <button id="dy-btn-dogru-18" class="dy-btn" onclick="dogruYanlisCevapla(18, 'Doğru', 'Yanlış')">Doğru</button>
+                <button id="dy-btn-yanlis-18" class="dy-btn" onclick="dogruYanlisCevapla(18, 'Yanlış', 'Yanlış')">Yanlış</button>
+                <span id="dy-sonuc-18" class="dy-sonuc"></span>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

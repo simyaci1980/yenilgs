@@ -1,3 +1,7 @@
+def cumlenin_ogeleri_alistirma(request):
+    return render(request, 'turkce/cumlenin_ogeleri_alistirma.html')
+def fiilimsiler(request):
+    return render(request, 'turkce/fiilimsiler.html')
 def maddenin_isi_etkisimi(request):
     return render(request, 'fen/maddenin_isi_etkisimi.html')
 def asitler_bazlar(request):
@@ -15,6 +19,9 @@ def turkce(request):
 
 def fen(request):
     return render(request, 'fen/fen.html')
+
+def yazili_hazirligi(request):
+    return render(request, 'fen/yazili_hazirligi.html')
 
 def fen_unite_1(request):
     return render(request, 'fen/fen_unite_1.html')
@@ -210,6 +217,9 @@ def fikir_hayati(request):
 
 def askerlik_hayati(request):
     return render(request, 'inkilap/askerlik_hayati.html')
+
+def cumlenin_ogeleri(request):
+     return render(request, 'turkce/cumlenin_ogeleri.html')
 
 
 
