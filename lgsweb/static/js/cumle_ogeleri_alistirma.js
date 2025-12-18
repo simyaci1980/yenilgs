@@ -19,6 +19,22 @@ document.addEventListener('DOMContentLoaded', function() {
         {text: 'inceledi', type: 'yuklem'}
     ];
 
+    // 3. Cümle (eklenen)
+    const cumle3 = [
+        {text: 'bir gün', type: 'zarf'},
+        {text: 'adanın sahiline', type: 'dtumlec'},
+        {text: 'gıda yüklü bir tekne', type: 'ozne'},
+        {text: 'demirledi', type: 'yuklem'}
+    ];
+
+    // 4. Cümle (eklenen)
+    const cumle4 = [
+        {text: 'Nasrettin Hoca fıkralarını', type: 'nesne'},
+        {text: 'bugüne kadar', type: 'zarf'},
+        {text: 'birçok edebiyat tarihçisi', type: 'ozne'},
+        {text: 'incelemiştir', type: 'yuklem'}
+    ];
+
     // Ortak adımlar
     const adimlar = [
         {
@@ -85,6 +101,29 @@ document.addEventListener('DOMContentLoaded', function() {
             // Soru başlığı ve baloncuklar
             if (soruAlani) {
                 const adim = adimlar[adimIndex];
+                // Eğer cümlede bu adımın öğesi yoksa otomatik olarak bir sonraki adıma geç
+                const ogeVarMi = cumle.some(x => x.type === adim.type);
+                if (!ogeVarMi) {
+                    if (adimIndex < adimlar.length - 1) {
+                        adimIndex++;
+                        renderAdim();
+                        return;
+                    } else {
+                        // Son adımda ise tebrik mesajı göster
+                        if (sonucDiv) {
+                            sonucDiv.innerHTML = 'Tebrikler! Tüm ögeleri doğru buldun.<br><button class="tekrar-btn" style="margin-top:18px; padding:8px 22px; border-radius:8px; background:#ffb74d; color:#232323; font-weight:bold; border:none; font-size:1.08em; cursor:pointer;">Tekrar bul</button>';
+                            const tekrarBtn = container.querySelector('.tekrar-btn');
+                            if (tekrarBtn) {
+                                tekrarBtn.onclick = function() {
+                                    adimIndex = 0;
+                                    sonucDiv.textContent = '';
+                                    renderAdim();
+                                };
+                            }
+                        }
+                        return;
+                    }
+                }
                 soruAlani.innerHTML = `<span style="font-weight:bold; vertical-align:middle;">${adim.label}</span>`;
                 if (adim.baloncuklar.length > 0) {
                     soruAlani.innerHTML += adim.baloncuklar.map(b=>
@@ -140,14 +179,18 @@ document.addEventListener('DOMContentLoaded', function() {
         renderAdim();
     }
 
-    // Sayfada iki kutu için alan oluştur
+    // Sayfada üç kutu için alan oluştur
     const main = document.getElementById('main-alistirma');
     if (main) {
         main.innerHTML = `
             <div id="alistirma1"></div>
             <div id="alistirma2" style="margin-top:32px;"></div>
+            <div id="alistirma3" style="margin-top:32px;"></div>
+            <div id="alistirma4" style="margin-top:32px;"></div>
         `;
         createAlistirmaBox('alistirma1', cumle1);
         createAlistirmaBox('alistirma2', cumle2);
+        createAlistirmaBox('alistirma3', cumle3);
+        createAlistirmaBox('alistirma4', cumle4);
     }
 });
